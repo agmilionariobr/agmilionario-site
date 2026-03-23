@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MilionCRM — CRM com IA + WhatsApp para empresas brasileiras</title>
+  <meta name="description" content="O CRM feito para empresas brasileiras que precisam organizar leads, automatizar o WhatsApp e fechar mais negócios." />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand:      #01c9f0;
+      --brand-dark: #00a8cc;
+      --brand-glow: rgba(1,201,240,.2);
+      --ink:        #ffffff;
+      --ink-2:      rgba(255,255,255,.7);
+      --muted:      rgba(255,255,255,.4);
+      --bg:         #08080f;
+      --bg-2:       #0d0d1a;
+      --bg-3:       #101020;
+      --border:     rgba(1,201,240,.15);
+      --radius:     8px;
+      --radius-lg:  16px;
+      --font-head:  'Syne', sans-serif;
+      --font-body:  'DM Sans', sans-serif;
+      --tr:         .2s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    input { font-family: inherit; }
+
+    .container { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,8,15,.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-wrap img { height: 28px; width: auto; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav button, nav a { font-size: .875rem; color: var(--ink-2); font-weight: 500; transition: color var(--tr); }
+    nav button:hover, nav a:hover { color: var(--brand); }
+    .btn-brand {
+      background: var(--brand); color: var(--bg); font-weight: 700; font-size: .875rem;
+      padding: 9px 20px; border-radius: var(--radius);
+      transition: opacity var(--tr), transform var(--tr);
+    }
+    .btn-brand:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 0 80px; position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; pointer-events: none;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(1,201,240,.07) 0%, transparent 70%);
+      top: -200px; right: -200px;
+    }
+    .hero-glow2 {
+      position: absolute; pointer-events: none;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(1,201,240,.04) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
+      color: var(--brand); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--font-head); font-size: clamp(3.5rem, 9vw, 6.5rem); font-weight: 800;
+      line-height: .95; letter-spacing: -.03em; margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--brand); }
+    .hero p { font-size: 1.1rem; color: var(--ink-2); max-width: 520px; margin-bottom: 36px; line-height: 1.7; font-weight: 300; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: var(--brand); color: var(--bg); font-weight: 700; font-size: .975rem;
+      padding: 14px 32px; border-radius: var(--radius);
+      transition: opacity var(--tr), transform var(--tr);
+    }
+    .btn-hero-primary:hover { opacity: .9; transform: translateY(-2px); }
+    .btn-hero-outline {
+      border: 1px solid rgba(255,255,255,.2); color: var(--ink); font-weight: 500; font-size: .975rem;
+      padding: 14px 32px; border-radius: var(--radius);
+      transition: border-color var(--tr), color var(--tr);
+    }
+    .btn-hero-outline:hover { border-color: var(--brand); color: var(--brand); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.08); flex-wrap: wrap;
+    }
+    .stat-val { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: var(--brand); line-height: 1; }
+    .stat-lbl { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+
+    /* PAIN */
+    .pain { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .pain-head { text-align: center; margin-bottom: 44px; }
+    .pain-tag { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; }
+    .pain-title { font-family: var(--font-head); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; letter-spacing: -.02em; }
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .pain-item { background: var(--bg-2); padding: 32px 24px; }
+    .pain-emoji { font-size: 2rem; margin-bottom: 14px; }
+    .pain-item-title { font-weight: 700; font-size: .975rem; margin-bottom: 8px; }
+    .pain-item-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* FEATURES */
+    .features { padding: 96px 0; }
+    .features-head { margin-bottom: 56px; }
+    .features-head p { color: var(--ink-2); font-size: 1rem; max-width: 420px; margin-top: 10px; font-weight: 300; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .feat-item { background: var(--bg-3); padding: 36px 28px; transition: background var(--tr); }
+    .feat-item:hover { background: #181830; }
+    .feat-icon {
+      width: 44px; height: 44px; background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--brand); margin-bottom: 18px;
+    }
+    .feat-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .feat-desc { font-size: .875rem; color: var(--muted); line-height: 1.65; }
+
+    /* INTEGRATIONS */
+    .integrations { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .integrations-head { margin-bottom: 40px; }
+    .int-chips { display: flex; flex-wrap: wrap; gap: 12px; }
+    .int-chip {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg-3); border: 1px solid rgba(255,255,255,.08);
+      padding: 12px 20px; border-radius: var(--radius); font-size: .9rem; font-weight: 500;
+      transition: border-color var(--tr), color var(--tr);
+    }
+    .int-chip.active:hover { border-color: var(--brand); color: var(--brand); }
+    .int-chip.inactive { opacity: .45; }
+    .int-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .int-dot.on { background: var(--brand); }
+    .int-dot.off { background: rgba(255,255,255,.3); }
+    .int-badge {
+      font-size: .7rem; background: rgba(1,201,240,.1); color: var(--brand);
+      padding: 2px 8px; border-radius: 999px; font-weight: 600;
+    }
+
+    /* SOCIAL PROOF */
+    .proof { padding: 96px 0; text-align: center; }
+    .proof-head { margin-bottom: 52px; }
+    .testimonial {
+      background: var(--bg-3); border: 1px solid var(--border); border-left: 4px solid var(--brand);
+      border-radius: var(--radius-lg); padding: 48px; position: relative; max-width: 760px; margin: 0 auto 48px;
+    }
+    .testimonial::before {
+      content: '"'; position: absolute; top: -12px; left: 24px;
+      font-size: 100px; color: rgba(1,201,240,.1); font-family: Georgia, serif; line-height: 1; pointer-events: none;
+    }
+    .testimonial p { font-size: 1.1rem; font-style: italic; color: var(--ink-2); line-height: 1.75; margin-bottom: 24px; position: relative; z-index: 1; }
+    .testimonial p strong { color: var(--brand); font-style: normal; }
+    .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 14px; }
+    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(1,201,240,.15); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--brand); font-size: .9rem; }
+    .author-name { font-weight: 700; font-size: .95rem; }
+    .author-role { font-size: .8rem; color: var(--muted); }
+    .proof-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 700px; margin: 0 auto; }
+    .proof-stat { background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+    .proof-stat-val { font-family: var(--font-head); font-size: 2.8rem; font-weight: 800; color: var(--brand); line-height: 1; }
+    .proof-stat-lbl { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+
+    /* PRICING */
+    .pricing { padding: 96px 0; background: var(--bg-2); border-top: 1px solid var(--border); }
+    .pricing-head { text-align: center; margin-bottom: 16px; }
+    .pricing-sub { text-align: center; font-size: .9rem; color: var(--muted); margin-bottom: 52px; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .plan-card {
+      background: var(--bg-3); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg);
+      padding: 36px 28px; position: relative;
+      transition: transform var(--tr), border-color var(--tr);
+    }
+    .plan-card:hover { transform: translateY(-4px); }
+    .plan-card.featured { border-color: var(--brand); background: #181830; }
+    .plan-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--brand); color: var(--bg); font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 999px; white-space: nowrap;
+    }
+    .plan-name { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .plan-duration { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
+    .plan-price-from { font-size: .8rem; color: var(--muted); }
+    .plan-price { font-family: var(--font-head); font-size: 3rem; font-weight: 800; color: var(--brand); line-height: 1; }
+    .plan-price-period { font-size: .8rem; color: var(--muted); }
+    .plan-total { font-size: .85rem; color: var(--muted); margin-top: 6px; margin-bottom: 20px; }
+    .plan-total .highlight { color: var(--brand); }
+    .plan-divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 18px 0; }
+    .plan-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .plan-perks li { display: flex; align-items: flex-start; gap: 10px; font-size: .875rem; color: var(--ink-2); line-height: 1.5; }
+    .plan-perks li svg { color: var(--brand); flex-shrink: 0; margin-top: 2px; }
+    .plan-perks li.highlight-item { color: var(--brand); font-weight: 600; }
+    .btn-plan {
+      width: 100%; padding: 14px; border-radius: var(--radius); font-weight: 700; font-size: .95rem;
+      transition: var(--tr);
+    }
+    .btn-plan.filled { background: var(--brand); color: var(--bg); }
+    .btn-plan.filled:hover { opacity: .9; }
+    .btn-plan.outline { border: 1px solid var(--brand); color: var(--brand); }
+    .btn-plan.outline:hover { background: var(--brand); color: var(--bg); }
+
+    /* FOOTER */
+    footer { background: #050508; border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: .8rem; color: var(--muted); }
+    footer a { color: var(--brand); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,.8); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--bg-3); border: 1px solid var(--border); border-radius: 20px;
+      padding: 40px; width: 100%; max-width: 440px; position: relative;
+      animation: modalIn .25s ease both;
+    }
+    @keyframes modalIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: none; } }
+    .modal-close {
+      position: absolute; top: 14px; right: 16px;
+      width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center; color: var(--muted);
+      transition: background var(--tr), color var(--tr);
+    }
+    .modal-close:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .modal-eyebrow {
+      display: inline-block; background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
+      color: var(--brand); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .modal h2 { font-family: var(--font-head); font-size: 2rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+    .modal-sub { font-size: .875rem; color: var(--muted); margin-bottom: 28px; }
+    .modal-form-group { margin-bottom: 16px; }
+    .modal-label { display: block; font-size: .8rem; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+    .modal-input {
+      width: 100%; background: var(--bg-2); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius);
+      padding: 12px 14px; color: #fff; font-size: .9rem; transition: border-color var(--tr);
+    }
+    .modal-input:focus { outline: none; border-color: var(--brand); }
+    .modal-input::placeholder { color: rgba(255,255,255,.2); }
+    .modal-check { display: flex; align-items: flex-start; gap: 10px; margin-top: 4px; }
+    .modal-check input { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: var(--brand); }
+    .modal-check label { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+    .modal-check a { color: var(--brand); }
+    .btn-modal-submit {
+      width: 100%; padding: 14px; background: var(--brand); color: var(--bg);
+      font-weight: 800; font-size: .975rem; border-radius: var(--radius); margin-top: 16px;
+      transition: opacity var(--tr), transform var(--tr);
+    }
+    .btn-modal-submit:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-modal-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .modal-note { text-align: center; font-size: .75rem; color: var(--muted); margin-top: 10px; }
+    .modal-success { text-align: center; padding: 16px 0; }
+    .modal-success-icon { font-size: 3rem; margin-bottom: 14px; }
+    .modal-success h3 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--brand); margin-bottom: 10px; }
+    .modal-success p { color: var(--ink-2); font-size: .95rem; line-height: 1.7; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .pain-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .proof-stats { grid-template-columns: 1fr; max-width: 300px; }
+    }
+    @media (max-width: 600px) {
+      nav { display: none; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="index.html" class="logo-wrap"><img src="logo-white.svg" alt="Agentes Milionários" /></a>
+    <nav>
+      <button onclick="document.getElementById('funcionalidades').scrollIntoView({behavior:'smooth'})">Funcionalidades</button>
+      <button onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Planos</button>
+      <a href="index.html">Voltar</a>
+    </nav>
+    <button class="btn-brand" onclick="openModal('Nav')">Quero contratar</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow2" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">CRM com IA + WhatsApp integrado</div>
+      <h1>PARE DE<br><span class="accent">PERDER</span><br>VENDA.</h1>
+      <p>O CRM feito para empresas brasileiras que precisam organizar leads, automatizar o WhatsApp e fechar mais negócios — sem complicação.</p>
+      <div class="hero-btns">
+        <button class="btn-hero-primary" onclick="openModal('Hero')">Quero o MilionCRM</button>
+        <button class="btn-hero-outline" onclick="document.getElementById('funcionalidades').scrollIntoView({behavior:'smooth'})">Ver funcionalidades</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-val">+29%</div>
+          <div class="stat-lbl">conversões — caso Troca Game</div>
+        </div>
+        <div>
+          <div class="stat-val">R$89</div>
+          <div class="stat-lbl">por usuário / mês no plano anual</div>
+        </div>
+        <div>
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">integrado ao WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <div class="container">
+    <div class="pain-head reveal">
+      <div class="pain-tag">O problema</div>
+      <h2 class="pain-title">VOCÊ ESTÁ PERDENDO DINHEIRO AGORA</h2>
+    </div>
+    <div class="pain-grid reveal">
+      <div class="pain-item">
+        <div class="pain-emoji">📋</div>
+        <div class="pain-item-title">Lead caindo no esquecimento</div>
+        <p class="pain-item-desc">Anotou no papel, no WhatsApp, numa planilha... e sumiu. O cliente foi comprar na concorrência.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-emoji">🔁</div>
+        <div class="pain-item-title">Follow-up manual e irregular</div>
+        <p class="pain-item-desc">Depende da memória do vendedor. Sem processo, sem cadência, sem previsibilidade.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-emoji">😵</div>
+        <div class="pain-item-title">Zero visibilidade do funil</div>
+        <p class="pain-item-desc">Quantos leads ativos você tem agora? Em qual etapa? Você não sabe — e isso custa caro.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-emoji">💸</div>
+        <div class="pain-item-title">Pagando caro por ferramentas gringas</div>
+        <p class="pain-item-desc">HubSpot, Pipedrive, Salesforce... dólares, interface em inglês, configuração que nunca termina.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="funcionalidades">
+  <div class="container">
+    <div class="features-head reveal">
+      <div class="pain-tag">O que você leva</div>
+      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em">TUDO QUE SUA EQUIPE PRECISA PARA VENDER MAIS</h2>
+      <p>Um CRM completo, pensado do zero para o mercado brasileiro.</p>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg></div>
+        <div class="feat-title">Funil de Vendas Visual</div>
+        <p class="feat-desc">Kanban drag-and-drop. Veja cada lead em qual etapa está e mova com um clique.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="feat-title">WhatsApp Integrado</div>
+        <p class="feat-desc">Disparo de mensagens diretamente pelo CRM. Histórico completo de cada cliente.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="feat-title">Gestão de Contatos e Leads</div>
+        <p class="feat-desc">Cadastro completo, histórico de interações, tags e segmentações.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="feat-title">Relatórios e Métricas</div>
+        <p class="feat-desc">Taxa de conversão, tempo médio de fechamento, desempenho por vendedor.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="feat-title">Múltiplos Usuários</div>
+        <p class="feat-desc">Toda a equipe no mesmo sistema. O gestor vê tudo em tempo real.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="feat-title">Histórico Centralizado</div>
+        <p class="feat-desc">Toda conversa e proposta registrada. Qualquer membro retoma de onde parou.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations">
+  <div class="container">
+    <div class="integrations-head reveal">
+      <div class="pain-tag">Integrações</div>
+      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-.02em">CONECTA COM O QUE VOCÊ JÁ USA</h2>
+    </div>
+    <div class="int-chips reveal">
+      <div class="int-chip active"><span class="int-dot on"></span>WhatsApp Business</div>
+      <div class="int-chip active"><span class="int-dot on"></span>Meta Ads (Facebook)</div>
+      <div class="int-chip active"><span class="int-dot on"></span>Instagram</div>
+      <div class="int-chip active"><span class="int-dot on"></span>Messenger</div>
+      <div class="int-chip inactive"><span class="int-dot off"></span>IA Integrada <span class="int-badge">add-on</span></div>
+      <div class="int-chip inactive"><span class="int-dot off"></span>Follow-up Automático <span class="int-badge">add-on</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof">
+  <div class="container">
+    <div class="proof-head reveal">
+      <div class="pain-tag">Resultado real</div>
+      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em">QUEM USA, VENDE MAIS</h2>
+    </div>
+    <div class="testimonial reveal">
+      <p>"Depois de implementar o MilionCRM integrado com IA, a Troca Game aumentou <strong>29% nas conversões</strong>. Os leads pararam de cair no esquecimento e o time de vendas finalmente tem visibilidade do funil."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">TG</div>
+        <div>
+          <div class="author-name">Troca Game</div>
+          <div class="author-role">Varejo de Games — cliente Agentes Milionários</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-stats reveal">
+      <div class="proof-stat"><div class="proof-stat-val">+29%</div><div class="proof-stat-lbl">aumento em conversões</div></div>
+      <div class="proof-stat"><div class="proof-stat-val">100%</div><div class="proof-stat-lbl">leads rastreados no funil</div></div>
+      <div class="proof-stat"><div class="proof-stat-val">Setup</div><div class="proof-stat-lbl">feito pela nossa equipe</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="planos">
+  <div class="container">
+    <div class="pricing-head reveal">
+      <div class="pain-tag">Planos</div>
+      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em">INVISTA UMA VEZ, FECHE O ANO INTEIRO</h2>
+    </div>
+    <p class="pricing-sub reveal">Licença por usuário, sem taxa de setup. Planos de 9 e 12 meses ganham 30 dias de bônus.</p>
+    <div class="plans-grid reveal">
+
+      <div class="plan-card">
+        <div class="plan-name">Plano Semestral</div>
+        <div class="plan-duration">6 MESES</div>
+        <div class="plan-price-from">A partir de</div>
+        <div><span class="plan-price">R$119</span><span class="plan-price-period">,90/usuário/mês</span></div>
+        <div class="plan-total">Total: <strong>R$ 719,40/usuário</strong></div>
+        <hr class="plan-divider" />
+        <ul class="plan-perks">
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Funil de vendas Kanban</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>WhatsApp integrado</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Gestão de leads e contatos</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Relatórios e métricas</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Múltiplos usuários</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Suporte Agentes Milionários</li>
+        </ul>
+        <button class="btn-plan outline" onclick="openModal('6 MESES')">Contratar agora</button>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-badge">Mais escolhido</div>
+        <div class="plan-name">Plano Trimestral +</div>
+        <div class="plan-duration">9 MESES + 30 DIAS</div>
+        <div class="plan-price-from">A partir de</div>
+        <div><span class="plan-price">R$99</span><span class="plan-price-period">,90/usuário/mês</span></div>
+        <div class="plan-total">Total: <strong>R$ 899,10/usuário</strong> <span class="highlight">— +30 dias grátis</span></div>
+        <hr class="plan-divider" />
+        <ul class="plan-perks">
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Tudo do plano semestral</li>
+          <li class="highlight-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>30 dias de licença bônus</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Integrações Meta Ads + Instagram</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Histórico centralizado de conversas</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Configuração personalizada pela nossa equipe</li>
+        </ul>
+        <button class="btn-plan filled" onclick="openModal('9 MESES + 30 DIAS')">Contratar agora</button>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Plano Anual</div>
+        <div class="plan-duration">12 MESES + 30 DIAS</div>
+        <div class="plan-price-from">A partir de</div>
+        <div><span class="plan-price">R$89</span><span class="plan-price-period">,90/usuário/mês</span></div>
+        <div class="plan-total">Total: <strong>R$ 1.078,80/usuário</strong> <span class="highlight">— +30 dias grátis</span></div>
+        <hr class="plan-divider" />
+        <ul class="plan-perks">
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Tudo do plano 9 meses</li>
+          <li class="highlight-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Menor custo mensal por usuário</li>
+          <li class="highlight-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>30 dias de licença bônus</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Prioridade no suporte</li>
+          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Ideal para equipes e agências</li>
+        </ul>
+        <button class="btn-plan outline" onclick="openModal('12 MESES + 30 DIAS')">Contratar agora</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Agentes Milionários LTDA — CNPJ 63.615.745/0001-85 — Itajaí, SC</p>
+    <p style="margin-top:8px">
+      <a href="index.html">Início</a> &nbsp;·&nbsp;
+      <a href="clube.html">Clube</a> &nbsp;·&nbsp;
+      <a href="terms-milioncrm.html">Termos de Uso</a>
+    </p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div id="modalForm">
+      <div class="modal-eyebrow" id="modalPlanLabel">MilionCRM</div>
+      <h2>FALTA POUCO!</h2>
+      <p class="modal-sub">Deixa seu contato e nossa equipe ativa seu acesso em até 1 dia útil.</p>
+      <form onsubmit="submitModal(event)">
+        <div class="modal-form-group">
+          <label class="modal-label">Seu nome *</label>
+          <input type="text" class="modal-input" id="mNome" required placeholder="João Silva" />
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-label">WhatsApp *</label>
+          <input type="tel" class="modal-input" id="mTel" required placeholder="(47) 99999-9999" />
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-label">E-mail *</label>
+          <input type="email" class="modal-input" id="mEmail" required placeholder="seu@email.com.br" />
+        </div>
+        <div class="modal-check">
+          <input type="checkbox" id="mTermos" required />
+          <label for="mTermos">Li e aceito os <a href="terms-milioncrm.html" target="_blank">Termos de Uso do MilionCRM</a>.</label>
+        </div>
+        <button type="submit" class="btn-modal-submit" id="modalBtn">QUERO O MILIONCRM →</button>
+        <p class="modal-note">Sem spam. Apenas nossa equipe vai te contactar.</p>
+      </form>
+    </div>
+
+    <div id="modalSuccess" class="modal-success" style="display:none">
+      <div class="modal-success-icon">✓</div>
+      <h3>RECEBEMOS!</h3>
+      <p>Nossa equipe vai entrar em contato pelo WhatsApp em breve.<br>Prepare-se para vender mais.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  var currentPlan = '';
+
+  function openModal(plan) {
+    currentPlan = plan;
+    var label = document.getElementById('modalPlanLabel');
+    label.textContent = (plan && plan !== 'Hero' && plan !== 'Nav') ? 'PLANO ' + plan : 'MilionCRM';
+    document.getElementById('modalForm').style.display = '';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  async function submitModal(e) {
+    e.preventDefault();
+    var btn = document.getElementById('modalBtn');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+
+    var payload = {
+      nome: document.getElementById('mNome').value,
+      telefone: document.getElementById('mTel').value,
+      email: document.getElementById('mEmail').value,
+      plano: currentPlan || 'Não informado',
+      data: new Date().toISOString()
+    };
+
+    try {
+      await fetch('https://webhooks.agmilionario.com.br/webhook/3fd26429-bc21-4b4d-b0e1-5c527ae84da6', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(err) { console.warn('webhook:', err); }
+
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = '';
+    btn.disabled = false; btn.textContent = 'QUERO O MILIONCRM →';
+  }
+
+  /* Scroll reveal */
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>

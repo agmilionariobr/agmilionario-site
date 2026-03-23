@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Uso — MilionCRM</title>
+  <meta name="description" content="Termos de Uso e Condições Gerais de Serviço da plataforma MilionCRM — Agentes Milionários LTDA." />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --brand:      #07739e;
+      --brand-cyan: #01c9f0;
+      --brand-dark: #055a7a;
+      --brand-navy: #09092b;
+      --ink:        #09092b;
+      --ink-2:      #1a2a3a;
+      --muted:      #5a7080;
+      --surface:    #ffffff;
+      --surface-2:  #f2f7fa;
+      --border:     #d8e5ed;
+      --radius:     10px;
+      --font-head:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-body:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--ink-2); background: var(--surface); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.94); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 24px;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .logo-wrap img { height: 28px; width: auto; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .875rem; font-weight: 500; color: var(--muted);
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--brand); text-decoration: none; }
+    .back-link svg { flex-shrink: 0; }
+
+    /* HERO STRIP */
+    .terms-hero {
+      background: linear-gradient(135deg, #f0f8fb 0%, #ffffff 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 52px 24px 44px;
+      text-align: center;
+    }
+    .terms-hero .eyebrow {
+      display: inline-block;
+      background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.25);
+      color: var(--brand); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px; margin-bottom: 18px;
+    }
+    .terms-hero h1 {
+      font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800;
+      color: var(--ink); letter-spacing: -.02em; margin-bottom: 10px;
+    }
+    .terms-hero .meta {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;
+      color: var(--muted); font-size: .85rem; margin-top: 16px;
+    }
+    .terms-hero .meta span { display: flex; align-items: center; gap: 5px; }
+
+    /* LAYOUT */
+    .page-body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      max-width: 960px; margin: 0 auto; padding: 52px 24px 80px;
+    }
+
+    /* SIDEBAR TOC */
+    .toc {
+      position: sticky; top: 80px; align-self: start;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .toc-title {
+      font-family: var(--font-head); font-size: .8rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .toc ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+    .toc a {
+      font-size: .82rem; color: var(--ink-2); padding: 5px 8px; border-radius: 6px;
+      display: block; line-height: 1.4; transition: background .15s, color .15s;
+    }
+    .toc a:hover { background: rgba(7,115,158,.08); color: var(--brand); text-decoration: none; }
+
+    /* CONTENT */
+    .terms-content { min-width: 0; }
+
+    /* info table at top */
+    .info-table {
+      width: 100%; border-collapse: collapse; margin-bottom: 40px;
+      border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+      font-size: .9rem;
+    }
+    .info-table tr:nth-child(even) { background: var(--surface-2); }
+    .info-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+    .info-table td:first-child { font-weight: 600; color: var(--ink); width: 40%; }
+    .info-table tr:last-child td { border-bottom: none; }
+
+    /* SECTIONS */
+    .terms-section { margin-bottom: 44px; scroll-margin-top: 80px; }
+    .terms-section h2 {
+      font-family: var(--font-head); font-size: 1.25rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 2px solid rgba(7,115,158,.15);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .terms-section h2 .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 7px;
+      background: rgba(7,115,158,.1); color: var(--brand);
+      font-size: .8rem; font-weight: 800; flex-shrink: 0;
+    }
+    .terms-section h3 {
+      font-size: 1rem; font-weight: 700; color: var(--ink); margin: 20px 0 8px;
+    }
+    .terms-section p { color: var(--ink-2); margin-bottom: 12px; font-size: .95rem; }
+    .terms-section ul {
+      list-style: none; margin: 8px 0 14px 0; display: flex; flex-direction: column; gap: 6px;
+    }
+    .terms-section ul li {
+      font-size: .925rem; color: var(--ink-2);
+      padding-left: 20px; position: relative; line-height: 1.65;
+    }
+    .terms-section ul li::before {
+      content: ''; position: absolute; left: 0; top: 9px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--brand);
+    }
+
+    /* highlight box */
+    .highlight-box {
+      background: rgba(1,201,240,.05); border: 1px solid rgba(1,201,240,.2);
+      border-left: 4px solid var(--brand-cyan);
+      border-radius: var(--radius); padding: 16px 20px; margin: 16px 0;
+      font-size: .9rem; color: var(--ink-2); line-height: 1.65;
+    }
+    .highlight-box strong { color: var(--brand); }
+
+    /* contact table */
+    .contact-table {
+      width: 100%; border-collapse: collapse; margin-top: 16px;
+      font-size: .9rem; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+    }
+    .contact-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
+    .contact-table td:first-child { font-weight: 600; color: var(--ink); background: var(--surface-2); width: 42%; }
+    .contact-table tr:last-child td { border-bottom: none; }
+    .contact-table a { color: var(--brand); }
+
+    /* FOOTER */
+    .terms-footer {
+      background: var(--brand-navy); color: rgba(255,255,255,.5);
+      padding: 32px 24px; text-align: center; font-size: .8rem;
+    }
+    .terms-footer p { line-height: 1.8; }
+    .terms-footer a { color: rgba(255,255,255,.7); }
+    .terms-footer a:hover { color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .page-body { grid-template-columns: 1fr; gap: 28px; }
+      .toc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/milioncrm.html" class="logo-wrap" aria-label="MilionCRM">
+      <img src="logo.svg" alt="Agentes Milionários" />
+    </a>
+    <a href="/milioncrm.html" class="back-link">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Voltar ao MilionCRM
+    </a>
+  </div>
+</header>
+
+<!-- HERO STRIP -->
+<div class="terms-hero">
+  <div class="eyebrow">Documento Legal</div>
+  <h1>Termos de Uso — MilionCRM</h1>
+  <p style="color:var(--muted);font-size:.95rem;max-width:480px;margin:0 auto">
+    Plataforma de CRM com Inteligência Artificial · Condições Gerais de Serviço
+  </p>
+  <div class="meta">
+    <span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Vigência: 01/01/2025
+    </span>
+    <span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Versão 1.0
+    </span>
+    <span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Itajaí, SC — Brasil
+    </span>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc" aria-label="Índice">
+    <div class="toc-title">Índice</div>
+    <ul>
+      <li><a href="#identificacao">1. Identificação e Definições</a></li>
+      <li><a href="#objeto">2. Objeto do Contrato</a></li>
+      <li><a href="#cadastro">3. Cadastro e Acesso</a></li>
+      <li><a href="#pagamento">4. Planos e Pagamento</a></li>
+      <li><a href="#usuario">5. Direitos do Usuário</a></li>
+      <li><a href="#fornecedora">6. Direitos da MilionCRM</a></li>
+      <li><a href="#lgpd">7. Proteção de Dados (LGPD)</a></li>
+      <li><a href="#pi">8. Propriedade Intelectual</a></li>
+      <li><a href="#integracoes">9. Integrações e API</a></li>
+      <li><a href="#responsabilidade">10. Limitação de Responsabilidade</a></li>
+      <li><a href="#confidencialidade">11. Confidencialidade</a></li>
+      <li><a href="#vigencia">12. Vigência e Rescisão</a></li>
+      <li><a href="#alteracoes">13. Alterações dos Termos</a></li>
+      <li><a href="#geral">14. Disposições Gerais</a></li>
+      <li><a href="#contato">15. Canais de Atendimento</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="terms-content">
+
+    <!-- Info table -->
+    <table class="info-table">
+      <tr><td>Fornecedora</td><td>Agentes Milionários LTDA</td></tr>
+      <tr><td>CNPJ</td><td>63.615.745/0001-85</td></tr>
+      <tr><td>Sede</td><td>Itajaí, Santa Catarina, Brasil</td></tr>
+      <tr><td>E-mail jurídico</td><td><a href="/cdn-cgi/l/email-protection#88e2fdfae1ece1ebe7c8e9efe5e1e4e1e7e6e9fae1e7a6ebe7e5a6eafa"><span class="__cf_email__" data-cfemail="83e9f6f1eae7eae0ecc3e2e4eeeaefeaecede2f1eaecade0eceeade1f1">[email&#160;protected]</span></a></td></tr>
+      <tr><td>Versão</td><td>1.0</td></tr>
+      <tr><td>Vigência</td><td>01 de janeiro de 2025</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      <strong>LEIA ATENTAMENTE ANTES DE USAR O MILIONCRM.</strong> Ao acessar, cadastrar-se ou utilizar qualquer funcionalidade da plataforma MilionCRM, o Usuário declara ter lido, compreendido e aceito integralmente os presentes Termos de Uso. Caso não concorde com qualquer disposição, o Usuário deverá abster-se de utilizar a plataforma.
+    </div>
+
+    <!-- 1 -->
+    <section class="terms-section" id="identificacao">
+      <h2><span class="num">1</span>Identificação das Partes e Definições</h2>
+
+      <h3>1.1. Fornecedora</h3>
+      <p>AGENTES MILIONÁRIOS LTDA, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº 63.615.745/0001-85, com sede na cidade de Itajaí, Estado de Santa Catarina, doravante denominada simplesmente "MilionCRM" ou "Fornecedora".</p>
+
+      <h3>1.2. Usuário</h3>
+      <p>Para fins deste instrumento, "Usuário" significa toda e qualquer pessoa física ou jurídica que acesse, se cadastre ou utilize a plataforma MilionCRM, seja na qualidade de:</p>
+      <ul>
+        <li><strong>Usuário Pessoa Física:</strong> indivíduo que utiliza a plataforma em nome próprio;</li>
+        <li><strong>Usuário Empresa (Conta Corporativa):</strong> pessoa jurídica que contrata a plataforma para uso de seus colaboradores, representantes ou prepostos;</li>
+        <li><strong>Usuário Administrador:</strong> responsável pela conta corporativa, com permissões ampliadas de gestão;</li>
+        <li><strong>Usuário Final:</strong> colaborador ou representante de uma Conta Corporativa.</li>
+      </ul>
+
+      <h3>1.3. Definições Essenciais</h3>
+      <ul>
+        <li><strong>"Plataforma":</strong> o sistema MilionCRM acessível via web e/ou API, incluindo todas as suas funcionalidades, módulos e integrações;</li>
+        <li><strong>"Dados":</strong> qualquer informação inserida, importada, gerada ou tratada pelo Usuário na Plataforma;</li>
+        <li><strong>"Dados Pessoais":</strong> informações relacionadas a pessoa natural identificada ou identificável, conforme definição da LGPD;</li>
+        <li><strong>"API":</strong> interface de programação de aplicações disponibilizada pela MilionCRM para integração com sistemas de terceiros;</li>
+        <li><strong>"Automação":</strong> fluxos de processos automatizados configurados pelo Usuário na Plataforma;</li>
+        <li><strong>"Conteúdo do Usuário":</strong> textos, contatos, leads, dados, arquivos e qualquer informação inserida pelo Usuário;</li>
+        <li><strong>"SLA":</strong> Acordo de Nível de Serviço, contendo os compromissos de disponibilidade e suporte;</li>
+        <li><strong>"Plano":</strong> modalidade de contratação selecionada pelo Usuário, com funcionalidades e limites específicos.</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="terms-section" id="objeto">
+      <h2><span class="num">2</span>Objeto do Contrato</h2>
+      <p>O presente instrumento regula as condições de acesso e uso da plataforma MilionCRM, sistema de gestão de relacionamento com clientes (CRM) oferecido no modelo Software como Serviço (SaaS), que disponibiliza ao Usuário as seguintes funcionalidades:</p>
+      <ul>
+        <li>Gestão de contatos, leads, clientes e funis de vendas (pipeline);</li>
+        <li>Kanban interativo para visualização e gestão de processos comerciais;</li>
+        <li>Integração com WhatsApp Business API para envio e recebimento de mensagens;</li>
+        <li>Mensageria multicanal e histórico de conversas;</li>
+        <li>Relatórios, dashboards e métricas de desempenho;</li>
+        <li>Acesso via API RESTful para integração com sistemas externos;</li>
+        <li>Automações e integrações com ferramentas de terceiros.</li>
+      </ul>
+      <p>A MilionCRM não é desenvolvedora do WhatsApp, Meta, Twilio ou quaisquer plataformas de terceiros integradas. A disponibilidade dessas integrações está sujeita às políticas e termos de uso dos respectivos provedores.</p>
+      <p>O acesso à Plataforma é concedido mediante licença de uso pessoal, intransferível e não exclusiva, restrita às funcionalidades e limites do Plano contratado.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="terms-section" id="cadastro">
+      <h2><span class="num">3</span>Cadastro, Elegibilidade e Acesso</h2>
+
+      <h3>3.1. Capacidade Civil</h3>
+      <p>O uso da Plataforma é permitido exclusivamente a pessoas maiores de 18 (dezoito) anos com plena capacidade civil. Pessoas jurídicas devem ser representadas por seus representantes legais devidamente habilitados.</p>
+
+      <h3>3.2. Veracidade das Informações</h3>
+      <p>O Usuário compromete-se a fornecer informações verdadeiras, completas e atualizadas no momento do cadastro e ao longo de toda a vigência contratual. A MilionCRM poderá, a qualquer tempo, solicitar documentos comprobatórios e suspender contas com indícios de irregularidade.</p>
+
+      <h3>3.3. Segurança de Acesso</h3>
+      <p>O Usuário é exclusivamente responsável pela guarda e sigilo de suas credenciais de acesso (login e senha). Toda e qualquer ação realizada com as credenciais do Usuário será considerada de sua autoria. Em caso de suspeita de comprometimento, o Usuário deverá comunicar imediatamente a MilionCRM e alterar sua senha.</p>
+
+      <h3>3.4. Conta Corporativa</h3>
+      <p>Na contratação de planos corporativos, o Administrador da conta assume responsabilidade solidária pelo uso da Plataforma por todos os usuários vinculados à conta, respondendo pelo cumprimento deste instrumento por parte de seus colaboradores e representantes.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="terms-section" id="pagamento">
+      <h2><span class="num">4</span>Planos, Pagamento e Reajuste</h2>
+
+      <h3>4.1. Planos de Serviço</h3>
+      <p>A MilionCRM oferece diferentes planos de contratação, com funcionalidades, limites de uso e valores descritos na proposta comercial ou na página de planos da Plataforma, os quais integram este instrumento por referência.</p>
+
+      <h3>4.2. Forma de Pagamento</h3>
+      <p>O pagamento deverá ser realizado conforme a periodicidade e o método escolhidos pelo Usuário no ato da contratação. A falta de pagamento na data de vencimento autoriza a MilionCRM a:</p>
+      <ul>
+        <li>Suspender o acesso à Plataforma após 5 (cinco) dias de inadimplência;</li>
+        <li>Encerrar a conta e excluir os dados após 30 (trinta) dias de inadimplência, com aviso prévio por e-mail;</li>
+        <li>Cobrar juros de mora de 1% ao mês e multa de 2% sobre o valor em atraso.</li>
+      </ul>
+
+      <h3>4.3. Reajuste de Preços</h3>
+      <p>Os valores poderão ser reajustados anualmente com base no IPCA (Índice de Preços ao Consumidor Amplo) ou índice equivalente, mediante notificação prévia de 30 (trinta) dias. Alterações substanciais de preço fora do reajuste anual poderão ser recusadas pelo Usuário, que terá o direito de rescindir o contrato sem penalidade.</p>
+
+      <h3>4.4. Política de Reembolso</h3>
+      <p>Não haverá reembolso de valores já pagos, salvo em caso de: (i) falha técnica imputável exclusivamente à MilionCRM que resulte em indisponibilidade superior ao SLA contratado; ou (ii) rescisão por iniciativa da MilionCRM sem justa causa.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="terms-section" id="usuario">
+      <h2><span class="num">5</span>Direitos e Obrigações do Usuário</h2>
+
+      <h3>5.1. Direitos do Usuário</h3>
+      <p>O Usuário tem direito a:</p>
+      <ul>
+        <li>Acessar todas as funcionalidades do Plano contratado durante a vigência;</li>
+        <li>Receber suporte técnico conforme os termos do SLA do seu Plano;</li>
+        <li>Exportar seus Dados a qualquer momento e em formato utilizável;</li>
+        <li>Ser notificado com antecedência mínima de 30 (trinta) dias sobre alterações relevantes neste instrumento;</li>
+        <li>Solicitar a exclusão de seus dados, conforme a LGPD.</li>
+      </ul>
+
+      <h3>5.2. Obrigações e Uso Aceitável</h3>
+      <p>O Usuário compromete-se a utilizar a Plataforma exclusivamente para finalidades lícitas e a:</p>
+      <ul>
+        <li>Não utilizar a Plataforma para envio de SPAM, comunicações não solicitadas ou em desconformidade com a Lei nº 14.132/2021 e regulamentações da ANATEL;</li>
+        <li>Não integrar ou enviar conteúdo que viole direitos de terceiros, leis de propriedade intelectual, privacidade ou proteção de dados;</li>
+        <li>Não realizar engenharia reversa, decompilação, reprodução ou cópia do código-fonte ou lógica da Plataforma;</li>
+        <li>Não utilizar robôs, crawlers, scrapers ou qualquer mecanismo automatizado para extrair dados da Plataforma sem autorização expressa;</li>
+        <li>Não tentar acessar áreas restritas da Plataforma, sistemas de outros usuários ou infraestrutura da MilionCRM;</li>
+        <li>Não sublocar, revender ou sublicenciar o acesso à Plataforma a terceiros sem autorização prévia e escrita da MilionCRM;</li>
+        <li>Manter seus dados cadastrais atualizados e realizar o pagamento pontual dos valores contratados;</li>
+        <li>Cumprir todas as leis e regulamentações aplicáveis, incluindo a LGPD, o Marco Civil da Internet e o Código de Defesa do Consumidor.</li>
+      </ul>
+
+      <h3>5.3. Responsabilidade sobre o Conteúdo</h3>
+      <p>O Usuário é o único e exclusivo responsável pelo Conteúdo inserido na Plataforma, incluindo a legalidade dos dados de terceiros (contatos, leads, clientes) e a obtenção dos consentimentos necessários para seu tratamento, conforme exigido pela LGPD.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="terms-section" id="fornecedora">
+      <h2><span class="num">6</span>Direitos e Obrigações da MilionCRM</h2>
+
+      <h3>6.1. Disponibilidade</h3>
+      <p>A MilionCRM envidará melhores esforços para manter a Plataforma disponível 24 horas por dia, 7 dias por semana, respeitados os limites de disponibilidade previstos no SLA de cada Plano. Não se computam como indisponibilidade:</p>
+      <ul>
+        <li>Manutenções programadas, comunicadas com antecedência mínima de 48 horas;</li>
+        <li>Falhas decorrentes de infraestrutura de terceiros (provedores de internet, AWS, Google Cloud etc.);</li>
+        <li>Casos fortuitos ou de força maior, conforme o art. 393 do Código Civil;</li>
+        <li>Ações ou omissões do próprio Usuário.</li>
+      </ul>
+
+      <h3>6.2. Atualizações e Melhorias</h3>
+      <p>A MilionCRM reserva-se o direito de alterar, atualizar, adicionar ou remover funcionalidades da Plataforma a qualquer tempo, desde que não implique redução substancial das funcionalidades essenciais contratadas. Alterações relevantes serão comunicadas com antecedência mínima de 15 (quinze) dias.</p>
+
+      <h3>6.3. Suspensão e Cancelamento</h3>
+      <p>A MilionCRM poderá suspender ou cancelar o acesso do Usuário, imediatamente e sem aviso prévio, nos casos de:</p>
+      <ul>
+        <li>Violação de qualquer disposição deste instrumento;</li>
+        <li>Uso da Plataforma para fins ilícitos ou em desacordo com sua finalidade;</li>
+        <li>Inadimplência conforme o item 4.2;</li>
+        <li>Determinação judicial ou administrativa.</li>
+      </ul>
+
+      <h3>6.4. Segurança</h3>
+      <p>A MilionCRM adota medidas técnicas e organizacionais razoáveis de segurança para proteger os Dados dos Usuários, incluindo criptografia em trânsito (TLS) e controles de acesso. A MilionCRM notificará os Usuários afetados em caso de incidente de segurança, no prazo máximo de 72 (setenta e duas) horas após a confirmação do incidente, conforme exigido pela LGPD e pela ANPD.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="terms-section" id="lgpd">
+      <h2><span class="num">7</span>Proteção de Dados Pessoais — LGPD</h2>
+
+      <h3>7.1. Agentes de Tratamento</h3>
+      <p>Na relação entre as partes:</p>
+      <ul>
+        <li>O Usuário (Empresa) atua como <strong>Controlador</strong> dos dados pessoais de seus contatos, leads e clientes inseridos na Plataforma, determinando as finalidades e os meios do tratamento;</li>
+        <li>A MilionCRM atua como <strong>Operadora</strong>, tratando os dados pessoais em nome e conforme as instruções do Controlador, para a finalidade exclusiva de prestação dos serviços contratados.</li>
+      </ul>
+
+      <h3>7.2. Dados Coletados pela MilionCRM</h3>
+      <ul>
+        <li><strong>Dados de cadastro:</strong> nome, e-mail, CPF/CNPJ, telefone e endereço;</li>
+        <li><strong>Dados de uso:</strong> logs de acesso, funcionalidades utilizadas, endereço IP e informações do dispositivo;</li>
+        <li><strong>Dados financeiros:</strong> informações de pagamento (processados por gateway certificado PCI DSS);</li>
+        <li><strong>Dados do Conteúdo:</strong> informações inseridas pelo Usuário na Plataforma.</li>
+      </ul>
+
+      <h3>7.3. Bases Legais</h3>
+      <p>O tratamento de dados pessoais pela MilionCRM baseia-se nas seguintes hipóteses legais previstas no art. 7º da LGPD: (i) execução de contrato; (ii) legítimo interesse da Fornecedora; (iii) consentimento, quando aplicável; e (iv) cumprimento de obrigação legal ou regulatória.</p>
+
+      <h3>7.4. Direitos do Titular</h3>
+      <p>O Usuário titular de dados pessoais poderá, a qualquer tempo e de forma gratuita:</p>
+      <ul>
+        <li>Confirmar a existência de tratamento de seus dados;</li>
+        <li>Acessar seus dados pessoais;</li>
+        <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
+        <li>Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários;</li>
+        <li>Solicitar a portabilidade dos dados;</li>
+        <li>Revogar o consentimento previamente fornecido;</li>
+        <li>Apresentar reclamação à ANPD (Autoridade Nacional de Proteção de Dados).</li>
+      </ul>
+      <p>Solicitações deverão ser encaminhadas ao DPO pelo e-mail: <a href="/cdn-cgi/l/email-protection#1d796d725d7c7a7074717472737c6f7472337e7270337f6f"><span class="__cf_email__" data-cfemail="5135213e1130363c383d383e3f3023383e7f323e3c7f3323">[email&#160;protected]</span></a> e serão atendidas em até 15 (quinze) dias.</p>
+
+      <h3>7.5. Retenção e Exclusão de Dados</h3>
+      <p>Os dados serão retidos pelo período necessário à prestação dos serviços. Após o encerramento da conta, os dados serão mantidos por 90 (noventa) dias para eventual exportação pelo Usuário e, posteriormente, serão excluídos ou anonimizados, ressalvadas as hipóteses de guarda obrigatória previstas em lei (art. 16 da LGPD).</p>
+
+      <h3>7.6. Suboperadores e Transferência Internacional</h3>
+      <p>A MilionCRM poderá contratar suboperadores (ex.: provedores de infraestrutura em nuvem, gateways de pagamento) para auxiliar na prestação dos serviços, sendo responsável por garantir que esses parceiros observem padrões compatíveis com a LGPD. Eventuais transferências internacionais de dados ocorrerão somente para países com nível adequado de proteção ou com as salvaguardas previstas na LGPD.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="terms-section" id="pi">
+      <h2><span class="num">8</span>Propriedade Intelectual</h2>
+
+      <h3>8.1. Titularidade da MilionCRM</h3>
+      <p>A Plataforma MilionCRM, incluindo seu código-fonte, algoritmos, interfaces, design, marca, logotipos, nomes comerciais, metodologias, documentação e demais elementos, é protegida pela Lei nº 9.610/98 (Direitos Autorais), Lei nº 9.609/98 (Lei do Software) e legislação aplicável. A MilionCRM é a titular exclusiva de todos esses direitos.</p>
+
+      <h3>8.2. Licença de Uso</h3>
+      <p>A MilionCRM concede ao Usuário uma licença de uso limitada, pessoal, intransferível, não exclusiva e revogável para acessar e utilizar a Plataforma, estritamente nos termos deste instrumento e pelo período de vigência do contrato.</p>
+
+      <h3>8.3. Conteúdo do Usuário</h3>
+      <p>O Usuário mantém a titularidade sobre o Conteúdo por ele inserido na Plataforma. O Usuário concede à MilionCRM uma licença limitada para armazenar, processar e utilizar esse Conteúdo exclusivamente para a finalidade de prestação dos serviços contratados.</p>
+
+      <h3>8.4. Vedações</h3>
+      <p>É expressamente vedado ao Usuário, sob pena de responsabilização civil e criminal:</p>
+      <ul>
+        <li>Reproduzir, copiar, distribuir ou comercializar a Plataforma ou qualquer de seus elementos;</li>
+        <li>Realizar engenharia reversa ou qualquer tentativa de acesso ao código-fonte;</li>
+        <li>Remover ou alterar avisos de direitos autorais e marcas da MilionCRM.</li>
+      </ul>
+    </section>
+
+    <!-- 9 -->
+    <section class="terms-section" id="integracoes">
+      <h2><span class="num">9</span>Integrações, API e WhatsApp</h2>
+
+      <h3>9.1. API MilionCRM</h3>
+      <p>O acesso à API da MilionCRM está disponível nos planos que incluem essa funcionalidade. O Usuário compromete-se a utilizar a API exclusivamente para os fins previstos na documentação técnica, respeitando os limites de requisições (rate limits) estabelecidos.</p>
+
+      <h3>9.2. Responsabilidade por Integrações de Terceiros</h3>
+      <p>A MilionCRM não se responsabiliza por falhas, interrupções, mudanças de política ou danos decorrentes de integrações com plataformas de terceiros (WhatsApp/Meta, Google, Zapier, N8N, etc.). O Usuário reconhece que está sujeito aos termos de uso de cada plataforma integrada.</p>
+
+      <h3>9.3. WhatsApp Business API</h3>
+      <p>O uso da integração com o WhatsApp Business API está sujeito às Políticas de Negócios da Meta/WhatsApp. O Usuário é responsável por:</p>
+      <ul>
+        <li>Obter o número de acesso ao WhatsApp Business API de forma regular junto à Meta ou provedor homologado;</li>
+        <li>Garantir que o uso do canal esteja em conformidade com as políticas da Meta;</li>
+        <li>Obter consentimento prévio dos destinatários para envio de mensagens, conforme exigido pela LGPD e pelas políticas do WhatsApp;</li>
+        <li>Não utilizar o canal para envio de mensagens em massa não solicitadas (SPAM).</li>
+      </ul>
+      <p>A MilionCRM poderá suspender imediatamente a integração do Usuário caso identifique uso em desacordo com as políticas da Meta ou com a legislação aplicável.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="terms-section" id="responsabilidade">
+      <h2><span class="num">10</span>Limitação de Responsabilidade</h2>
+
+      <h3>10.1. Exclusões de Responsabilidade</h3>
+      <p>A MilionCRM não será responsável por:</p>
+      <ul>
+        <li>Danos indiretos, lucros cessantes, perda de oportunidades de negócio ou danos imateriais decorrentes do uso ou impossibilidade de uso da Plataforma;</li>
+        <li>Danos causados por falhas de infraestrutura de terceiros (provedores de internet, serviços de nuvem, APIs externas);</li>
+        <li>Decisões comerciais tomadas pelo Usuário com base nas informações processadas pela Plataforma;</li>
+        <li>Conteúdo inserido pelo Usuário, incluindo dados de contatos obtidos de forma irregular;</li>
+        <li>Interrupções decorrentes de manutenção programada ou casos de força maior.</li>
+      </ul>
+
+      <h3>10.2. Limite Máximo de Indenização</h3>
+      <p>Em qualquer hipótese, a responsabilidade total da MilionCRM perante o Usuário ficará limitada ao valor total pago pelo Usuário nos últimos 3 (três) meses anteriores ao evento danoso.</p>
+
+      <h3>10.3. Relação com o CDC</h3>
+      <p>Nas relações com consumidores (pessoa física), as disposições deste instrumento que conflitem com o Código de Defesa do Consumidor (Lei nº 8.078/90) serão interpretadas em favor do consumidor, prevalecendo as normas protetivas do CDC.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="terms-section" id="confidencialidade">
+      <h2><span class="num">11</span>Confidencialidade</h2>
+      <p>Cada parte obriga-se a manter em estrita confidencialidade todas as informações não públicas da outra parte que venham a conhecer em razão deste instrumento, utilizando-as exclusivamente para a finalidade contratual.</p>
+      <p>A MilionCRM compromete-se a não divulgar, vender, compartilhar ou explorar comercialmente os dados do Usuário para fins alheios à prestação dos serviços contratados, sem autorização prévia e escrita do Usuário.</p>
+      <p>As obrigações de confidencialidade persistirão por 5 (cinco) anos após o encerramento da relação contratual.</p>
+      <p>Não serão consideradas confidenciais: (i) informações que se tornem públicas sem culpa da parte receptora; (ii) informações já conhecidas pela parte receptora; (iii) informações cuja divulgação seja exigida por lei ou autoridade competente.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="terms-section" id="vigencia">
+      <h2><span class="num">12</span>Vigência e Rescisão</h2>
+
+      <h3>12.1. Prazo</h3>
+      <p>O contrato entra em vigor na data de aceitação destes Termos (cadastro na Plataforma ou assinatura da Proposta Comercial) e vigora pelo prazo do Plano contratado, sendo renovado automaticamente por iguais períodos salvo manifestação em contrário por qualquer das partes com antecedência mínima de 30 (trinta) dias.</p>
+
+      <h3>12.2. Rescisão pelo Usuário</h3>
+      <p>O Usuário poderá rescindir o contrato a qualquer momento, sem justa causa, mediante notificação com antecedência mínima de 30 (trinta) dias, não havendo direito a reembolso dos valores já pagos, exceto conforme item 4.4.</p>
+
+      <h3>12.3. Rescisão pela MilionCRM</h3>
+      <p>A MilionCRM poderá rescindir imediatamente o contrato, independentemente de notificação prévia, em caso de:</p>
+      <ul>
+        <li>Violação grave ou reiterada deste instrumento pelo Usuário;</li>
+        <li>Uso da Plataforma para fins ilícitos ou fraudulentos;</li>
+        <li>Inadimplência superior a 30 (trinta) dias.</li>
+      </ul>
+
+      <h3>12.4. Efeitos da Rescisão</h3>
+      <p>Após a rescisão, o Usuário terá o prazo de 30 (trinta) dias para exportar seus dados. Após esse prazo, os dados serão excluídos de forma definitiva e irreversível, conforme item 7.5.</p>
+    </section>
+
+    <!-- 13 -->
+    <section class="terms-section" id="alteracoes">
+      <h2><span class="num">13</span>Alterações destes Termos</h2>
+      <p>A MilionCRM poderá alterar estes Termos de Uso a qualquer tempo, mediante notificação ao Usuário por e-mail ou aviso na Plataforma, com antecedência mínima de 30 (trinta) dias para alterações relevantes.</p>
+      <p>O uso continuado da Plataforma após o prazo de notificação implica aceitação automática das alterações. Caso o Usuário não concorde com as alterações, poderá rescindir o contrato conforme item 12.2, sem ônus.</p>
+    </section>
+
+    <!-- 14 -->
+    <section class="terms-section" id="geral">
+      <h2><span class="num">14</span>Disposições Gerais</h2>
+
+      <h3>14.1. Legislação Aplicável</h3>
+      <p>O presente instrumento é regido pelas leis da República Federativa do Brasil, em especial: (i) Lei nº 10.406/02 — Código Civil; (ii) Lei nº 8.078/90 — Código de Defesa do Consumidor (nas relações B2C); (iii) Lei nº 12.965/14 — Marco Civil da Internet; (iv) Lei nº 13.709/18 — LGPD; (v) Lei nº 9.609/98 — Lei do Software; (vi) Lei nº 9.610/98 — Direitos Autorais.</p>
+
+      <h3>14.2. Foro</h3>
+      <p>Fica eleito o foro da Comarca de Itajaí, Estado de Santa Catarina, para dirimir quaisquer litígios decorrentes deste instrumento, com renúncia expressa a qualquer outro, por mais privilegiado que seja. Nas relações de consumo, aplica-se o foro do domicílio do consumidor, conforme o CDC.</p>
+
+      <h3>14.3. Independência das Cláusulas</h3>
+      <p>A invalidade ou inaplicabilidade de qualquer cláusula deste instrumento não afetará as demais, que permanecerão em pleno vigor. A parte inválida deverá ser substituída pela norma legal que mais se aproxime da intenção original das partes.</p>
+
+      <h3>14.4. Cessão</h3>
+      <p>A MilionCRM poderá ceder este contrato a qualquer empresa do mesmo grupo econômico ou em caso de fusão, aquisição ou reestruturação societária, mediante notificação ao Usuário. O Usuário não poderá ceder ou transferir seus direitos e obrigações sem anuência prévia e escrita da MilionCRM.</p>
+
+      <h3>14.5. Renúncia</h3>
+      <p>A não exigência de qualquer direito previsto neste instrumento não constituirá renúncia a esse direito, podendo ser exercido a qualquer tempo.</p>
+
+      <h3>14.6. Comunicações</h3>
+      <p>Todas as comunicações previstas neste instrumento deverão ser realizadas por escrito, via e-mail para os endereços cadastrados pelas partes, sendo consideradas recebidas no dia de seu envio.</p>
+    </section>
+
+    <!-- 15 -->
+    <section class="terms-section" id="contato">
+      <h2><span class="num">15</span>Canal de Atendimento e DPO</h2>
+      <table class="contact-table">
+        <tr><td>Suporte técnico</td><td><a href="/cdn-cgi/l/email-protection#2b585e5b44595f4e6b4a4c4642474244454a59424405484446054959"><span class="__cf_email__" data-cfemail="582b2d28372a2c3d18393f353134313736392a3137763b3735763a2a">[email&#160;protected]</span></a></td></tr>
+        <tr><td>Questões jurídicas</td><td><a href="/cdn-cgi/l/email-protection#e08a9592898489838fa081878d898c898f8e8192898fce838f8dce8292"><span class="__cf_email__" data-cfemail="c1abb4b3a8a5a8a2ae81a0a6aca8ada8aeafa0b3a8aeefa2aeacefa3b3">[email&#160;protected]</span></a></td></tr>
+        <tr><td>DPO / Privacidade (LGPD)</td><td><a href="/cdn-cgi/l/email-protection#f6928699b697919b9f9a9f999897849f99d895999bd89484"><span class="__cf_email__" data-cfemail="761206193617111b1f1a1f191817041f195815191b581404">[email&#160;protected]</span></a></td></tr>
+        <tr><td>Site oficial</td><td><a href="https://www.milioncrm.com.br" target="_blank" rel="noopener">www.milioncrm.com.br</a></td></tr>
+        <tr><td>Endereço</td><td>Itajaí, Santa Catarina, Brasil</td></tr>
+      </table>
+
+      <div class="highlight-box" style="margin-top:28px">
+        <strong>Ao utilizar a Plataforma MilionCRM, o Usuário declara expressamente ter lido, compreendido e aceito integralmente todos os termos e condições deste instrumento.</strong>
+      </div>
+
+      <p style="margin-top:24px;font-size:.875rem;color:var(--muted);text-align:center">
+        <strong>Agentes Milionários LTDA — MilionCRM</strong><br>
+        Itajaí, Santa Catarina, 2025
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="terms-footer">
+  <p>
+    &copy; 2025 Agentes Milionários LTDA — CNPJ 63.615.745/0001-85 — Itajaí, SC<br>
+    <a href="/milioncrm.html">MilionCRM</a> &nbsp;·&nbsp;
+    <a href="/index.html">Agentes Milionários</a> &nbsp;·&nbsp;
+    <a href="/cdn-cgi/l/email-

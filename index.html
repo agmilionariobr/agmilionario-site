@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentes Milionários — IA que Transforma Resultados</title>
+  <meta name="description" content="Automatize processos, aumente vendas e melhore a experiência do cliente com agentes de inteligência artificial personalizados para seu negócio." />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --brand:        #07739e;
+      --brand-dark:   #055a7a;
+      --brand-glow:   rgba(7,115,158,.18);
+      --ink:          #0d1a22;
+      --ink-2:        #2c3e4a;
+      --muted:        #6b8290;
+      --surface:      #ffffff;
+      --surface-2:    #f4f7f9;
+      --border:       #dce5eb;
+      --radius:       12px;
+      --radius-lg:    20px;
+      --font-head:    'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --transition:   .22s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ── LAYOUT HELPERS ── */
+    .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0%,100% { opacity: .6; }
+      50%      { opacity: 1; }
+    }
+    @keyframes floatY {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .fade-up { animation: fadeUp .6s ease both; }
+    .fade-up-2 { animation: fadeUp .6s .12s ease both; }
+    .fade-up-3 { animation: fadeUp .6s .24s ease both; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    header.scrolled { box-shadow: 0 4px 24px rgba(7,115,158,.08); }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 24px;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .logo-wrap img { height: 32px; width: auto; }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a, nav button {
+      font-size: .925rem; font-weight: 500; color: var(--ink-2);
+      transition: color var(--transition); background: none; border: none;
+      padding: 0; cursor: pointer; font-family: inherit;
+    }
+    nav a:hover, nav button:hover { color: var(--brand); }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--brand); color: #fff; font-weight: 600; font-size: .9rem;
+      padding: 10px 22px; border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 8px 24px var(--brand-glow); }
+    .btn-primary:active { transform: translateY(0); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: var(--transition); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 100px 0 90px;
+      background: linear-gradient(160deg, #f0f8fb 0%, #ffffff 55%, #eaf4f9 100%);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 30%, rgba(7,115,158,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(7,115,158,.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* decorative grid */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none; opacity: .35;
+      background-image:
+        linear-gradient(rgba(7,115,158,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7,115,158,.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; max-width: 780px; margin: 0 auto; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(7,115,158,.08); border: 1px solid rgba(7,115,158,.2);
+      color: var(--brand); font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--font-head); font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 800;
+      line-height: 1.08; color: var(--ink); letter-spacing: -.02em; margin-bottom: 22px;
+    }
+    .hero h1 .accent { color: var(--brand); display: block; }
+    .hero p {
+      font-size: clamp(1rem, 2.2vw, 1.2rem); color: var(--muted); max-width: 560px; margin: 0 auto 36px;
+      font-weight: 400; line-height: 1.7;
+    }
+    .hero-cta { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--border); color: var(--ink-2); font-weight: 500; font-size: .9rem;
+      padding: 10px 22px; border-radius: var(--radius);
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+    .btn-ghost:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-1px); }
+    .btn-wa {
+      background: #25D366; color: #fff; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 12px 28px; border-radius: var(--radius); font-size: 1rem;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,.3); }
+    .hero-trust {
+      display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap;
+      margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--border);
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .875rem; font-weight: 500; }
+    .trust-item svg { color: var(--brand); flex-shrink: 0; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 96px 0; }
+    .section-tag {
+      display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800;
+      color: var(--ink); letter-spacing: -.02em; line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; line-height: 1.7; }
+
+    /* ── FEATURES ── */
+    .features { background: var(--surface); }
+    .features-head { text-align: center; margin-bottom: 60px; }
+    .features-head .section-sub { margin: 0 auto; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px 28px; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(7,115,158,.1); border-color: rgba(7,115,158,.25); }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(7,115,158,.08); display: flex; align-items: center; justify-content: center;
+      color: var(--brand); margin-bottom: 20px; transition: background var(--transition);
+    }
+    .feature-card:hover .feature-icon { background: rgba(7,115,158,.14); }
+    .feature-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .feature-desc { font-size: .925rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--surface-2); }
+    .about-inner { max-width: 860px; }
+    .about-inner p {
+      font-size: 1.1rem; color: var(--ink-2); line-height: 1.85;
+      border-left: 3px solid var(--brand); padding-left: 20px; margin-bottom: 24px;
+    }
+    .about-inner p:last-child { margin-bottom: 0; }
+
+    /* ── RESULTS ── */
+    .results { background: var(--surface); }
+    .results-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .results-left .section-title { margin-bottom: 36px; }
+    .result-item {
+      display: flex; gap: 18px; align-items: flex-start;
+      padding: 22px 24px; border-radius: var(--radius); margin-bottom: 16px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .result-item:hover { transform: translateX(4px); border-color: rgba(7,115,158,.25); }
+    .result-icon-wrap {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(7,115,158,.08); display: flex; align-items: center; justify-content: center; color: var(--brand);
+    }
+    .result-title { font-weight: 700; color: var(--ink); margin-bottom: 4px; font-size: .975rem; }
+    .result-desc { font-size: .875rem; color: var(--muted); line-height: 1.6; }
+    .testimonial-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 40px 36px; position: relative; overflow: hidden;
+    }
+    .testimonial-card::before {
+      content: '"'; position: absolute; top: -10px; right: 24px;
+      font-size: 120px; color: rgba(7,115,158,.07); font-family: Georgia, serif; line-height: 1; pointer-events: none;
+    }
+    .stars { display: flex; gap: 4px; margin-bottom: 20px; }
+    .stars svg { color: var(--brand); fill: var(--brand); }
+    .testimonial-text { font-size: 1.05rem; font-style: italic; color: var(--ink-2); line-height: 1.75; margin-bottom: 24px; }
+    .testimonial-author { font-weight: 700; color: var(--ink); font-size: .95rem; }
+    .testimonial-role { font-size: .85rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--brand);
+      padding: 80px 0;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 80% at 20% 50%, rgba(255,255,255,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 80% 50%, rgba(255,255,255,.04) 0%, transparent 60%);
+    }
+    .cta-band h2 {
+      font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: 16px;
+    }
+    .cta-band p { color: rgba(255,255,255,.85); font-size: 1.1rem; max-width: 520px; margin: 0 auto 36px; }
+    .btn-wa-inv {
+      background: #fff; color: var(--brand); font-weight: 700; font-size: 1.05rem;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px; border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-wa-inv:hover { background: #f0f8fb; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.15); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,.6);
+      padding: 52px 0 32px;
+      font-size: .875rem;
+    }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+    .footer-brand img { height: 28px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand p { max-width: 280px; line-height: 1.65; }
+    .footer-links h4 { color: #fff; font-weight: 600; font-size: .9rem; margin-bottom: 14px; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { transition: color var(--transition); }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 40px; padding-top: 24px; text-align: center; }
+
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+      display: none; flex-direction: column; gap: 4px;
+      padding: 12px 0 20px; border-top: 1px solid var(--border);
+      background: #fff;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a, .mobile-nav button {
+      padding: 10px 24px; font-size: 1rem; font-weight: 500; color: var(--ink-2);
+      text-align: left; background: none; border: none; cursor: pointer; font-family: inherit;
+      transition: color var(--transition), background var(--transition);
+    }
+    .mobile-nav a:hover, .mobile-nav button:hover { color: var(--brand); background: var(--surface-2); }
+    .mobile-nav .btn-primary { margin: 8px 24px 0; justify-content: center; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .results-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 680px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero { padding: 72px 0 60px; }
+      section { padding: 68px 0; }
+      .hero-trust { gap: 20px; }
+      .footer-inner { flex-direction: column; gap: 32px; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo-wrap" aria-label="Agentes Milionários">
+      <img src="logo.svg" alt="Agentes Milionários" />
+    </a>
+
+    <nav aria-label="Navegação principal">
+      <button onclick="scrollTo('features')">Recursos</button>
+      <button onclick="scrollTo('benefits')">Cases</button>
+      <button onclick="scrollTo('about')">Sobre</button>
+      <a href="/clube.html">Clube</a>
+      <a href="/milioncrm.html">MilionCRM</a>
+    </nav>
+
+    <button class="btn-primary" onclick="scrollTo('cta')" aria-label="Começar agora">
+      Começar Agora
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button onclick="scrollTo('features');closeMobile()">Recursos</button>
+    <button onclick="scrollTo('benefits');closeMobile()">Cases</button>
+    <button onclick="scrollTo('about');closeMobile()">Sobre</button>
+    <a href="/clube.html">Clube</a>
+    <a href="/milioncrm.html">MilionCRM</a>
+    <button class="btn-primary" onclick="scrollTo('cta');closeMobile()">Começar Agora</button>
+  </div>
+</header>
+
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="badge fade-up">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Revolucione seu negócio com IA
+      </div>
+
+      <h1 class="fade-up-2">
+        Agentes de IA que
+        <span class="accent">Transformam Resultados</span>
+      </h1>
+
+      <p class="fade-up-3">
+        Automatize processos, aumente vendas e melhore a experiência do cliente com nossos agentes de inteligência artificial personalizados para seu negócio.
+      </p>
+
+      <div class="hero-cta fade-up-3">
+        <a href="https://wa.me/5549936180684?text=Ol%C3%A1%20vi%20no%20site%20sobre%20IA,%20pode%20me%20ajudar?"
+           target="_blank" rel="noopener" class="btn-wa">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+          Falar com Nossa IA
+        </a>
+      </div>
+
+      <div class="hero-trust fade-up-3">
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          Setup em 48h
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          Suporte 24/7
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          ROI Garantido
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-head reveal">
+      <div class="section-tag">Recursos</div>
+      <h2 class="section-title">Recursos Poderosos para Seu Negócio</h2>
+      <p class="section-sub">Nossos agentes de IA são equipados com tecnologia de ponta para entregar resultados excepcionais</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="feature-title">Automação Inteligente</div>
+        <p class="feature-desc">Automatize tarefas repetitivas e libere sua equipe para atividades estratégicas</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="17" cy="21" r="1"/><circle cx="7" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.93 1.61h9.62a2 2 0 001.92-1.54L23 6H6"/></svg>
+        </div>
+        <div class="feature-title">Atendimento 24/7</div>
+        <p class="feature-desc">Agentes que nunca dormem, garantindo suporte contínuo aos seus clientes</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="feature-title">Análise Preditiva</div>
+        <p class="feature-desc">Insights baseados em dados para tomada de decisões mais assertivas</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feature-title">Segurança Avançada</div>
+        <p class="feature-desc">Proteção de dados com criptografia de nível empresarial</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        </div>
+        <div class="feature-title">IA Personalizada</div>
+        <p class="feature-desc">Agentes treinados especificamente para seu setor e necessidades</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div class="feature-title">Integração Fácil</div>
+        <p class="feature-desc">Conecte com suas ferramentas existentes sem complicações</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner reveal">
+      <div class="section-tag">Sobre</div>
+      <h2 class="section-title">Quem Somos</h2>
+      <p>
+        Na Agentes Milionários, acreditamos que o futuro pertence a quem usa a inteligência — a humana e a artificial — com estratégia. Somos uma empresa especializada na criação e implementação de agentes de atendimento com inteligência artificial, desenvolvidos sob medida para transformar a operação de empresas em verdadeiras máquinas de vendas, atendimento e eficiência.
+      </p>
+      <p>
+        Nossa missão é levar inovação real para dentro das empresas, com soluções personalizadas e que geram resultado. Transformamos o que antes parecia complexo em processos simples, humanos e escaláveis, permitindo que nossos clientes cresçam com estrutura, profissionalismo e segurança.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ RESULTS ══════════════ -->
+<section class="results" id="benefits">
+  <div class="container">
+    <div class="results-inner">
+
+      <div class="results-left reveal">
+        <div class="section-tag">Resultados</div>
+        <h2 class="section-title">Resultados que Falam por Si</h2>
+
+        <div class="result-item">
+          <div class="result-icon-wrap">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div>
+            <div class="result-title">+300% Aumento em Conversões</div>
+            <p class="result-desc">Nossos clientes veem um aumento médio de 300% nas taxas de conversão</p>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon-wrap">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="result-title">90% Redução no Tempo de Resposta</div>
+            <p class="result-desc">Atendimento instantâneo que melhora drasticamente a satisfação do cliente</p>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon-wrap">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="result-title">ROI de 500% em 6 Meses</div>
+            <p class="result-desc">Retorno garantido sobre o investimento com resultados mensuráveis</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="stars" aria-label="5 estrelas">
+          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+
+        <p class="testimonial-text">
+          "Os agentes de IA transformaram completamente nosso atendimento. Aumentamos as vendas em 250% no primeiro trimestre."
+        </p>
+
+        <div class="testimonial-author">Maria Silva</div>
+        <div class="testimonial-role">CEO, TechCorp</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ CTA BAND ══════════════ -->
+<section class="cta-band" id="cta">
+  <div class="container">
+    <h2 class="reveal">Pronto para Revolucionar seu Negócio?</h2>
+    <p class="reveal">Junte-se a mais de 1.000 empresas que já transformaram seus resultados com nossos agentes de IA</p>
+
+    <a href="https://wa.me/5549936180684?text=Ol%C3%A1%20vi%20no%20site%20sobre%20IA,%20pode%20me%20ajudar?"
+       target="_blank" rel="noopener" class="btn-wa-inv reveal">
+      <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+      Falar com Nossa IA
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Agentes Milionários" />
+        <p>Agentes de IA personalizados para transformar resultados — Itajaí, Santa Catarina.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#features">Recursos</a></li>
+          <li><a href="#benefits">Cases</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="/clube.html">Clube</a></li>
+          <li><a href="/milioncrm.html">MilionCRM</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Contato</h4>
+        <ul>
+          <li>
+            <a href="https://wa.me/5549936180684" target="_blank" rel="noopener">
+              WhatsApp
+            </a>
+          </li>
+          <li><a href="https://instagram.com/agentemilionario" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Agentes Milionários LTDA &mdash; CNPJ sob consulta &mdash; Itajaí, SC</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════ JS ══════════════ -->
+<script>
+  /* Smooth scroll helper */
+  function scrollTo(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* Sticky header shadow */
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function() {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* Mobile nav toggle */
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', function() {
+    var open = mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  function closeMobile() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  /* Scroll reveal */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+</script>
+
+</body>
+</html>
