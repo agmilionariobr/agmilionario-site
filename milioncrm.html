@@ -57,11 +57,12 @@
 
     /* HERO */
     .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 100px 0 80px; position: relative; overflow: hidden;
+      display: flex; align-items: center;
+      padding: 48px 0 52px; position: relative; overflow: hidden;
+      margin-top: 60px;
     }
     .hero-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center;
     }
     .hero-img {
       border-radius: 16px; overflow: hidden;
@@ -81,48 +82,48 @@
     }
     .hero-glow {
       position: absolute; pointer-events: none;
-      width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,201,240,.07) 0%, transparent 70%);
-      top: -200px; right: -200px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(1,201,240,.06) 0%, transparent 70%);
+      top: -100px; right: -100px;
     }
     .hero-glow2 {
       position: absolute; pointer-events: none;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,201,240,.04) 0%, transparent 70%);
-      bottom: -100px; left: -100px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(1,201,240,.03) 0%, transparent 70%);
+      bottom: -50px; left: -50px;
     }
     .hero-content { position: relative; z-index: 1; max-width: 720px; }
     .eyebrow {
       display: inline-block;
       background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
       color: var(--brand); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: 6px 14px; border-radius: 999px; margin-bottom: 28px;
+      padding: 5px 12px; border-radius: 999px; margin-bottom: 16px;
     }
     .hero h1 {
-      font-family: var(--font-head); font-size: clamp(3.5rem, 9vw, 6.5rem); font-weight: 800;
-      line-height: .95; letter-spacing: -.03em; margin-bottom: 24px;
+      font-family: var(--font-head); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800;
+      line-height: 1; letter-spacing: -.03em; margin-bottom: 20px;
     }
     .hero h1 .accent { color: var(--brand); }
-    .hero p { font-size: 1.1rem; color: var(--ink-2); max-width: 520px; margin-bottom: 36px; line-height: 1.7; font-weight: 300; }
+    .hero p { font-size: .975rem; color: var(--ink-2); max-width: 480px; margin-bottom: 28px; line-height: 1.65; font-weight: 300; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn-hero-primary {
-      background: var(--brand); color: var(--bg); font-weight: 700; font-size: .975rem;
-      padding: 14px 32px; border-radius: var(--radius);
+      background: var(--brand); color: var(--bg); font-weight: 700; font-size: .9rem;
+      padding: 12px 24px; border-radius: var(--radius);
       transition: opacity var(--tr), transform var(--tr);
     }
     .btn-hero-primary:hover { opacity: .9; transform: translateY(-2px); }
     .btn-hero-outline {
-      border: 1px solid rgba(255,255,255,.2); color: var(--ink); font-weight: 500; font-size: .975rem;
-      padding: 14px 32px; border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.2); color: var(--ink); font-weight: 500; font-size: .9rem;
+      padding: 12px 24px; border-radius: var(--radius);
       transition: border-color var(--tr), color var(--tr);
     }
     .btn-hero-outline:hover { border-color: var(--brand); color: var(--brand); }
     .hero-stats {
-      display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,.08); flex-wrap: wrap;
+      display: flex; gap: 32px; margin-top: 28px; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.08); flex-wrap: nowrap;
     }
-    .stat-val { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: var(--brand); line-height: 1; }
-    .stat-lbl { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+    .stat-val { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--brand); line-height: 1; }
+    .stat-lbl { font-size: .75rem; color: var(--muted); margin-top: 3px; }
 
     /* PAIN */
     .pain { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
