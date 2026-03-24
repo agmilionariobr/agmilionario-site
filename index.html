@@ -194,34 +194,74 @@
 
     /* ── RESULTS ── */
     .results { background: var(--surface); }
-    .results-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-    .results-left .section-title { margin-bottom: 36px; }
-    .result-item {
-      display: flex; gap: 18px; align-items: flex-start;
-      padding: 22px 24px; border-radius: var(--radius); margin-bottom: 16px;
-      background: var(--surface-2); border: 1px solid var(--border);
-      transition: transform var(--transition), border-color var(--transition);
+    .results-head { text-align: center; margin-bottom: 56px; }
+    .results-head .section-title { margin-bottom: 0; }
+
+    /* métricas em linha */
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 64px;
     }
-    .result-item:hover { transform: translateX(4px); border-color: rgba(7,115,158,.25); }
-    .result-icon-wrap {
-      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    .metric-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px 24px; text-align: center;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .metric-card:hover { transform: translateY(-4px); border-color: rgba(7,115,158,.3); box-shadow: 0 12px 32px rgba(7,115,158,.08); }
+    .metric-icon {
+      width: 48px; height: 48px; border-radius: 12px; margin: 0 auto 16px;
       background: rgba(7,115,158,.08); display: flex; align-items: center; justify-content: center; color: var(--brand);
     }
-    .result-title { font-weight: 700; color: var(--ink); margin-bottom: 4px; font-size: .975rem; }
-    .result-desc { font-size: .875rem; color: var(--muted); line-height: 1.6; }
-    .testimonial-card {
+    .metric-value { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--brand); line-height: 1; margin-bottom: 6px; }
+    .metric-label { font-weight: 700; color: var(--ink); font-size: .9rem; margin-bottom: 4px; }
+    .metric-desc { font-size: .825rem; color: var(--muted); line-height: 1.5; }
+
+    /* carrossel 3 cards */
+    .carousel-outer { position: relative; }
+    .carousel-track {
+      display: flex; gap: 20px; align-items: stretch;
+    }
+    .t-card { flex: 1; min-width: 0; }
+    .t-card {
       background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 40px 36px; position: relative; overflow: hidden;
+      padding: 32px 28px; position: relative; overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      opacity: .55; transform: scale(.96);
     }
-    .testimonial-card::before {
-      content: '"'; position: absolute; top: -10px; right: 24px;
-      font-size: 120px; color: rgba(7,115,158,.07); font-family: Georgia, serif; line-height: 1; pointer-events: none;
+    .t-card.center {
+      background: var(--brand); border-color: var(--brand);
+      opacity: 1; transform: scale(1.04);
+      box-shadow: 0 20px 48px rgba(7,115,158,.3);
     }
-    .stars { display: flex; gap: 4px; margin-bottom: 20px; }
-    .stars svg { color: var(--brand); fill: var(--brand); }
-    .testimonial-text { font-size: 1.05rem; font-style: italic; color: var(--ink-2); line-height: 1.75; margin-bottom: 24px; }
-    .testimonial-author { font-weight: 700; color: var(--ink); font-size: .95rem; }
-    .testimonial-role { font-size: .85rem; color: var(--muted); margin-top: 2px; }
+    .t-card::before {
+      content: '"'; position: absolute; top: -8px; right: 16px;
+      font-size: 100px; color: rgba(0,0,0,.06); font-family: Georgia, serif; line-height: 1; pointer-events: none;
+    }
+    .t-card.center::before { color: rgba(255,255,255,.12); }
+    .stars { display: flex; gap: 4px; margin-bottom: 16px; }
+    .stars svg { fill: var(--brand); color: var(--brand); }
+    .t-card.center .stars svg { fill: #fff; color: #fff; }
+    .t-text { font-size: .95rem; font-style: italic; line-height: 1.75; margin-bottom: 20px; color: var(--ink-2); }
+    .t-card.center .t-text { color: rgba(255,255,255,.92); }
+    .t-author { font-weight: 700; color: var(--ink); font-size: .9rem; }
+    .t-card.center .t-author { color: #fff; }
+    .t-role { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+    .t-card.center .t-role { color: rgba(255,255,255,.7); }
+
+    .carousel-controls {
+      display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 28px;
+    }
+    .c-btn {
+      width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center; color: var(--muted);
+      cursor: pointer; background: none; transition: border-color var(--transition), color var(--transition);
+    }
+    .c-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .c-dots { display: flex; gap: 6px; }
+    .c-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--border);
+      border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s;
+    }
+    .c-dot.active { background: var(--brand); transform: scale(1.4); }
 
     /* ── CTA BAND ── */
     .cta-band {
@@ -469,61 +509,82 @@
 <!-- ══════════════ RESULTS ══════════════ -->
 <section class="results" id="benefits">
   <div class="container">
-    <div class="results-inner">
 
-      <div class="results-left reveal">
-        <div class="section-tag">Resultados</div>
-        <h2 class="section-title">Resultados que Falam por Si</h2>
-
-        <div class="result-item">
-          <div class="result-icon-wrap">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          </div>
-          <div>
-            <div class="result-title">+300% Aumento em Conversões</div>
-            <p class="result-desc">Nossos clientes veem um aumento médio de 300% nas taxas de conversão</p>
-          </div>
-        </div>
-
-        <div class="result-item">
-          <div class="result-icon-wrap">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <div class="result-title">90% Redução no Tempo de Resposta</div>
-            <p class="result-desc">Atendimento instantâneo que melhora drasticamente a satisfação do cliente</p>
-          </div>
-        </div>
-
-        <div class="result-item">
-          <div class="result-icon-wrap">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <div class="result-title">ROI de 500% em 6 Meses</div>
-            <p class="result-desc">Retorno garantido sobre o investimento com resultados mensuráveis</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal">
-        <div class="stars" aria-label="5 estrelas">
-          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-
-        <p class="testimonial-text">
-          "Os agentes de IA transformaram completamente nosso atendimento. Aumentamos as vendas em 250% no primeiro trimestre."
-        </p>
-
-        <div class="testimonial-author">Maria Silva</div>
-        <div class="testimonial-role">CEO, TechCorp</div>
-      </div>
-
+    <div class="results-head reveal">
+      <div class="section-tag">Resultados</div>
+      <h2 class="section-title">Resultados que Falam por Si</h2>
     </div>
+
+    <!-- métricas -->
+    <div class="metrics-row reveal">
+      <div class="metric-card">
+        <div class="metric-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="metric-value">+300%</div>
+        <div class="metric-label">Aumento em Conversões</div>
+        <p class="metric-desc">Aumento médio nas taxas de conversão dos nossos clientes</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="metric-value">90%</div>
+        <div class="metric-label">Redução no Tempo de Resposta</div>
+        <p class="metric-desc">Atendimento instantâneo que melhora a satisfação do cliente</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="metric-value">500%</div>
+        <div class="metric-label">ROI em 6 Meses</div>
+        <p class="metric-desc">Retorno garantido sobre o investimento com resultados mensuráveis</p>
+      </div>
+    </div>
+
+    <!-- carrossel 3 cards -->
+    <div class="carousel-outer reveal">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="t-card" data-idx="0">
+          <div class="stars"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="t-text">"Os agentes de IA transformaram completamente nosso atendimento. Faturamos o mês inteiro em apenas 10 dias usando a IA."</p>
+          <div class="t-author">Fabio</div>
+          <div class="t-role">Troca Game</div>
+        </div>
+
+        <div class="t-card center" data-idx="1">
+          <div class="stars"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="t-text">"Fiquei muito feliz com a IA, pois ela atende, faz followup, agenda as consultas e ainda gera cobrança no pix para clientes. É uma maravilha."</p>
+          <div class="t-author">Cecilia</div>
+          <div class="t-role">Espaço Ressignificar</div>
+        </div>
+
+        <div class="t-card" data-idx="2">
+          <div class="stars"><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="t-text">"A equipe está sempre à disposição para atender minhas necessidades. Recomendo demais o trabalho deles."</p>
+          <div class="t-author">Luiz</div>
+          <div class="t-role">Arkad Growth</div>
+        </div>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="c-btn" onclick="rotateCarousel(-1)" aria-label="Anterior">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="c-dots">
+          <button class="c-dot active" onclick="setCenterIdx(0)"></button>
+          <button class="c-dot" onclick="setCenterIdx(1)"></button>
+          <button class="c-dot" onclick="setCenterIdx(2)"></button>
+        </div>
+        <button class="c-btn" onclick="rotateCarousel(1)" aria-label="Próximo">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -577,7 +638,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 Agentes Milionários LTDA &mdash; CNPJ sob consulta &mdash; Itajaí, SC</p>
+      <p>&copy; 2025 Agentes Milionários LTDA &mdash; Itajaí, SC</p>
     </div>
   </div>
 </footer>
@@ -623,3 +684,43 @@
 
 </body>
 </html>
+<script>
+  // Carrossel com destaque no centro
+  var centerIdx = 1;
+  var total = 3;
+
+  function updateCarousel() {
+    var cards = document.querySelectorAll('.t-card');
+    var dots  = document.querySelectorAll('.c-dot');
+    // ordem visual: esquerda = centerIdx-1, centro = centerIdx, direita = centerIdx+1
+    var order = [
+      (centerIdx - 1 + total) % total,
+      centerIdx,
+      (centerIdx + 1) % total
+    ];
+    cards.forEach(function(card) {
+      var idx = parseInt(card.getAttribute('data-idx'));
+      card.classList.remove('center');
+      if (idx === order[1]) card.classList.add('center');
+    });
+    // reordenar no DOM via order CSS
+    cards.forEach(function(card) {
+      var idx = parseInt(card.getAttribute('data-idx'));
+      card.style.order = order.indexOf(idx);
+    });
+    dots.forEach(function(dot, i) { dot.classList.toggle('active', i === centerIdx); });
+  }
+
+  function rotateCarousel(dir) {
+    centerIdx = (centerIdx + dir + total) % total;
+    updateCarousel();
+  }
+
+  function setCenterIdx(idx) {
+    centerIdx = idx;
+    updateCarousel();
+  }
+
+  // Auto-rotate a cada 5s
+  setInterval(function() { rotateCarousel(1); }, 5000);
+</script>
