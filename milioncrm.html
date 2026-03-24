@@ -60,6 +60,25 @@
       min-height: 100vh; display: flex; align-items: center;
       padding: 100px 0 80px; position: relative; overflow: hidden;
     }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .hero-img {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(1,201,240,.15);
+      box-shadow: 0 24px 64px rgba(0,0,0,.4);
+      position: relative;
+    }
+    .hero-img img { width: 100%; display: block; }
+    .hero-img::before {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(1,201,240,.05) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-img { display: none; }
+    }
     .hero-glow {
       position: absolute; pointer-events: none;
       width: 700px; height: 700px; border-radius: 50%;
@@ -303,7 +322,7 @@
       <button onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Planos</button>
       <a href="index.html">Voltar</a>
     </nav>
-    <button class="btn-brand" onclick="openModal('Nav')">Quero contratar</button>
+    <button class="btn-brand" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Quero contratar</button>
   </div>
 </header>
 
@@ -312,27 +331,32 @@
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-glow2" aria-hidden="true"></div>
   <div class="container">
-    <div class="hero-content">
-      <div class="eyebrow">CRM com IA + WhatsApp integrado</div>
-      <h1>PARE DE<br><span class="accent">PERDER</span><br>VENDA</h1>
-      <p>O CRM feito para empresas brasileiras que precisam organizar leads, automatizar o WhatsApp e fechar mais negócios — sem complicação.</p>
-      <div class="hero-btns">
-        <button class="btn-hero-primary" onclick="openModal('Hero')">Quero o MilionCRM</button>
-        <button class="btn-hero-outline" onclick="document.getElementById('funcionalidades').scrollIntoView({behavior:'smooth'})">Ver funcionalidades</button>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">CRM com IA + WhatsApp integrado</div>
+        <h1>PARE DE<br><span class="accent">PERDER</span><br>VENDA.</h1>
+        <p>O CRM feito para empresas brasileiras que precisam organizar leads, automatizar o WhatsApp e fechar mais negócios — sem complicação.</p>
+        <div class="hero-btns">
+          <button class="btn-hero-primary" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Quero o MilionCRM</button>
+          <button class="btn-hero-outline" onclick="document.getElementById('funcionalidades').scrollIntoView({behavior:'smooth'})">Ver funcionalidades</button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-val">+29%</div>
+            <div class="stat-lbl">conversões — caso Troca Game</div>
+          </div>
+          <div>
+            <div class="stat-val">R$89</div>
+            <div class="stat-lbl">por usuário / mês no plano anual</div>
+          </div>
+          <div>
+            <div class="stat-val">100%</div>
+            <div class="stat-lbl">integrado ao WhatsApp</div>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-val">+29%</div>
-          <div class="stat-lbl">conversões — caso Troca Game</div>
-        </div>
-        <div>
-          <div class="stat-val">R$89</div>
-          <div class="stat-lbl">por usuário / mês no plano anual</div>
-        </div>
-        <div>
-          <div class="stat-val">100%</div>
-          <div class="stat-lbl">integrado ao WhatsApp</div>
-        </div>
+      <div class="hero-img">
+        <img src="tela_milioncrm.png" alt="Interface do MilionCRM" />
       </div>
     </div>
   </div>
