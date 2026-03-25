@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Agentes Milionários — IA que Transforma Resultados</title>
   <meta name="description" content="Automatize processos, aumente vendas e melhore a experiência do cliente com agentes de inteligência artificial personalizados para seu negócio." />
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
@@ -32,7 +32,8 @@
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    html { overflow-x: hidden; }
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
@@ -332,6 +333,28 @@
       section { padding: 68px 0; }
       .hero-trust { gap: 20px; }
       .footer-inner { flex-direction: column; gap: 32px; }
+
+      /* Carrossel mobile: mostra só o card central */
+      .carousel-track { gap: 0; }
+      .t-card { display: none; min-width: 100%; }
+      .t-card.center {
+        display: block;
+        transform: scale(1);
+        opacity: 1;
+        background: var(--brand);
+        border-color: var(--brand);
+        padding: 28px 24px;
+      }
+      .t-card.center .t-text { color: rgba(255,255,255,.92); font-size: .95rem; }
+      .t-card.center .stars svg { fill: #fff; color: #fff; }
+      .t-card.center .t-author { color: #fff; }
+      .t-card.center .t-role { color: rgba(255,255,255,.7); }
+
+      /* Métricas em coluna no mobile */
+      .metrics-row { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Hero trust em coluna */
+      .hero-trust { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
 
     /* ── SCROLL REVEAL ── */
