@@ -91,6 +91,7 @@
     .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 8px 24px var(--brand-glow); }
     .btn-primary:active { transform: translateY(0); }
     .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+    .header-cta { /* botão do header */ }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: var(--transition); }
 
     /* ── HERO ── */
@@ -307,18 +308,21 @@
 
     /* ── MOBILE NAV ── */
     .mobile-nav {
-      display: none; flex-direction: column; gap: 4px;
-      padding: 12px 0 20px; border-top: 1px solid var(--border);
+      display: none; flex-direction: column; gap: 2px;
+      padding: 8px 0 16px; border-top: 1px solid var(--border);
       background: #fff;
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a, .mobile-nav button {
-      padding: 10px 24px; font-size: 1rem; font-weight: 500; color: var(--ink-2);
+      padding: 12px 24px; font-size: .975rem; font-weight: 500; color: var(--ink-2);
       text-align: left; background: none; border: none; cursor: pointer; font-family: inherit;
       transition: color var(--transition), background var(--transition);
     }
     .mobile-nav a:hover, .mobile-nav button:hover { color: var(--brand); background: var(--surface-2); }
-    .mobile-nav .btn-primary { margin: 8px 24px 0; justify-content: center; }
+    .mobile-nav .btn-primary {
+      margin: 10px 16px 0; justify-content: center;
+      border-radius: var(--radius); padding: 12px 22px;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -328,6 +332,7 @@
     @media (max-width: 680px) {
       nav { display: none; }
       .hamburger { display: flex; }
+      .header-cta { display: none; }
       .features-grid { grid-template-columns: 1fr; }
       .hero { padding: 72px 0 60px; }
       section { padding: 68px 0; }
@@ -380,7 +385,7 @@
       <a href="/milioncrm.html">MilionCRM</a>
     </nav>
 
-    <button class="btn-primary" onclick="goTo('cta')" aria-label="Começar agora">
+    <button class="btn-primary header-cta" onclick="goTo('cta')" aria-label="Começar agora">
       Começar Agora
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
