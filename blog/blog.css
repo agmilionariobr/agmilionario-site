@@ -112,6 +112,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .prose p + p { margin-top: 18px; }
 .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .prose a:hover { color: var(--brand-dark); }
+.prose .btn-wa, .prose .btn-wa:hover { color: #fff; text-decoration: none; }
 .prose strong { color: var(--ink); }
 
 .summary { background: var(--surface-2); border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 24px 28px; }
