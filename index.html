@@ -59,8 +59,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; scrollbar-color: #a9b8c2 var(--paper); }
-body { font-family: var(--font); font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html { overflow-x: hidden; overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; scrollbar-color: #a9b8c2 var(--paper); }
+body { font-family: var(--font); font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: hidden; overflow-x: clip; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
@@ -82,7 +82,8 @@ p { text-wrap: pretty; }
 .link-arrow:hover svg { transform: translateX(3px); }
 
 /* ── Cabeçalho ── */
-.site-header { position: sticky; top: 0; z-index: 50; background: var(--navy); color: #fff; border-bottom: 1px solid var(--navy-line); }
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(9, 9, 43, .8); -webkit-backdrop-filter: saturate(1.5) blur(14px); backdrop-filter: saturate(1.5) blur(14px); color: #fff; border-bottom: 1px solid var(--navy-line); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .site-header { background: rgba(9, 9, 43, .96); } }
 .header-inner { display: flex; align-items: center; gap: 32px; height: 76px; }
 .brand img { height: 34px; width: auto; }
 .nav { display: flex; gap: 28px; margin-left: auto; font-size: .95rem; }
@@ -90,7 +91,7 @@ p { text-wrap: pretty; }
 .nav a:hover { color: #fff; }
 .header-cta { padding: 13px 20px; font-size: .95rem; }
 .menu-btn { display: none; margin-left: auto; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 10px; color: #fff; }
-.mobile-menu { border-top: 1px solid var(--navy-line); padding: 4px var(--gutter) 24px; }
+.mobile-menu { border-top: 1px solid var(--navy-line); padding: 4px var(--gutter) 24px; background: var(--navy); }
 .mobile-menu a:not(.btn) { display: block; padding: 14px 0; color: var(--on-navy-2); border-bottom: 1px solid var(--navy-line); }
 .mobile-menu .btn { margin-top: 20px; width: 100%; }
 
@@ -168,7 +169,8 @@ p { text-wrap: pretty; }
 .results { background: var(--brand); color: #fff; }
 .results .section-lead { color: var(--on-brand-2); }
 .metrics { list-style: none; border-top: 1px solid rgba(255, 255, 255, .35); }
-.metrics li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 28px; align-items: baseline; padding: 30px 0; border-bottom: 1px solid rgba(255, 255, 255, .35); }
+.metrics li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 28px; align-items: baseline; padding: 30px 0; position: relative; }
+.metrics li::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(255, 255, 255, .35); transform-origin: 0 50%; }
 .metric-n { font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
 .metrics strong { display: block; font-size: 1.15rem; }
 .metrics p { margin-top: 4px; color: var(--on-brand-2); font-size: 1rem; }
@@ -260,8 +262,10 @@ p { text-wrap: pretty; }
 @keyframes dot { 0%, 100% { opacity: .35; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-2px); } }
 
 /* ── Como funciona: folhas que sobem umas sobre as outras ── */
-.steps { list-style: none; display: grid; gap: 28px; }
-.step { position: sticky; top: calc(108px + var(--i, 0) * 22px); display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: 32px; align-content: start; min-height: 280px; padding: clamp(32px, 4vw, 52px); background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 -20px 44px -30px rgba(9, 9, 43, .45); }
+.steps { list-style: none; display: grid; gap: 0; }
+.step { position: sticky; top: calc(108px + var(--i, 0) * 22px); display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: 32px; align-content: start; min-height: 280px; padding: clamp(32px, 4vw, 52px); background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 -20px 44px -30px rgba(9, 9, 43, .45); margin-bottom: 16vh; transform-origin: 50% 0; }
+.step:last-child { margin-bottom: 0; }
+.step::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--navy); opacity: var(--shade, 0); pointer-events: none; }
 .step:nth-child(2) { --i: 1; }
 .step:nth-child(3) { --i: 2; }
 .step-n { grid-row: span 2; font-size: clamp(4rem, 8vw, 7rem); font-weight: 700; line-height: .85; letter-spacing: -.04em; color: var(--brand); }
@@ -285,6 +289,17 @@ p { text-wrap: pretty; }
 .quote-slot figcaption { font-size: .95rem; }
 
 .clients-grid--6 { grid-template-columns: repeat(3, 1fr); }
+
+/* ── Resultados: entrada dos textos e contagem dos números ── */
+.results.will-reveal .section-head > *, .results.will-reveal .metrics li > *, .results.will-reveal .results-note { opacity: 0; transform: translateY(24px); }
+.results.will-reveal .metrics li::after { transform: scaleX(0); }
+.results.is-in .section-head > *, .results.is-in .metrics li > *, .results.is-in .results-note { opacity: 1; transform: none; transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.results.is-in .metrics li::after { transform: scaleX(1); transition: transform 1.2s var(--ease); }
+.results .section-head > :nth-child(2) { transition-delay: .12s; }
+.results .metrics li:nth-child(1) > *, .results .metrics li:nth-child(1)::after { transition-delay: .25s; }
+.results .metrics li:nth-child(2) > *, .results .metrics li:nth-child(2)::after { transition-delay: .45s; }
+.results .metrics li:nth-child(3) > *, .results .metrics li:nth-child(3)::after { transition-delay: .65s; }
+.results .results-note { transition-delay: .95s; }
 
 /* ── Responsivo ── */
 @media (max-width: 1024px) {
@@ -312,7 +327,8 @@ p { text-wrap: pretty; }
   .product-links a:hover { padding-left: 0; }
   .posts { grid-template-columns: 1fr; }
   .faq-item p { padding-right: 0; }
-  .step { position: relative; top: auto; grid-template-columns: 1fr; min-height: 0; row-gap: 10px; }
+  .step { top: calc(84px + var(--i, 0) * 14px); grid-template-columns: 1fr; min-height: 0; row-gap: 10px; margin-bottom: 10vh; }
+  .step:last-child { margin-bottom: 0; }
   .step-n { grid-row: auto; font-size: 3.4rem; }
   .step > :not(.step-n) { grid-column: auto; }
   .trust-list, .quote-slots { grid-template-columns: 1fr; }
@@ -622,12 +638,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     el.textContent = addr;
   });
 
+  /* Movimento só para quem não pediu "menos movimento"; sem JS, tudo fica visível e parado */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  if (reduce) return;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  /* Como funciona: cada folha sobe e cobre a anterior, que encolhe e escurece de leve */
+  var sheets = [].slice.call(document.querySelectorAll('.step'));
+  if (sheets.length > 1) {
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      for (var i = 0; i < sheets.length - 1; i++) {
+        var a = sheets[i].getBoundingClientRect(), b = sheets[i + 1].getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, (a.bottom - b.top) / a.height));
+        sheets[i].style.transform = p ? 'scale(' + (1 - p * 0.05).toFixed(4) + ')' : '';
+        sheets[i].style.setProperty('--shade', (p * 0.1).toFixed(3));
+      }
+    };
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  /* Resultados: textos entram em sequência e os números contam a partir do zero */
+  var results = document.querySelector('.results');
+  if (results) {
+    var nums = [].slice.call(results.querySelectorAll('.metric-n')).map(function (n) {
+      var m = n.textContent.match(/^(\D*)(\d+)(\D*)$/);
+      if (!m) return null;
+      n.setAttribute('aria-label', n.textContent);
+      return { el: n, pre: m[1], val: +m[2], suf: m[3] }; /* o HTML mantém o valor final (Google e sem-JS veem o número certo) */
+    });
+    results.classList.add('will-reveal');
+    var revealed = false;
+    var reveal = function () {
+      results.classList.add('is-in');
+      nums.forEach(function (n) { if (n) n.el.textContent = n.pre + '0' + n.suf; });
+      nums.forEach(function (n, i) {
+        if (!n) return;
+        var final = n.pre + n.val + n.suf;
+        setTimeout(function () { n.el.textContent = final; }, 250 + i * 200 + 1700); /* trava de segurança */
+        setTimeout(function () {
+          var start = null, dur = 1500;
+          requestAnimationFrame(function tick(t) {
+            if (start === null) start = t;
+            var k = Math.min(1, (t - start) / dur);
+            var eased = k === 1 ? 1 : 1 - Math.pow(2, -10 * k);
+            n.el.textContent = n.pre + Math.round(n.val * eased) + n.suf;
+            if (k < 1) requestAnimationFrame(tick);
+          });
+        }, 250 + i * 200);
+      });
+    };
+    var checkResults = function () {
+      if (revealed) return;
+      var r = results.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.75 && r.bottom > 0) {
+        revealed = true;
+        window.removeEventListener('scroll', onResultsScroll);
+        reveal();
+      }
+    };
+    var onResultsScroll = function () { checkResults(); }; /* sem esperar quadro: a entrada começa na hora da rolagem */
+    window.addEventListener('scroll', onResultsScroll, { passive: true });
+    checkResults();
+  }
+
   /* A conversa das 02:47, como no WhatsApp: janela de altura fixa, cada mensagem entra por baixo
      e as antigas sobem. "Digitando…" antes de cada resposta do agente; respostas longas ficam mais tempo.
-     Recomeça quando a conversa sai da tela e volta. Sem JS ou com movimento reduzido, fica tudo visível (com rolagem). */
+     Recomeça quando a conversa sai da tela e volta. */
   var chat = document.querySelector('.chat');
   var body = chat && chat.querySelector('.chat-body');
-  if (!body || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  if (!body || !hasIO) return;
 
   var steps = [].slice.call(chat.querySelectorAll('[data-step]'));
   steps.forEach(function (s) {
@@ -642,7 +726,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   var run = 0;
-  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
   function toBottom() { body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' }); }
   function readTime(s) {
     if (s.classList.contains('msg-out')) return Math.min(3400, 800 + s.textContent.length * 14);
