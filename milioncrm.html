@@ -21,669 +21,998 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:url" content="https://www.agentesmilionarios.com.br/milioncrm" />
   <meta property="og:image" content="https://www.agentesmilionarios.com.br/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="logo.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://www.agentesmilionarios.com.br/milioncrm#app", "name": "MilionCRM", "url": "https://www.agentesmilionarios.com.br/milioncrm", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "CRM com IA e WhatsApp integrado para empresas brasileiras: funil de vendas, gestão de leads, follow-up automático e relatórios.", "image": "https://www.agentesmilionarios.com.br/tela_milioncrm.webp", "offers": {"@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": "129.90", "highPrice": "169.90", "offerCount": 3}, "publisher": {"@type": "Organization", "name": "Agentes Milionários", "url": "https://www.agentesmilionarios.com.br/"}}</script>
+<style>
+/* ── Agentes Milionários — home (estilo suíço, cores do brandbook) ── */
+:root {
+  --navy: #09092b;
+  --navy-2: #12153d;
+  --navy-deep: #06061f;
+  --navy-line: rgba(185, 195, 230, .16);
+  --on-navy-2: #b9c3e6;
+  --brand: #07739e;
+  --brand-dark: #055a7a;
+  --on-brand-2: #e8f6fb;
+  --cyan: #01c9f0;
+  --ink: #0d1a22;
+  --ink-2: #2c3e4a;
+  --muted: #56707e;
+  --paper: #ffffff;
+  --mist: #f3f6f8;
+  --line: #dce5eb;
+  --wa: #15803d;
+  --wa-dark: #166534;
+  --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --wrap: 1240px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --section: clamp(88px, 10vw, 144px);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
 
-  <style>
-    :root {
-      --brand:      #01c9f0;
-      --brand-dark: #00a8cc;
-      --brand-glow: rgba(1,201,240,.2);
-      --ink:        #ffffff;
-      --ink-2:      rgba(255,255,255,.7);
-      --muted:      rgba(255,255,255,.4);
-      --bg:         #08080f;
-      --bg-2:       #0d0d1a;
-      --bg-3:       #101020;
-      --border:     rgba(1,201,240,.15);
-      --radius:     8px;
-      --radius-lg:  16px;
-      --font-head:    'Helvetica Neue', Helvetica, Arial, sans-serif;
-      --font-body:    'Helvetica Neue', Helvetica, Arial, sans-serif;
-      --tr:         .2s ease;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
-    input { font-family: inherit; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; scrollbar-color: #a9b8c2 var(--paper); }
+body { font-family: var(--font); font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: hidden; overflow-x: clip; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+::selection { background: var(--cyan); color: var(--navy); }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -.03em; text-wrap: balance; }
+p { text-wrap: pretty; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.wrap { width: 100%; max-width: calc(var(--wrap) + 2 * var(--gutter)); margin: 0 auto; padding-inline: var(--gutter); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    .container { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+/* ── Botões e links ── */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; font-size: 1rem; line-height: 1; padding: 17px 26px; border-radius: 12px; transition: background .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); white-space: nowrap; }
+.btn-wa { background: var(--wa); color: #fff; }
+.btn-wa:hover { background: var(--wa-dark); transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(21, 128, 61, .6); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding-bottom: 3px; border-bottom: 1px solid currentColor; }
+.link-arrow svg { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+.link-arrow:hover svg { transform: translateX(3px); }
 
-    /* HEADER */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(8,8,15,.92); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .header-inner { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .logo-wrap img { height: 28px; width: auto; }
-    nav { display: flex; align-items: center; gap: 28px; }
-    nav button, nav a { font-size: .875rem; color: var(--ink-2); font-weight: 500; transition: color var(--tr); }
-    nav button:hover, nav a:hover { color: var(--brand); }
-    .btn-brand {
-      background: var(--brand); color: var(--bg); font-weight: 700; font-size: .875rem;
-      padding: 9px 20px; border-radius: var(--radius);
-      transition: opacity var(--tr), transform var(--tr);
-    }
-    .btn-brand:hover { opacity: .9; transform: translateY(-1px); }
+/* ── Cabeçalho ── */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(9, 9, 43, .8); -webkit-backdrop-filter: saturate(1.5) blur(14px); backdrop-filter: saturate(1.5) blur(14px); color: #fff; border-bottom: 1px solid var(--navy-line); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .site-header { background: rgba(9, 9, 43, .96); } }
+.header-inner { display: flex; align-items: center; gap: 32px; height: 76px; }
+.brand img { height: 34px; width: auto; }
+.nav { display: flex; gap: 28px; margin-left: auto; font-size: .95rem; }
+.nav a { color: var(--on-navy-2); transition: color .2s; }
+.nav a:hover { color: #fff; }
+.header-cta { padding: 13px 20px; font-size: .95rem; }
+.menu-btn { display: none; margin-left: auto; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 10px; color: #fff; }
+.mobile-menu { border-top: 1px solid var(--navy-line); padding: 4px var(--gutter) 24px; background: var(--navy); }
+.mobile-menu a:not(.btn) { display: block; padding: 14px 0; color: var(--on-navy-2); border-bottom: 1px solid var(--navy-line); }
+.mobile-menu .btn { margin-top: 20px; width: 100%; }
 
-    /* HERO */
-    .hero {
-      display: flex; align-items: center;
-      padding: 48px 0 52px; position: relative; overflow: hidden;
-      margin-top: 60px;
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center;
-    }
-    .hero-img {
-      border-radius: 16px; overflow: hidden;
-      border: 1px solid rgba(1,201,240,.15);
-      box-shadow: 0 24px 64px rgba(0,0,0,.4);
-      position: relative;
-    }
-    .hero-img img { width: 100%; display: block; }
-    .hero-img::before {
-      content: ''; position: absolute; inset: 0; border-radius: 16px;
-      background: linear-gradient(135deg, rgba(1,201,240,.05) 0%, transparent 60%);
-      pointer-events: none; z-index: 1;
-    }
-    @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-img { display: none; }
-    }
-    .hero-glow {
-      position: absolute; pointer-events: none;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,201,240,.06) 0%, transparent 70%);
-      top: -100px; right: -100px;
-    }
-    .hero-glow2 {
-      position: absolute; pointer-events: none;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,201,240,.03) 0%, transparent 70%);
-      bottom: -50px; left: -50px;
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 720px; }
-    .eyebrow {
-      display: inline-block;
-      background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
-      color: var(--brand); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 999px; margin-bottom: 16px;
-    }
-    .hero h1 {
-      font-family: var(--font-head); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800;
-      line-height: 1; letter-spacing: -.03em; margin-bottom: 20px;
-    }
-    .hero h1 .accent { color: var(--brand); }
-    .hero p { font-size: .975rem; color: var(--ink-2); max-width: 480px; margin-bottom: 28px; line-height: 1.65; font-weight: 300; }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-hero-primary {
-      background: var(--brand); color: var(--bg); font-weight: 700; font-size: .9rem;
-      padding: 12px 24px; border-radius: var(--radius);
-      transition: opacity var(--tr), transform var(--tr);
-    }
-    .btn-hero-primary:hover { opacity: .9; transform: translateY(-2px); }
-    .btn-hero-outline {
-      border: 1px solid rgba(255,255,255,.2); color: var(--ink); font-weight: 500; font-size: .9rem;
-      padding: 12px 24px; border-radius: var(--radius);
-      transition: border-color var(--tr), color var(--tr);
-    }
-    .btn-hero-outline:hover { border-color: var(--brand); color: var(--brand); }
-    .hero-stats {
-      display: flex; gap: 32px; margin-top: 28px; padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,.08); flex-wrap: nowrap;
-    }
-    .stat-val { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--brand); line-height: 1; }
-    .stat-lbl { font-size: .75rem; color: var(--muted); margin-top: 3px; }
+/* ── Hero: a conversa das 02:47 ── */
+.hero { position: relative; background: var(--navy); color: #fff; overflow: hidden; padding-block: clamp(56px, 8vw, 112px) clamp(72px, 9vw, 128px); }
+.hero::before, .final::before, .about-panel::before { content: ""; position: absolute; inset: 0; background: url(/blog/capas/padrao.svg) 0 0 / 120px 96px; opacity: .035; pointer-events: none; }
+.hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+.hero h1 { font-size: clamp(2.5rem, 4.6vw, 4.25rem); line-height: 1.03; letter-spacing: -.04em; max-width: 19ch; }
+.hero h1 em { font-style: normal; color: var(--cyan); }
+.hero-sub { margin-top: 28px; font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--on-navy-2); max-width: 34em; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; margin-top: 40px; }
+.hero-actions .link-arrow { color: #fff; }
+.hero-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 32px; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--navy-line); font-size: .95rem; color: var(--on-navy-2); }
+.hero-facts li { display: flex; align-items: center; gap: 10px; }
+.hero-facts svg { color: var(--cyan); flex: none; }
 
-    /* PAIN */
-    .pain { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .pain-head { text-align: center; margin-bottom: 44px; }
-    .pain-tag { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; }
-    .pain-title { font-family: var(--font-head); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; letter-spacing: -.02em; }
-    .pain-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-      background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .pain-item { background: var(--bg-2); padding: 32px 24px; }
-    .pain-emoji { font-size: 2rem; margin-bottom: 14px; }
-    .pain-item-title { font-weight: 700; font-size: .975rem; margin-bottom: 8px; }
-    .pain-item-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+.chat { position: relative; justify-self: end; width: 100%; max-width: 440px; background: var(--navy-2); border: 1px solid var(--navy-line); border-radius: 24px; box-shadow: 0 40px 80px -32px rgba(0, 0, 0, .7); overflow: hidden; }
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--navy-line); }
+.chat-avatar { width: 40px; height: 40px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex: none; }
+.chat-avatar img { width: 24px; height: auto; }
+.chat-name { font-weight: 600; font-size: .95rem; line-height: 1.25; }
+.chat-status { display: flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--on-navy-2); }
+.chat-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #34d399; }
+.chat-body { display: flex; flex-direction: column; gap: 10px; height: 460px; overflow-y: auto; scrollbar-width: none; padding: 20px; font-size: .93rem; line-height: 1.45; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 44px); mask-image: linear-gradient(to bottom, transparent 0, #000 44px); }
+.chat-body::-webkit-scrollbar { display: none; }
+.chat-body > * { flex: none; }
+.chat-body > :first-child { margin-top: auto; } /* mensagens coladas embaixo, como no WhatsApp */
+.chat-day { align-self: center; font-size: .75rem; color: var(--on-navy-2); background: rgba(255, 255, 255, .06); padding: 5px 12px; border-radius: 999px; }
+.msg { max-width: 84%; padding: 10px 14px 7px; border-radius: 16px; }
+.msg time { display: block; text-align: right; font-size: .72rem; margin-top: 3px; opacity: .72; }
+.msg-in { align-self: flex-start; background: #fff; color: var(--ink); border-bottom-left-radius: 6px; }
+.msg-out { align-self: flex-end; background: var(--brand); color: #fff; border-bottom-right-radius: 6px; }
+.pix { display: flex; align-items: center; gap: 10px; margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: rgba(9, 9, 43, .3); font-size: .85rem; line-height: 1.3; }
+.pix svg { flex: none; }
+.pix strong { display: block; }
+.chat-note { align-self: center; display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 600; color: var(--cyan); }
+.chat-caption { padding: 12px 20px 16px; font-size: .75rem; color: var(--on-navy-2); border-top: 1px solid var(--navy-line); }
+.chat.is-playing [data-step]:not(.is-in) { display: none; }
+.chat.is-playing [data-step].is-in, .msg-typing.is-on { animation: msg-in .45s var(--ease) both; }
+@keyframes msg-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
 
-    /* FEATURES */
-    .features { padding: 96px 0; }
-    .features-head { margin-bottom: 56px; }
-    .features-head p { color: var(--ink-2); font-size: 1rem; max-width: 420px; margin-top: 10px; font-weight: 300; }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-      background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .feat-item { background: var(--bg-3); padding: 36px 28px; transition: background var(--tr); }
-    .feat-item:hover { background: #181830; }
-    .feat-icon {
-      width: 44px; height: 44px; background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      color: var(--brand); margin-bottom: 18px;
-    }
-    .feat-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
-    .feat-desc { font-size: .875rem; color: var(--muted); line-height: 1.65; }
+/* ── Estrutura de seção ── */
+.section { padding-block: var(--section); }
+.section-head { max-width: 40rem; margin-bottom: clamp(40px, 5vw, 72px); }
+.section h2 { font-size: clamp(2rem, 3.8vw, 3.3rem); line-height: 1.06; }
+.section-lead { margin-top: 20px; font-size: 1.12rem; color: var(--muted); max-width: 36em; }
+.split { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+.split > .section-head { position: sticky; top: 120px; margin-bottom: 0; }
+.head-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(40px, 5vw, 64px); }
+.head-row .section-head { margin-bottom: 0; }
 
-    /* INTEGRATIONS */
-    .integrations { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .integrations-head { margin-bottom: 40px; }
-    .int-chips { display: flex; flex-wrap: wrap; gap: 12px; }
-    .int-chip {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--bg-3); border: 1px solid rgba(255,255,255,.08);
-      padding: 12px 20px; border-radius: var(--radius); font-size: .9rem; font-weight: 500;
-      transition: border-color var(--tr), color var(--tr);
-    }
-    .int-chip.active:hover { border-color: var(--brand); color: var(--brand); }
-    .int-chip.inactive { opacity: .45; }
-    .int-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .int-dot.on { background: var(--brand); }
-    .int-dot.off { background: rgba(255,255,255,.3); }
-    .int-badge {
-      font-size: .7rem; background: rgba(1,201,240,.1); color: var(--brand);
-      padding: 2px 8px; border-radius: 999px; font-weight: 600;
-    }
+/* ── Clientes ── */
+.clients { padding-block: clamp(56px, 7vw, 88px); }
+.clients .head-row h2 { font-size: clamp(1.4rem, 2.2vw, 1.85rem); letter-spacing: -.02em; line-height: 1.25; max-width: 34ch; }
+.clients .head-row h2 strong { color: var(--brand); }
+.clients .head-row p { color: var(--muted); max-width: 22em; }
+.clients-grid { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.clients-grid li { display: grid; place-items: center; min-height: 116px; padding: 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.clients-grid img { max-width: 100%; height: auto; opacity: .72; transition: opacity .2s; }
+.clients-grid li:hover img { opacity: 1; }
 
-    /* SOCIAL PROOF */
-    .proof { padding: 96px 0; text-align: center; }
-    .proof-head { margin-bottom: 52px; }
-    .testimonial {
-      background: var(--bg-3); border: 1px solid var(--border); border-left: 4px solid var(--brand);
-      border-radius: var(--radius-lg); padding: 48px; position: relative; max-width: 760px; margin: 0 auto 48px;
-    }
-    .testimonial::before {
-      content: '"'; position: absolute; top: -12px; left: 24px;
-      font-size: 100px; color: rgba(1,201,240,.1); font-family: Georgia, serif; line-height: 1; pointer-events: none;
-    }
-    .testimonial p { font-size: 1.1rem; font-style: italic; color: var(--ink-2); line-height: 1.75; margin-bottom: 24px; position: relative; z-index: 1; }
-    .testimonial p strong { color: var(--brand); font-style: normal; }
-    .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 14px; }
-    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(1,201,240,.15); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--brand); font-size: .9rem; }
-    .author-name { font-weight: 700; font-size: .95rem; }
-    .author-role { font-size: .8rem; color: var(--muted); }
-    .proof-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 700px; margin: 0 auto; }
-    .proof-stat { background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
-    .proof-stat-val { font-family: var(--font-head); font-size: 2.8rem; font-weight: 800; color: var(--brand); line-height: 1; }
-    .proof-stat-lbl { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+/* ── O que o agente faz ── */
+.feature-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+.feature-list li { padding: 28px 0 34px; border-top: 1px solid var(--line); }
+.feature-list h3 { display: flex; align-items: flex-start; gap: 12px; font-size: 1.2rem; letter-spacing: -.015em; margin-bottom: 8px; }
+.feature-list h3 svg { color: var(--brand); flex: none; margin-top: .12em; }
+.feature-list p { color: var(--muted); font-size: 1rem; }
 
-    /* PRICING */
-    .pricing { padding: 96px 0; background: var(--bg-2); border-top: 1px solid var(--border); }
-    .pricing-head { text-align: center; margin-bottom: 16px; }
-    .pricing-sub { text-align: center; font-size: .9rem; color: var(--muted); margin-bottom: 52px; }
-    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .plan-card {
-      background: var(--bg-3); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg);
-      padding: 36px 28px; position: relative;
-      transition: transform var(--tr), border-color var(--tr);
-    }
-    .plan-card:hover { transform: translateY(-4px); }
-    .plan-card.featured { border-color: var(--brand); background: #181830; }
-    .plan-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: var(--brand); color: var(--bg); font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
-      padding: 4px 14px; border-radius: 999px; white-space: nowrap;
-    }
-    .plan-name { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-    .plan-duration { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
-    .plan-price-from { font-size: .8rem; color: var(--muted); }
-    .plan-price { font-family: var(--font-head); font-size: 3rem; font-weight: 800; color: var(--brand); line-height: 1; }
-    .plan-price-period { font-size: .8rem; color: var(--muted); }
-    .plan-total { font-size: .85rem; color: var(--muted); margin-top: 6px; margin-bottom: 20px; }
-    .plan-total .highlight { color: var(--brand); }
-    .plan-divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 18px 0; }
-    .plan-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-    .plan-perks li { display: flex; align-items: flex-start; gap: 10px; font-size: .875rem; color: var(--ink-2); line-height: 1.5; }
-    .plan-perks li svg { color: var(--brand); flex-shrink: 0; margin-top: 2px; }
-    .plan-perks li.highlight-item { color: var(--brand); font-weight: 600; }
-    .btn-plan {
-      width: 100%; padding: 14px; border-radius: var(--radius); font-weight: 700; font-size: .95rem;
-      transition: var(--tr);
-    }
-    .btn-plan.filled { background: var(--brand); color: var(--bg); }
-    .btn-plan.filled:hover { opacity: .9; }
-    .btn-plan.outline { border: 1px solid var(--brand); color: var(--brand); }
-    .btn-plan.outline:hover { background: var(--brand); color: var(--bg); }
+/* ── Como funciona ── */
+.how { background: var(--mist); }
+.how-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: clamp(48px, 6vw, 72px); padding-top: 32px; border-top: 1px solid #c9d6de; }
+.how-cta p { color: var(--ink-2); }
 
-    /* FOOTER */
-    footer { background: #050508; border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: .8rem; color: var(--muted); }
-    footer a { color: var(--brand); }
+/* ── Resultados ── */
+.results { background: var(--brand); color: #fff; }
+.results .section-lead { color: var(--on-brand-2); }
+.metrics { list-style: none; border-top: 1px solid rgba(255, 255, 255, .35); }
+.metrics li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 28px; align-items: baseline; padding: 30px 0; position: relative; }
+.metrics li::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(255, 255, 255, .35); transform-origin: 0 50%; }
+.metric-n { font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.metrics strong { display: block; font-size: 1.15rem; }
+.metrics p { margin-top: 4px; color: var(--on-brand-2); font-size: 1rem; }
+.results-note { margin-top: 20px; font-size: .88rem; color: var(--on-brand-2); }
 
-    /* MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 999;
-      background: rgba(0,0,0,.8); backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: var(--bg-3); border: 1px solid var(--border); border-radius: 20px;
-      padding: 40px; width: 100%; max-width: 440px; position: relative;
-      animation: modalIn .25s ease both;
-    }
-    @keyframes modalIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: none; } }
-    .modal-close {
-      position: absolute; top: 14px; right: 16px;
-      width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.08);
-      display: flex; align-items: center; justify-content: center; color: var(--muted);
-      transition: background var(--tr), color var(--tr);
-    }
-    .modal-close:hover { background: rgba(255,255,255,.15); color: #fff; }
-    .modal-eyebrow {
-      display: inline-block; background: rgba(1,201,240,.08); border: 1px solid rgba(1,201,240,.2);
-      color: var(--brand); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
-    }
-    .modal h2 { font-family: var(--font-head); font-size: 2rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
-    .modal-sub { font-size: .875rem; color: var(--muted); margin-bottom: 28px; }
-    .modal-form-group { margin-bottom: 16px; }
-    .modal-label { display: block; font-size: .8rem; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
-    .modal-input {
-      width: 100%; background: var(--bg-2); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius);
-      padding: 12px 14px; color: #fff; font-size: .9rem; transition: border-color var(--tr);
-    }
-    .modal-input:focus { outline: none; border-color: var(--brand); }
-    .modal-input::placeholder { color: rgba(255,255,255,.2); }
-    .modal-check { display: flex; align-items: flex-start; gap: 10px; margin-top: 4px; }
-    .modal-check input { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: var(--brand); }
-    .modal-check label { font-size: .82rem; color: var(--muted); line-height: 1.5; }
-    .modal-check a { color: var(--brand); }
-    .btn-modal-submit {
-      width: 100%; padding: 14px; background: var(--brand); color: var(--bg);
-      font-weight: 800; font-size: .975rem; border-radius: var(--radius); margin-top: 16px;
-      transition: opacity var(--tr), transform var(--tr);
-    }
-    .btn-modal-submit:hover { opacity: .9; transform: translateY(-1px); }
-    .btn-modal-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-    .modal-note { text-align: center; font-size: .75rem; color: var(--muted); margin-top: 10px; }
-    .modal-success { text-align: center; padding: 16px 0; }
-    .modal-success-icon { font-size: 3rem; margin-bottom: 14px; }
-    .modal-success h3 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--brand); margin-bottom: 10px; }
-    .modal-success p { color: var(--ink-2); font-size: .95rem; line-height: 1.7; }
+/* ── Depoimentos ── */
+.quote-lead p { font-size: clamp(1.7rem, 3.2vw, 2.7rem); line-height: 1.3; letter-spacing: -.025em; font-weight: 600; max-width: 26ch; }
+.quote-by { display: flex; align-items: center; gap: 16px; margin-top: 28px; color: var(--muted); }
+.quote-by strong { display: block; color: var(--ink); }
+.quote-by img { height: 36px; width: auto; opacity: .8; padding-left: 16px; border-left: 1px solid var(--line); }
+.quote-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); margin-top: clamp(56px, 7vw, 96px); }
+.quote-row blockquote { border-top: 1px solid var(--line); padding-top: 28px; }
+.quote-row p { font-size: 1.2rem; line-height: 1.55; color: var(--ink-2); }
+.quote-row footer { margin-top: 18px; color: var(--muted); font-size: .95rem; }
+.quote-row footer strong { color: var(--ink); }
 
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+/* ── Quem somos ── */
+.about { background: var(--mist); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+.about-copy h2 { margin-bottom: 32px; }
+.about-copy p { font-size: 1.15rem; line-height: 1.75; color: var(--ink-2); max-width: 38em; }
+.about-copy p + p { margin-top: 22px; }
+.about-panel { position: relative; background: var(--navy); color: #fff; border-radius: 24px; padding: clamp(28px, 3.5vw, 44px); overflow: hidden; }
+.about-panel > * { position: relative; }
+.about-panel .mark { width: 60px; height: auto; margin-bottom: 20px; }
+.about-panel dl div { padding: 20px 0; border-bottom: 1px solid var(--navy-line); }
+.about-panel dl div:last-child { border-bottom: 0; padding-bottom: 0; }
+.about-panel dt { font-size: .85rem; color: var(--on-navy-2); }
+.about-panel dd { margin-top: 4px; font-size: 1.3rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.3; }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .pain-grid { grid-template-columns: repeat(2, 1fr); }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .plans-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-      .proof-stats { grid-template-columns: 1fr; max-width: 300px; }
-    }
-    @media (max-width: 600px) {
-      nav { display: none; }
-      .pain-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 3.2rem; }
-    }
-  </style>
+/* ── Produtos ── */
+.product-links { list-style: none; border-top: 1px solid var(--line); }
+.product-links a { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) auto; gap: 32px; align-items: center; padding: 36px 0; border-bottom: 1px solid var(--line); transition: padding .4s var(--ease); }
+.product-links h3 { font-size: clamp(1.5rem, 2.6vw, 2.2rem); letter-spacing: -.03em; line-height: 1.1; }
+.product-links p { color: var(--muted); }
+.arrow { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: background .25s, color .25s, border-color .25s; }
+.product-links a:hover { padding-left: 12px; }
+.product-links a:hover .arrow { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+/* ── Blog ── */
+.blog { background: var(--mist); }
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.5vw, 32px); }
+.post img { width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 16px; background: var(--navy); }
+.post h3 { margin-top: 20px; font-size: 1.2rem; line-height: 1.3; letter-spacing: -.015em; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.post:hover h3 { text-decoration: underline; }
+.post-meta { margin-top: 8px; font-size: .9rem; color: var(--muted); }
+.head-row .link-arrow { color: var(--brand); }
+
+/* ── FAQ ── */
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; font-weight: 600; font-size: 1.1rem; letter-spacing: -.01em; line-height: 1.4; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--brand); }
+.plus { position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); transition: transform .35s var(--ease), background .2s, border-color .2s; }
+.plus::before, .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; background: var(--ink); transform: translate(-50%, -50%); }
+.plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-item[open] .plus { transform: rotate(45deg); background: var(--navy); border-color: var(--navy); }
+.faq-item[open] .plus::before, .faq-item[open] .plus::after { background: #fff; }
+.faq-item p { padding: 0 56px 26px 0; color: var(--ink-2); max-width: 42em; }
+.faq .section-head .btn { margin-top: 32px; }
+
+/* ── Chamada final ── */
+.final { position: relative; background: var(--navy); color: #fff; overflow: hidden; padding-block: clamp(96px, 12vw, 168px); }
+.final-mark { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: min(40vw, 540px); opacity: .22; pointer-events: none; }
+.final .wrap { position: relative; }
+.final h2 { font-size: clamp(2.4rem, 5.2vw, 4.5rem); line-height: 1.02; letter-spacing: -.04em; max-width: 13ch; }
+.final p { margin-top: 24px; font-size: 1.15rem; color: var(--on-navy-2); max-width: 32em; }
+.final .btn { margin-top: 40px; }
+
+/* ── Rodapé ── */
+.site-footer { background: var(--navy-deep); color: var(--on-navy-2); padding-block: 64px 36px; font-size: .95rem; }
+.footer-grid { display: grid; grid-template-columns: 1.3fr 1fr .8fr; gap: 48px; }
+.footer-grid img { height: 30px; width: auto; margin-bottom: 16px; }
+.footer-grid p { max-width: 22em; }
+.footer-grid h3 { color: #fff; font-size: .95rem; font-weight: 600; letter-spacing: 0; margin-bottom: 16px; }
+.footer-grid ul { list-style: none; display: grid; gap: 10px; }
+.footer-nav ul { grid-template-columns: repeat(2, auto); column-gap: 40px; justify-content: start; }
+.footer-grid a { transition: color .2s; }
+.footer-grid a:hover { color: #fff; }
+.footer-bottom { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--navy-line); font-size: .85rem; }
+
+/* ── Digitando… (conversa do topo) ── */
+.msg-typing { align-self: flex-end; display: none; gap: 4px; align-items: center; padding: 13px 15px; border-radius: 16px 16px 6px 16px; background: var(--brand); }
+.msg-typing.is-on { display: inline-flex; }
+.msg-typing i { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: dot 1s infinite var(--ease); }
+.msg-typing i:nth-child(2) { animation-delay: .15s; }
+.msg-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot { 0%, 100% { opacity: .35; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-2px); } }
+
+/* ── Como funciona: folhas que sobem umas sobre as outras ── */
+.steps { list-style: none; display: grid; gap: 0; }
+.step { position: sticky; top: calc(108px + var(--i, 0) * 22px); display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: 32px; align-content: start; min-height: 280px; padding: clamp(32px, 4vw, 52px); background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 -20px 44px -30px rgba(9, 9, 43, .45); margin-bottom: 16vh; transform-origin: 50% 0; }
+.step:last-child { margin-bottom: 0; }
+.step::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--navy); opacity: var(--shade, 0); pointer-events: none; }
+.step:nth-child(2) { --i: 1; }
+.step:nth-child(3) { --i: 2; }
+.step-n { grid-row: span 2; font-size: clamp(4rem, 8vw, 7rem); font-weight: 700; line-height: .85; letter-spacing: -.04em; color: var(--brand); }
+.step > :not(.step-n) { grid-column: 2; }
+.step h3 { font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: -.025em; margin-bottom: 12px; }
+.step p { color: var(--muted); font-size: 1.1rem; max-width: 34em; }
+
+/* ── Segurança ── */
+.trust { background: var(--navy); color: #fff; }
+.trust .section-lead { color: var(--on-navy-2); }
+.trust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+.trust-list li { padding: 28px 0 34px; border-top: 1px solid var(--navy-line); }
+.trust-list h3 { display: flex; align-items: flex-start; gap: 12px; font-size: 1.2rem; letter-spacing: -.015em; margin-bottom: 8px; }
+.trust-list h3 svg { color: var(--cyan); flex: none; margin-top: .12em; }
+.trust-list p { color: var(--on-navy-2); font-size: 1rem; }
+.trust-list a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Depoimentos reservados (substituir pelos depoimentos reais antes de publicar) ── */
+.quote-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
+.quote-slot { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 240px; padding: 32px; border: 1.5px dashed #b8c7d0; border-radius: 20px; color: var(--muted); }
+.quote-slot figcaption { font-size: .95rem; }
+
+.clients-grid--6 { grid-template-columns: repeat(3, 1fr); }
+
+/* ── Resultados: entrada dos textos e contagem dos números ── */
+.results.will-reveal .section-head > *, .results.will-reveal .metrics li > *, .results.will-reveal .results-note { opacity: 0; transform: translateY(24px); }
+.results.will-reveal .metrics li::after { transform: scaleX(0); }
+.results.is-in .section-head > *, .results.is-in .metrics li > *, .results.is-in .results-note { opacity: 1; transform: none; transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.results.is-in .metrics li::after { transform: scaleX(1); transition: transform 1.2s var(--ease); }
+.results .section-head > :nth-child(2) { transition-delay: .12s; }
+.results .metrics li:nth-child(1) > *, .results .metrics li:nth-child(1)::after { transition-delay: .25s; }
+.results .metrics li:nth-child(2) > *, .results .metrics li:nth-child(2)::after { transition-delay: .45s; }
+.results .metrics li:nth-child(3) > *, .results .metrics li:nth-child(3)::after { transition-delay: .65s; }
+.results .results-note { transition-delay: .95s; }
+
+/* ── Responsivo ── */
+@media (max-width: 1024px) {
+  .nav, .header-cta { display: none; }
+  .menu-btn { display: inline-flex; }
+  .hero-grid, .split, .about-grid { grid-template-columns: 1fr; }
+  .chat { justify-self: start; }
+  .split > .section-head { position: static; margin-bottom: 8px; }
+  .posts { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .header-inner { height: 68px; }
+  .brand img { height: 30px; }
+  .hero-facts { flex-direction: column; margin-top: 44px; }
+  .chat { max-width: none; }
+  .chat-body { height: 400px; }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  .clients-grid li { min-height: 96px; }
+  .feature-list { grid-template-columns: 1fr; }
+  .metrics li { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+  .quote-row { grid-template-columns: 1fr; }
+  .product-links a { grid-template-columns: 1fr auto; gap: 12px 20px; padding: 28px 0; }
+  .product-links p { grid-column: 1 / -1; grid-row: 2; }
+  .product-links a:hover { padding-left: 0; }
+  .posts { grid-template-columns: 1fr; }
+  .faq-item p { padding-right: 0; }
+  .step { top: calc(84px + var(--i, 0) * 14px); grid-template-columns: 1fr; min-height: 0; row-gap: 10px; margin-bottom: 10vh; }
+  .step:last-child { margin-bottom: 0; }
+  .step-n { grid-row: auto; font-size: 3.4rem; }
+  .step > :not(.step-n) { grid-column: auto; }
+  .trust-list, .quote-slots { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .final-mark { width: 90vw; right: -28%; top: auto; bottom: 4%; transform: none; opacity: .14; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* ══════════ MilionCRM — mesma base da home, versão escura com destaque ciano ══════════ */
+body { background: var(--navy-deep); color: #fff; scrollbar-color: #3a4270 var(--navy-deep); }
+html { scrollbar-color: #3a4270 var(--navy-deep); }
+
+.btn-cyan { background: var(--cyan); color: var(--navy); }
+.btn-cyan:hover { background: #4fdcf7; transform: translateY(-1px); box-shadow: 0 14px 28px -12px rgba(1, 201, 240, .65); }
+.btn-line { border: 1px solid rgba(255, 255, 255, .28); color: #fff; }
+.btn-line:hover { border-color: var(--cyan); color: var(--cyan); }
+.link-arrow { color: #fff; }
+
+/* Seção que sobe sobre a anterior como uma folha */
+.lift { position: relative; z-index: 1; margin-top: -36px; border-radius: 36px 36px 0 0; box-shadow: 0 -24px 48px -28px rgba(0, 0, 0, .8); }
+
+/* ── Hero ── */
+.crm-hero { position: relative; overflow: hidden; padding-block: clamp(56px, 8vw, 104px) clamp(96px, 10vw, 140px); background: var(--navy-deep); }
+.crm-hero::before { content: ""; position: absolute; inset: 0; background: url(/blog/capas/padrao.svg) 0 0 / 120px 96px; opacity: .035; pointer-events: none; }
+.crm-hero .wrap { position: relative; }
+.crm-hero-top { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(32px, 5vw, 80px); align-items: end; }
+.crm-hero h1 { font-size: clamp(3.2rem, 8.4vw, 7.6rem); line-height: .95; letter-spacing: -.05em; }
+.crm-hero h1 em { font-style: normal; color: var(--cyan); }
+.crm-hero .hero-sub { margin-top: 0; }
+.crm-facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--navy-line); }
+.crm-facts div { padding: 24px 24px 0 0; }
+.crm-facts div + div { padding-left: 24px; border-left: 1px solid var(--navy-line); }
+.crm-facts dt { font-size: clamp(2rem, 3.4vw, 2.8rem); font-weight: 700; letter-spacing: -.04em; line-height: 1; color: var(--cyan); }
+.crm-facts dd { margin-top: 8px; color: var(--on-navy-2); font-size: .95rem; }
+.crm-shot { position: relative; margin-top: clamp(40px, 5vw, 64px); perspective: 1600px; }
+.crm-shot::before { content: ""; position: absolute; left: 15%; right: 15%; top: 12%; bottom: 8%; background: radial-gradient(closest-side, rgba(1, 201, 240, .32), transparent); filter: blur(60px); pointer-events: none; }
+.crm-shot-inner { position: relative; max-width: 1120px; margin: 0 auto; transform-origin: 50% 100%; will-change: transform; }
+.crm-shot img { width: 100%; height: auto; filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .6)); }
+
+/* ── O problema (folhas) ── */
+.crm-pain { background: var(--navy); }
+.crm-pain .step { background: var(--navy-2); border-color: var(--navy-line); box-shadow: 0 -20px 44px -24px rgba(0, 0, 0, .9); grid-template-columns: 6.5rem minmax(0, 1fr); min-height: 240px; }
+.crm-pain .step::before { background: #000; }
+.crm-pain .step:nth-child(4) { --i: 3; }
+.crm-pain .step-n { font-size: clamp(3.4rem, 6vw, 5rem); color: var(--cyan); }
+.crm-pain .step h3 { line-height: 1.2; }
+.crm-pain .step p { color: var(--on-navy-2); }
+
+/* ── Funcionalidades + integrações ── */
+.crm-features { background: var(--navy-deep); padding-bottom: clamp(72px, 8vw, 112px); }
+.section-lead { color: var(--on-navy-2); }
+.crm-features .feature-list li { border-top-color: var(--navy-line); }
+.crm-features .feature-list h3 svg { color: var(--cyan); }
+.crm-features .feature-list p { color: var(--on-navy-2); }
+.crm-int { margin-top: clamp(88px, 10vw, 144px); }
+.crm-int .head-row { margin-bottom: clamp(28px, 3vw, 40px); }
+.marquee { display: flex; overflow: hidden; border-block: 1px solid var(--navy-line); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee-track { list-style: none; display: flex; flex: none; min-width: 100%; animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee li { flex: none; display: flex; align-items: center; gap: 40px; padding: 26px 0 26px 40px; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: -.03em; white-space: nowrap; }
+.marquee li::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); }
+.marquee li:nth-child(even) { color: var(--on-navy-2); }
+@keyframes marquee { to { transform: translateX(-100%); } }
+.addons { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 28px; margin-top: 28px; color: var(--on-navy-2); font-size: .95rem; }
+.addons ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.addons li { padding: 7px 14px; border: 1px dashed rgba(185, 195, 230, .4); border-radius: 999px; color: #fff; }
+
+/* ── Resultado real (faixa azul) ── */
+.crm-quote { margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, .35); }
+.crm-quote p { font-size: clamp(1.15rem, 1.6vw, 1.35rem); line-height: 1.55; }
+.crm-quote footer { margin-top: 18px; font-size: .95rem; color: var(--on-brand-2); }
+.crm-quote strong { color: #fff; }
+
+/* ── Planos ── */
+.crm-pricing { background: var(--navy-deep); }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; padding: clamp(28px, 3vw, 40px); background: var(--navy); border: 1px solid var(--navy-line); border-radius: 24px; overflow: hidden; transition: transform .45s var(--ease), border-color .3s, box-shadow .45s var(--ease); }
+.plan::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, -20%), rgba(1, 201, 240, .13), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.plan:hover { transform: translateY(-6px); border-color: rgba(1, 201, 240, .45); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9); }
+.plan:hover::before { opacity: 1; }
+.plan > * { position: relative; }
+.plan-featured { background: var(--navy-2); border-color: var(--cyan); }
+.plan-badge { position: absolute; top: 24px; right: 24px; padding: 5px 12px; border-radius: 999px; background: var(--cyan); color: var(--navy); font-size: .8rem; font-weight: 700; }
+.plan h3 { font-size: 1.3rem; letter-spacing: -.02em; }
+.plan-term { margin-top: 2px; color: var(--cyan); font-weight: 600; font-size: .95rem; }
+.plan-price { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 6px; }
+.plan-price small { font-size: .9rem; color: var(--on-navy-2); }
+.plan-price small:first-child { flex-basis: 100%; margin-bottom: 4px; }
+.plan-price span { font-size: clamp(2.2rem, 3.4vw, 2.9rem); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.plan-total { margin-top: 12px; font-size: .92rem; color: var(--on-navy-2); }
+.plan-total strong { color: #fff; }
+.plan-perks { list-style: none; margin: 28px 0 32px; padding-top: 24px; border-top: 1px solid var(--navy-line); display: grid; gap: 12px; font-size: .97rem; color: var(--on-navy-2); flex: 1; align-content: start; }
+.plan-perks li { display: flex; gap: 10px; align-items: flex-start; }
+.plan-perks li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: .25em; background: var(--cyan); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.plan-perks li.hl { color: #fff; font-weight: 600; }
+.plan .btn { width: 100%; }
+
+/* ── Comparativo + calculadora ── */
+.crm-compare { background: var(--navy-deep); padding-top: 0; }
+.crm-compare .section-head { max-width: 52rem; }
+.compare-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.vs { width: 100%; border-collapse: collapse; font-size: .98rem; }
+.vs th { padding: 0 0 14px; font-size: .85rem; font-weight: 600; color: var(--on-navy-2); text-align: left; border-bottom: 1px solid rgba(255, 255, 255, .3); }
+.vs th + th, .vs td + td { text-align: center; width: 7.5rem; }
+.vs th.vs-us { color: var(--cyan); }
+.vs td { padding: 15px 0; border-bottom: 1px solid var(--navy-line); }
+.vs svg { display: inline-block; vertical-align: middle; }
+.vs .yes { color: #4ade80; }
+.vs .no { color: #f87171; opacity: .8; }
+.calc { position: sticky; top: 108px; padding: clamp(24px, 3vw, 36px); background: var(--navy); border: 1px solid var(--navy-line); border-radius: 24px; }
+.calc-top { display: flex; justify-content: space-between; align-items: baseline; }
+.calc-top label { color: var(--on-navy-2); }
+.calc-top output { font-size: 2.6rem; font-weight: 700; letter-spacing: -.04em; color: var(--cyan); line-height: 1; }
+.calc input[type=range] { width: 100%; margin-top: 16px; accent-color: var(--cyan); height: 28px; cursor: pointer; }
+.calc-scale { display: flex; justify-content: space-between; font-size: .8rem; color: var(--on-navy-2); }
+.calc-row { margin-top: 24px; }
+.calc-name { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; }
+.calc-name span { font-size: 1.3rem; letter-spacing: -.02em; }
+.calc-us .calc-name { color: var(--cyan); }
+.bar { height: 10px; margin-top: 10px; border-radius: 999px; background: rgba(255, 255, 255, .07); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: rgba(255, 255, 255, .45); transition: width .6s var(--ease); }
+.calc-us .bar i { background: var(--cyan); }
+.calc-row p { margin-top: 8px; font-size: .85rem; color: var(--on-navy-2); line-height: 1.6; }
+.calc-save { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding: 18px 20px; border-radius: 16px; background: rgba(74, 222, 128, .1); border: 1px solid rgba(74, 222, 128, .3); color: #4ade80; }
+.calc-save strong { display: block; }
+.calc-save div span { font-size: .85rem; }
+.calc-save > span { font-size: 1.7rem; font-weight: 700; letter-spacing: -.03em; white-space: nowrap; }
+.calc-note { margin-top: 20px; font-size: .75rem; line-height: 1.6; color: #8f9abf; }
+
+/* ── Chamada final ── */
+.final .btn { margin-top: 40px; }
+.final .btn svg { width: 20px; height: 20px; }
+
+/* ── Formulário ── */
+.modal-overlay { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; background: rgba(4, 4, 20, .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity .3s var(--ease), visibility .3s; }
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); overflow-y: auto; padding: clamp(28px, 4vw, 40px); background: var(--navy); border: 1px solid var(--navy-line); border-radius: 24px; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .9); transform: translateY(24px) scale(.97); transition: transform .45s var(--ease); }
+.modal-overlay.open .modal { transform: none; }
+.modal-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; color: var(--on-navy-2); }
+.modal-close:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.modal-plan { color: var(--cyan); font-weight: 600; font-size: .95rem; }
+.modal h2 { margin-top: 6px; font-size: 2rem; line-height: 1.1; }
+.modal-sub { margin-top: 10px; color: var(--on-navy-2); font-size: .97rem; }
+.modal form { margin-top: 24px; display: grid; gap: 16px; }
+.field span { display: block; margin-bottom: 6px; font-size: .88rem; font-weight: 600; }
+.field input { width: 100%; padding: 14px 16px; font: inherit; font-size: 1rem; color: #fff; background: var(--navy-deep); border: 1px solid var(--navy-line); border-radius: 12px; transition: border-color .2s; }
+.field input::placeholder { color: #7a86ad; }
+.field input:focus { outline: none; border-color: var(--cyan); }
+.modal-check { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--on-navy-2); }
+.modal-check input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--cyan); flex: none; }
+.modal-check a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.modal-submit { width: 100%; margin-top: 4px; }
+.modal-submit:disabled { opacity: .6; cursor: wait; }
+.modal-note { font-size: .82rem; color: #8f9abf; text-align: center; }
+.modal-success { text-align: center; padding: 16px 0 8px; }
+.modal-ok { display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--cyan); color: var(--navy); margin-bottom: 16px; }
+.modal-success p { margin-top: 10px; color: var(--on-navy-2); }
+
+/* ── Entradas de texto: palavras sobem de trás de uma máscara; blocos sobem e aparecem ── */
+.anim [data-reveal] { opacity: 0; transform: translateY(28px); }
+.anim [data-reveal].is-in { opacity: 1; transform: none; transition: opacity .9s var(--ease) calc(var(--d, 0) * 90ms), transform .9s var(--ease) calc(var(--d, 0) * 90ms); }
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.w > span { display: inline-block; }
+.anim [data-split] .w > span { transform: translateY(110%); }
+.anim [data-split].is-in .w > span { transform: none; transition: transform 1s var(--ease) calc(var(--wi) * 55ms); }
+.anim .crm-shot[data-reveal] { transform: translateY(60px); }
+.anim .crm-shot[data-reveal].is-in { transform: none; transition: opacity 1.2s var(--ease) .45s, transform 1.4s var(--ease) .45s; }
+.anim .feature-list li[data-reveal] { transform: translateY(20px); }
+
+/* ── Responsivo ── */
+@media (max-width: 1024px) {
+  .crm-hero-top, .compare-grid { grid-template-columns: 1fr; }
+  .crm-hero-top { align-items: start; }
+  .plans { grid-template-columns: 1fr; max-width: 560px; }
+  .calc { position: static; }
+}
+@media (max-width: 720px) {
+  .lift { margin-top: -24px; border-radius: 24px 24px 0 0; }
+  .crm-facts { grid-template-columns: 1fr; }
+  .crm-facts div, .crm-facts div + div { display: flex; align-items: baseline; gap: 16px; padding: 18px 0; border-left: 0; border-bottom: 1px solid var(--navy-line); }
+  .crm-facts dt { min-width: 5.5rem; font-size: 1.8rem; }
+  .crm-facts dd { margin-top: 0; }
+  .crm-pain .step { grid-template-columns: 1fr; }
+  .crm-pain .step-n { font-size: 3rem; }
+  .vs th + th, .vs td + td { width: 5.2rem; }
+  .vs { font-size: .92rem; }
+  .plan-badge { position: static; align-self: flex-start; margin-bottom: 16px; }
+  .calc-save { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { flex-wrap: wrap; -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { flex-wrap: wrap; min-width: 0; }
+  .marquee-track[aria-hidden] { display: none; }
+  .marquee li { font-size: 1.3rem; padding: 12px 0 12px 28px; gap: 28px; }
+}
+</style>
 </head>
-<body>
+<body class="crm">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH48K8JF"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- HEADER -->
-<header>
-  <div class="container header-inner">
-    <a href="index.html" class="logo-wrap"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmlld0JveD0iMCAwIDgxNC45MyAxNzQuNjkiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgZmlsbDogIzAxYzlmMDsKICAgICAgfQoKICAgICAgLmNscy0zIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjE0MS4yOSIgeTE9IjE4MS43MiIgeDI9IjEzOC40MSIgeTI9IjM3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAxYzlmMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNlYmY1ZTAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGlkPSJDYW1hZGFfMSI+CiAgICA8Zz4KICAgICAgPGc+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzExLjkyLDE5LjMzaC03LjEyYy0xLjE4LDAtMi4yMi43NS0yLjU5LDEuODdsLTE5LjQyLDU4LjZoOS45NGwxMi44OC00My4yYy43OC0yLjYsNC40Ni0yLjYsNS4yMywwbDEyLjgxLDQzLjE5aDEwLjU0bC0xOS42Ny01OC42MWMtLjM3LTEuMTEtMS40MS0xLjg2LTIuNTktMS44NloiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zNTkuNzksNDguMjl2Ny41M2gxMy4xMXYxNS41OWMtMS42Ni41Mi0zLjUuOS01LjUzLDEuMTZzLTQuMjcuMzgtNi43Mi4zOGMtMy42LDAtNi42NS0uNzUtOS4xNy0yLjI3LTIuNTEtMS41MS00LjM4LTMuOTEtNS42MS03LjE5LTEuMjItMy4yOC0xLjg0LTcuNDYtMS44NC0xMi41NSwwLTUuNDguNjYtOS45OCwxLjk3LTEzLjQ5LDEuMzItMy41MSwzLjMzLTYuMTEsNi4wNC03Ljc5LDIuNzEtMS42OSw2LjA0LTIuNTMsOS45OC0yLjUzLDIuNTEsMCw1LjA4LjE5LDcuNzEuNTYsMi42Mi4zNyw1LjI4LjksNy45NiwxLjU4bDEuNzItNy43MWMtMS4zMi0uNDUtMi42OS0uODQtNC4xMi0xLjE1LTEuNDItLjMxLTIuODktLjU5LTQuNDEtLjgyLTEuNTEtLjIyLTMuMDUtLjM4LTQuNjItLjQ3LTEuNTctLjA4LTMuMjQtLjEzLTUuMDEtLjEzLTUuODgsMC0xMC44MiwxLjE2LTE0LjgyLDMuNDctNCwyLjMyLTYuOTksNS44My04Ljk5LDEwLjU0LTIsNC43MS0zLDEwLjYzLTMsMTcuNzcsMCw2LjY4LjkzLDEyLjI0LDIuNzgsMTYuNjYsMS44Niw0LjQzLDQuNjYsNy43NCw4LjQsOS45NCwzLjc0LDIuMTksOC40LDMuMjksMTQsMy4yOSw0LjI4LDAsOC4yOC0uMzEsMTEuOTktLjk0LDMuNzEtLjYzLDcuMDItMS41Nyw5Ljk0LTIuODN2LTI4LjZoLTIxLjc2WiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTM5OS42Miw3MS4zMnYtMTguMzNoMjcuNzV2LTguNGgtMjcuNzV2LTE2LjE4aDI5Ljg5di04LjU3aC0zOS42NnY1OS45Nmg0MS4xMnYtOC40OGgtMzEuMzVaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDc0Ljk5LDE5Ljg0djQ0Ljk3bC0yOC43OC00NS4xNGgtOS4wOHY2MC4xM2g4LjY1di00NC41NGwyOC43OCw0NC43MWg5LjA4VjE5Ljg0aC04LjY1WiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ4OC41MiwxOS44NHY4LjQ4aDE4LjI0djUxLjQ4aDkuNTFWMjguMzJoMTguMjR2LTguNDhoLTQ1Ljk5WiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTU0OS4xNiw3MS4zMnYtMTguMzNoMjcuNzV2LTguNGgtMjcuNzV2LTE2LjE4aDI5Ljg5di04LjU3aC0zOS42NXY1OS45Nmg0MS4xMXYtOC40OGgtMzEuMzVaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjI4LjA0LDU3LjgzYy0uNjgtMS43NC0xLjc3LTMuMjktMy4yNS00LjYzLTEuNDktMS4zNC0zLjM3LTIuNTgtNS42Ni0zLjcyLTIuMjgtMS4xNC01LjAyLTIuMi04LjIyLTMuMTctMi45Ny0uODYtNS41MS0xLjctNy42Mi0yLjUzLTIuMTEtLjgzLTMuODMtMS43LTUuMTQtMi42MS0xLjMxLS45MS0yLjI2LTEuODYtMi44My0yLjgzcy0uODUtMi4xMS0uODUtMy40MmMwLTIuNjMsMS4yLTQuNjYsMy41OS02LjA4LDIuNC0xLjQzLDUuNi0yLjE1LDkuNi0yLjE1LDEuMzcsMCwyLjc5LjA2LDQuMjguMTcsMS40OC4xMiwyLjk3LjI5LDQuNDUuNTIsMS40OS4yMywyLjkyLjUsNC4yOS44MSwxLjM3LjMyLDIuNTkuNjcsMy42OCwxLjA3bDEuODgtNy41M2MtMS40Mi0uNDYtMy4xNS0uOS01LjE4LTEuMzNzLTQuMi0uNzctNi41MS0xLjAzLTQuNTgtLjM5LTYuODEtLjM5Yy0zLjgyLDAtNy4xOS40Mi0xMC4xLDEuMjUtMi45Mi44My01LjMzLDEuOTgtNy4yNCwzLjQ3LTEuOTEsMS40OC0zLjM0LDMuMjItNC4yOCw1LjIyLS45NSwyLTEuNDIsNC4yLTEuNDIsNi42LDAsMi4xNy4zMiw0LjExLjk1LDUuODIuNjIsMS43MSwxLjYxLDMuMjcsMi45NSw0LjY3czMuMDUsMi42Nyw1LjE0LDMuODFjMi4wOCwxLjE0LDQuNTUsMi4yMyw3LjQxLDMuMjUsMy4xNC45OCw1Ljg1LDEuODksOC4xMywyLjc0LDIuMjkuODYsNC4xNiwxLjcsNS42MSwyLjUzLDEuNDYuODMsMi41NiwxLjc2LDMuMywyLjc4Ljc0LDEuMDMsMS4xMiwyLjE4LDEuMTIsMy40MywwLDEuODMtLjUzLDMuMzctMS41OSw0LjYzLTEuMDYsMS4yNS0yLjYzLDIuMjEtNC43MSwyLjg3LTIuMDguNjUtNC42Ny45OC03Ljc1Ljk4LTEuNTQsMC0zLjIxLS4wNy01LjAxLS4yMS0xLjgtLjE1LTMuNi0uMzktNS40LS43My0xLjgtLjM0LTMuNTQtLjczLTUuMjItMS4xNi0xLjY5LS40My0zLjI0LS45LTQuNjctMS40MWwtMi4wNiw3LjU0YzEuNDMuNTEsMy4wNCwxLDQuODQsMS40NSwxLjguNDYsMy43Ljg1LDUuNywxLjE2LDIsLjMxLDMuOTUuNTUsNS44Ny43MywxLjkxLjE3LDMuNzUuMjUsNS41Mi4yNSwyLjYzLDAsNS4wNi0uMTcsNy4yOS0uNTIsMi4xNC0uMzIsNC4wOS0uODEsNS44Ni0xLjQ1LDIuMDktLjc2LDMuOS0xLjcxLDUuNDEtMi44N2guMDFjMS4xMS0uODQsMi4wNS0xLjc3LDIuODQtMi44MiwxLjg5LTIuNDksMi44My01LjUzLDIuODMtOS4xMiwwLTIuMjktLjM0LTQuMy0xLjAzLTYuMDRaIi8+CiAgICAgIDwvZz4KICAgICAgPGc+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjc0LjY0LDEzOS44OGwtNjcuMzYtOTguMTQtLjQzLS41OUMxODEuMTUsNi45NSwxNTkuOTksMCwxNDAuNDYsMHMtNDAuNjgsNi45NS02Ni4zOSw0MS4xNmwtLjQzLjU5TDYuMjgsMTM5Ljg4Yy0uMjMuMzQuMTEuNzguNDkuNjMsMTMuMTctNS4xLDMxLjA1LTEyLjE1LDQyLjU1LTE3LjJoMHMuMDEtLjAxLjAxLS4wMWMyLjY3LTEuMTgsNS4wMS0yLjI0LDYuODUtMy4xNiwxLjIzLS42MSwyLjQ4LTEuMTUsMy43My0xLjcxLDIuMTctLjk4LDQuMDUtMi41MSw1LjQtNC40N2wzNi4xLTUyLjZjOC42OC0xMS41LDE3LjQ4LTE4LjIsMjQuNzktMjIuMSw4LjkxLTQuNzYsMTkuNi00Ljc2LDI4LjUxLDAsNy4zMSwzLjkxLDE2LjExLDEwLjYxLDI0Ljc5LDIyLjFsMzYuMSw1Mi42YzEuMzgsMi4wMiwzLjMzLDMuNTgsNS41Nyw0LjU1LDEuMy41NiwyLjU5LDEuMTYsMy44NiwxLjc4LDEuNzkuODgsNC4wMiwxLjg5LDYuNTUsMy4wMWguMDFjMTEuNSw1LjA2LDI5LjM4LDEyLjExLDQyLjU1LDE3LjIxLjM5LjE1LjczLS4yOS40OS0uNjNaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjc5Ljc2LDE0OS45NmMtOS4wMS0zLjUzLTQwLjI3LTE1Ljg0LTU0LjY0LTIyLjE0aDBzLS4wMS0uMDEtLjAxLS4wMWMtMi41My0xLjEyLTQuNzYtMi4xMy02LjU1LTMuMDEtMTUuOTktNy44Mi0zNC4wMS0xMS4xMy01MS4wOC02LjA2bC0xOS41Nyw1LjgyYy0yLjQ0LjczLTQuOTQsMS4xNC03LjQ1LDEuMjUtMi41MS0uMTItNS4wMS0uNTMtNy40NS0xLjI1bC0xOS41Ny01LjgyYy0xNy4wNy01LjA3LTM1LjA5LTEuNzYtNTEuMDgsNi4wNi0xLjc5Ljg4LTQuMDIsMS44OS02LjU1LDMuMDFoLS4wMWMtMTQuMzYsNi4zMS00NS42MywxOC42Mi01NC42NCwyMi4xNS0xLjIuNDctMS41NSwxLjk5LS42OSwyLjk1bDE0Ljk5LDE2LjY5YzQuMjcsNC43NSwxMS4wMyw2LjM3LDE2Ljk4LDQuMDYsMTUuOTYtNi4yLDM3LjQyLTE0Ljc1LDQ2LjkzLTE5LjQxLDcuNjMtMy43NSwxNi4yNC01LjM0LDI0LjM5LTIuOTJsMTkuNTcsNS44MmM1LjUzLDEuNjQsMTEuMjEsMi41MywxNi45LDIuNjd2LjAyYy4wOCwwLC4xNiwwLC4yNCwwLC4wOCwwLC4xNiwwLC4yNCwwdi0uMDJjNS42OS0uMTQsMTEuMzYtMS4wMywxNi45LTIuNjdsMTkuNTctNS44MmM4LjE1LTIuNDIsMTYuNzYtLjgzLDI0LjM5LDIuOTIsOS41MSw0LjY2LDMwLjk3LDEzLjIxLDQ2LjkyLDE5LjQxLDUuOTUsMi4zMSwxMi43MS43LDE2Ljk4LTQuMDZsMTQuOTktMTYuNjljLjg2LS45Ni41MS0yLjQ4LS42OS0yLjk1WiIvPgogICAgICA8L2c+CiAgICAgIDxnPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTM3NS4zOCw5Mi45NGwtMTYuMDIsMjYuOTRjLS44MSwxLjM3LTIuNzksMS4zNi0zLjYsMGwtMTUuOTMtMjYuOTNoLTkuODV2NTkuOTVoOC43NHYtNDUuMzFsMTUuNjYsMjYuMjJjLjM4LjYzLDEuMDYsMS4wMiwxLjgsMS4wMmgyLjE3Yy43MywwLDEuNDEtLjM4LDEuNzktMS4wMWwxNS44NC0yNi4zMXY0NS4zOWg4Ljczdi01OS45NWgtOS4zM1oiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zOTQuMzEsOTIuOTR2NTkuOTVoOS41OXYtNTkuOTVoLTkuNTlaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDIzLDE0NC41N3YtNTEuNjRoLTkuNTl2NTkuOTVoMzcuNzd2LTguMzFoLTI4LjE4WiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ1Ni41Nyw5Mi45NHY1OS45NWg5LjZ2LTU5Ljk1aC05LjZaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNTI0LjkyLDExMC40NWMtLjg2LTMuNDUtMi4wNS02LjM1LTMuNi04LjY5LTEuNTQtMi4zNC0zLjM5LTQuMjMtNS41Ni01LjY1LTIuMTctMS40My00LjU5LTIuNDYtNy4yNC0zLjA5LTIuNjYtLjYyLTUuNTgtLjk0LTguNzgtLjk0cy02LjEyLjMyLTguNzguOTRjLTIuNjUuNjMtNS4wNywxLjY2LTcuMjQsMy4wOS0yLjE3LDEuNDItNC4wMiwzLjMyLTUuNTYsNS42OS0xLjU1LDIuMzctMi43Miw1LjMtMy41Miw4Ljc4cy0xLjE5LDcuNi0xLjE5LDEyLjMzLjQxLDguNzcsMS4yNCwxMi4yNWMuODIsMy40OSwyLjAxLDYuNDEsMy41NSw4Ljc4LDEuNTQsMi4zNywzLjQzLDQuMjgsNS42Niw1Ljc0LDIuMjIsMS40Niw0LjY1LDIuNSw3LjI3LDMuMTMsMi42My42Miw1LjUxLjk0LDguNjYuOTRzNi4wMy0uMzIsOC42OS0uOTRjMi42NS0uNjMsNS4wNy0xLjY0LDcuMjQtMy4wNCwyLjE3LTEuNCw0LjAyLTMuMyw1LjU2LTUuNywxLjU1LTIuNCwyLjc0LTUuMzUsMy42LTguODYuODYtMy41MiwxLjI5LTcuNywxLjI5LTEyLjU1cy0uNDMtOC43NS0xLjI5LTEyLjIxWk01MTUuNTQsMTMyLjQyYy0uNTQsMi42OS0xLjMzLDQuOS0yLjM1LDYuNjQtMS4wMywxLjc0LTIuMjQsMy4xMy0zLjY0LDQuMTUtMS40LDEuMDMtMi45NCwxLjc3LTQuNjMsMi4yMy0xLjY4LjQ2LTMuNDQuNjktNS4yNy42OXMtMy40Ni0uMjMtNS4wOS0uNjljLTEuNjMtLjQ2LTMuMTQtMS4yLTQuNTQtMi4yMy0xLjQtMS4wMi0yLjYxLTIuNDItMy42NC00LjE5cy0xLjgzLTMuOTctMi40LTYuNmMtLjU3LTIuNjItLjg2LTUuNzYtLjg2LTkuNDJzLjI5LTYuOTguODYtOS42M2MuNTctMi42NiwxLjM3LTQuODksMi40LTYuNjksMS4wMy0xLjc5LDIuMjQtMy4xOSwzLjY0LTQuMTksMS40LTEsMi45MS0xLjczLDQuNTQtMi4xOSwxLjYzLS40NSwzLjMyLS42OCw1LjA5LS42OHMzLjU5LjIzLDUuMjcuNjhjMS42OS40NiwzLjIzLDEuMiw0LjYzLDIuMjMsMS40LDEuMDMsMi41OSwyLjQxLDMuNTksNC4xNSwxLDEuNzUsMS43OSwzLjk2LDIuMzYsNi42NC41NywyLjY5Ljg2LDUuODguODYsOS41OXMtLjI4LDYuODMtLjgyLDkuNTFaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNTcxLjM0LDkyLjk0djQ0Ljk2bC0yOC43OC00NS4xM2gtOS4wN3Y2MC4xMmg4LjY1di00NC41NGwyOC43Nyw0NC43MWg5LjA4di02MC4xMmgtOC42NVoiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MTQuNDIsOTIuNDJoLTcuOTZjLS45MiwwLTEuNzUuNTktMi4wNCwxLjQ3bC0xOS41NSw1OWg5Ljk0bDEzLjQ0LTQ1LjA4Yy42MS0yLjA0LDMuNTEtMi4wNCw0LjExLDBsMTMuMzcsNDUuMDdoMTAuNTRsLTE5LjgxLTU5LjAxYy0uMjktLjg3LTEuMTEtMS40Ni0yLjAzLTEuNDZaIi8+CiAgICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjkxLjE2LDE0NC4zMmMtLjE3LDAtLjQuMDEtLjY4LjA0LS4yOS4wMy0uNDkuMDQtLjYuMDQtMS4wMywwLTIuMTMtLjMyLTMuMy0uOTgtMS4xNy0uNjYtMi40NC0xLjY0LTMuODEtMi45Ni0xLjM3LTEuMzEtMi44Ny0yLjk1LTQuNS00LjkyLTEuNjItMS45Ny0zLjQxLTQuMzgtNS4zNS03LjI0LDIuODYtLjgsNS4yNy0xLjk3LDcuMjQtMy41MSwxLjk3LTEuNTQsMy40OC0zLjUzLDQuNTQtNS45NSwxLjA1LTIuNDMsMS41OC01LjQxLDEuNTgtOC45NSwwLTMuMi0uNDYtNS45Ni0xLjM3LTguMjctLjkxLTIuMzEtMi4zNS00LjE3LTQuMzItNS41Ny0xLjk3LTEuMzktNC41Ni0yLjQxLTcuNzUtMy4wNC0zLjItLjYyLTcuMDMtLjk0LTExLjQ4LS45NC0xLjk0LDAtMy45Ni4wMy02LjA0LjA5LTIuMDguMDUtNC4yOC4xNC02LjYuMjUtMi4zMS4xMi00Ljg5LjI2LTcuNzUuNDN2NjAuMDRoOS43N3YtMjIuMThjMS4zNy4wNiwyLjgyLjA4LDQuMzcuMDhoNC4xOWMuNTcsMCwxLjI5LS4wMSwyLjE0LS4wNC44Ni0uMDMsMS41Mi0uMDcsMS45Ny0uMTMsMi4xMiwzLjMyLDQuMDksNi4yNCw1LjkxLDguNzgsMS44MywyLjU0LDMuNTksNC43MSw1LjI3LDYuNTFzMy4zMSwzLjI5LDQuODgsNC40NmMxLjU3LDEuMTcsMy4xMywyLjAyLDQuNjcsMi41NywxLjU0LjU0LDMuMDguODEsNC42My44MS41NywwLDEuMDUtLjAzLDEuNDUtLjA5LjQtLjA1Ljc0LS4xMSwxLjAzLS4xN2wtLjA5LTkuMTZaTTY2Ny45MSwxMjIuMTljLTEuOTEuNDMtNC4xOC42NC02LjgxLjY0aC0yLjRjLS44LDAtMS42NC0uMDEtMi41Mi0uMDQtLjg5LS4wMy0xLjc2LS4wNi0yLjYyLS4wOS0uODUtLjAzLTEuNzktLjA3LTIuODItLjEzdi0yMi40NGMxLjItLjExLDIuMjQtLjE4LDMuMTItLjIxLjg5LS4wMywxLjctLjA2LDIuNDQtLjA5Ljc1LS4wMywxLjUzLS4wNCwyLjM2LS4wNGgyLjg3YzMuNzcsMCw2Ljc0LjM5LDguOTEsMS4xNiwyLjE3Ljc3LDMuNjksMS45Nyw0LjU4LDMuNTkuODgsMS42MywxLjMzLDMuODcsMS4zMyw2LjczLDAsMi4xNy0uMzIsMy45OC0uOTUsNS40NC0uNjIsMS40NS0xLjU1LDIuNjItMi43OCwzLjUxLTEuMjMuODgtMi44LDEuNTQtNC43MSwxLjk3WiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTY5Ni4zLDkyLjk0djU5Ljk1aDkuNnYtNTkuOTVoLTkuNloiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik03ODcuMDIsMTE1Ljk3djEwLjJjMy4xNC45Nyw1Ljg0LDEuODgsOC4xMiwyLjc0LjUyLjE5LDEuMDEuMzksMS40OC41OHYtMTAuMTNjLTIuOTEtLjg0LTUuNC0xLjY3LTcuNDctMi40OC0uNzYtLjMtMS40OC0uNi0yLjEzLS45MVpNNzg3LjAyLDg3LjU4djEzLjAxYzEuODYtLjU0LDQuMDMtLjgxLDYuNS0uODEsMSwwLDIuMDMuMDMsMy4xLjF2LTEyLjNoLTkuNlpNNzkxLjEyLDE0Ni4xM2MtMS4yOCwwLTIuNjUtLjA1LTQuMS0uMTV2MTIuMmg5LjZ2LTEyLjVjLTEuNjEuMy0zLjQ1LjQ1LTUuNS40NVoiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik03NjQuNjUsMTEwLjQ1Yy0uODYtMy40NS0yLjA1LTYuMzUtMy42LTguNjktMS41NC0yLjM0LTMuMzktNC4yMy01LjU2LTUuNjUtMi4xNy0xLjQzLTQuNTktMi40Ni03LjI0LTMuMDktMi42Ni0uNjItNS41OC0uOTQtOC43OC0uOTRzLTYuMTIuMzItOC43OC45NGMtMi42NS42My01LjA3LDEuNjYtNy4yNCwzLjA5LTIuMTcsMS40Mi00LjAyLDMuMzItNS41Niw1LjY5LTEuNTUsMi4zNy0yLjcyLDUuMy0zLjUyLDguNzhzLTEuMTksNy42LTEuMTksMTIuMzMuNDEsOC43NywxLjI0LDEyLjI1Yy44MiwzLjQ5LDIuMDEsNi40MSwzLjU1LDguNzgsMS41NCwyLjM3LDMuNDMsNC4yOCw1LjY2LDUuNzQsMi4yMiwxLjQ2LDQuNjUsMi41LDcuMjcsMy4xMywyLjYzLjYyLDUuNTEuOTQsOC42Ni45NHM2LjAzLS4zMiw4LjY5LS45NGMyLjY1LS42Myw1LjA3LTEuNjQsNy4yNC0zLjA0LDIuMTctMS40LDQuMDItMy4zLDUuNTYtNS43LDEuNTUtMi40LDIuNzQtNS4zNSwzLjYtOC44Ni44Ni0zLjUyLDEuMjktNy43LDEuMjktMTIuNTVzLS40My04Ljc1LTEuMjktMTIuMjFaTTc1NS4yNywxMzIuNDJjLS41NCwyLjY5LTEuMzMsNC45LTIuMzUsNi42NC0xLjAzLDEuNzQtMi4yNCwzLjEzLTMuNjQsNC4xNS0xLjQsMS4wMy0yLjk0LDEuNzctNC42MywyLjIzLTEuNjguNDYtMy40NC42OS01LjI3LjY5cy0zLjQ2LS4yMy01LjA5LS42OWMtMS42My0uNDYtMy4xNC0xLjItNC41NC0yLjIzLTEuNC0xLjAyLTIuNjEtMi40Mi0zLjY0LTQuMTlzLTEuODMtMy45Ny0yLjQtNi42Yy0uNTctMi42Mi0uODYtNS43Ni0uODYtOS40MnMuMjktNi45OC44Ni05LjYzYy41Ny0yLjY2LDEuMzctNC44OSwyLjQtNi42OSwxLjAzLTEuNzksMi4yNC0zLjE5LDMuNjQtNC4xOSwxLjQtMSwyLjkxLTEuNzMsNC41NC0yLjE5LDEuNjMtLjQ1LDMuMzItLjY4LDUuMDktLjY4czMuNTkuMjMsNS4yNy42OGMxLjY5LjQ2LDMuMjMsMS4yLDQuNjMsMi4yMywxLjQsMS4wMywyLjU5LDIuNDEsMy41OSw0LjE1LDEsMS43NSwxLjc5LDMuOTYsMi4zNiw2LjY0LjU3LDIuNjkuODYsNS44OC44Niw5LjU5cy0uMjgsNi44My0uODIsOS41MVoiLz4KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik04MTMuOSwxMzAuOTJjLS42OS0xLjc0LTEuNzctMy4yOC0zLjI1LTQuNjItMS40OS0xLjM0LTMuMzctMi41OC01LjY2LTMuNzMtMi4yOC0xLjE0LTUuMDItMi4yLTguMjItMy4xNy0uMDUtLjAxLS4xLS4wMy0uMTUtLjA0LTIuOTEtLjg0LTUuNC0xLjY3LTcuNDctMi40OC0uNzYtLjMtMS40OC0uNi0yLjEzLS45MS0xLjE3LS41NS0yLjE3LTEuMTItMy4wMS0xLjcxLTEuMzItLjkxLTIuMjYtMS44NS0yLjgzLTIuODItLjU3LS45Ny0uODYtMi4xMS0uODYtMy40MywwLTIuNjIsMS4yLTQuNjUsMy42LTYuMDguOTItLjU1LDEuOTUtLjk5LDMuMS0xLjMzLDEuODYtLjU0LDQuMDMtLjgxLDYuNS0uODEsMSwwLDIuMDMuMDMsMy4xLjEuMzkuMDEuNzguMDQsMS4xOC4wNywxLjQ4LjEyLDIuOTcuMjksNC40NS41MSwxLjQ5LjIzLDIuOTEuNTEsNC4yOC44MiwxLjM3LjMxLDIuNi42NywzLjY5LDEuMDdsMS44OC03LjU0Yy0xLjQzLS40NS0zLjE1LS45LTUuMTgtMS4zMy0yLjAzLS40Mi00LjItLjc3LTYuNTEtMS4wMi0xLjI3LS4xNC0yLjU0LS4yNS0zLjc5LS4zMS0xLjAxLS4wNS0yLjAyLS4wOC0zLjAyLS4wOC0yLjM3LDAtNC41Ni4xNi02LjU4LjQ4LTEuMjQuMTktMi40Mi40NS0zLjUzLjc2LTIuOTEuODMtNS4zMiwxLjk5LTcuMjMsMy40Ny0xLjkyLDEuNDktMy4zNCwzLjIzLTQuMjksNS4yMy0uOTQsMi0xLjQxLDQuMTktMS40MSw2LjU5LDAsMi4xNy4zMSw0LjExLjk0LDUuODMuNjMsMS43MSwxLjYyLDMuMjYsMi45Niw0LjY2LDEuMzQsMS40LDMuMDUsMi42Nyw1LjE0LDMuODEsMi4wOCwxLjE1LDQuNTUsMi4yMyw3LjQxLDMuMjZoLjAxYzMuMTQuOTcsNS44NCwxLjg4LDguMTIsMi43NC41Mi4xOSwxLjAxLjM5LDEuNDguNTgsMS42My42NiwzLjAxLDEuMzEsNC4xMywxLjk1LDEuNDYuODMsMi41NiwxLjc1LDMuMywyLjc4Ljc0LDEuMDMsMS4xMSwyLjE3LDEuMTEsMy40MywwLDEuODItLjUzLDMuMzctMS41OCw0LjYyLTEuMDYsMS4yNi0yLjYzLDIuMjItNC43MSwyLjg3LS43LjIyLTEuNDUuNC0yLjI1LjU0LTEuNjEuMy0zLjQ1LjQ1LTUuNS40NS0xLjI4LDAtMi42NS0uMDUtNC4xLS4xNS0uMy0uMDItLjYtLjA0LS45MS0uMDctMS44LS4xNC0zLjYtLjM4LTUuNC0uNzMtMS44LS4zNC0zLjU0LS43Mi01LjIyLTEuMTUtMS42OS0uNDMtMy4yNS0uOS00LjY3LTEuNDJsLTIuMDYsNy41NGMxLjQzLjUyLDMuMDQsMSw0Ljg0LDEuNDZzMy43Ljg0LDUuNywxLjE1YzIsLjMyLDMuOTUuNTYsNS44Ni43My42My4wNiwxLjI1LjEsMS44Ni4xMywxLjI2LjA5LDIuNDguMTMsMy42Ny4xMywyLjEsMCw0LjA4LS4xMSw1LjkzLS4zNCwyLjY3LS4zMSw1LjA4LS44Niw3LjIyLTEuNjMsMy42Mi0xLjMxLDYuMzgtMy4yMSw4LjI2LTUuNywxLjg5LTIuNDgsMi44My01LjUyLDIuODMtOS4xMiwwLTIuMjgtLjM0LTQuMjktMS4wMy02LjA0WiIvPgogICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYzNi4yNiw4OC41N2gtMTcuMzhjLS4xOCwwLS4zMi0uMjgtLjMyLS42M3YtMy4zNmMwLS4zMy4xMy0uNi4zLS42M2wxNy40LTQuMTF2OC43M1oiLz4KICAgICAgPC9nPgogICAgPC9nPgogIDwvZz4KPC9zdmc+" alt="Agentes Milionários" /></a>
-    <nav>
-      <button onclick="document.getElementById('funcionalidades').scrollIntoView({behavior:'smooth'})">Funcionalidades</button>
-      <button onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Planos</button>
-      <a href="index.html">Voltar</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="brand" aria-label="Agentes Milionários — página inicial"><img src="/logo-white.svg" alt="Agentes Milionários" width="150" height="34" /></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#planos">Planos</a>
+      <a href="#comparativo">Comparativo</a>
+      <a href="/">Agentes de IA</a>
     </nav>
-    <button class="btn-brand" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Quero contratar</button>
+    <a class="btn btn-cyan header-cta" href="#planos">Quero contratar</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="mobile-menu" id="menu" hidden>
+    <a href="#funcionalidades">Funcionalidades</a>
+    <a href="#planos">Planos</a>
+    <a href="#comparativo">Comparativo</a>
+    <a href="/">Agentes de IA para clínicas</a>
+    <a href="/empresas">Agentes de IA para empresas</a>
+    <a class="btn btn-cyan" href="#planos">Quero contratar</a>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-glow2" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="eyebrow">CRM com IA + WhatsApp integrado</div>
-        <h1>PARE DE<br><span class="accent">PERDER</span><br>VENDA.</h1>
-        <p>O CRM feito para empresas brasileiras que precisam organizar leads, automatizar o WhatsApp e fechar mais negócios — sem complicação.</p>
-        <div class="hero-btns">
-          <button class="btn-hero-primary" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Quero o MilionCRM</button>
-          <button class="btn-hero-outline" onclick="document.getElementById('funcionalidades').scrollIntoView({behavior:'smooth'})">Ver funcionalidades</button>
-        </div>
-        <div class="hero-stats">
-          <div>
-            <div class="stat-val">+29%</div>
-            <div class="stat-lbl">conversões — caso Troca Game</div>
-          </div>
-          <div>
-            <div class="stat-val">R$89</div>
-            <div class="stat-lbl">por usuário / mês no plano anual</div>
-          </div>
-          <div>
-            <div class="stat-val">100%</div>
-            <div class="stat-lbl">integrado ao WhatsApp</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-img">
-        <img src="tela_milioncrm.png" alt="Interface do MilionCRM" />
-      </div>
-    </div>
-  </div>
-</section>
+<main>
 
-<!-- PAIN POINTS -->
-<section class="pain">
-  <div class="container">
-    <div class="pain-head reveal">
-      <div class="pain-tag">O problema</div>
-      <h2 class="pain-title">VOCÊ ESTÁ PERDENDO DINHEIRO AGORA</h2>
-    </div>
-    <div class="pain-grid reveal">
-      <div class="pain-item">
-        <div class="pain-emoji">📋</div>
-        <div class="pain-item-title">Lead caindo no esquecimento</div>
-        <p class="pain-item-desc">Anotou no papel, no WhatsApp, numa planilha... e sumiu. O cliente foi comprar na concorrência.</p>
-      </div>
-      <div class="pain-item">
-        <div class="pain-emoji">🔁</div>
-        <div class="pain-item-title">Follow-up manual e irregular</div>
-        <p class="pain-item-desc">Depende da memória do vendedor. Sem processo, sem cadência, sem previsibilidade.</p>
-      </div>
-      <div class="pain-item">
-        <div class="pain-emoji">😵</div>
-        <div class="pain-item-title">Zero visibilidade do funil</div>
-        <p class="pain-item-desc">Quantos leads ativos você tem agora? Em qual etapa? Você não sabe — e isso custa caro.</p>
-      </div>
-      <div class="pain-item">
-        <div class="pain-emoji">💸</div>
-        <div class="pain-item-title">Pagando caro por ferramentas gringas</div>
-        <p class="pain-item-desc">HubSpot, Pipedrive, Salesforce... dólares, interface em inglês, configuração que nunca termina.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features" id="funcionalidades">
-  <div class="container">
-    <div class="features-head reveal">
-      <div class="pain-tag">O que você leva</div>
-      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em">TUDO QUE SUA EQUIPE PRECISA PARA VENDER MAIS</h2>
-      <p>Um CRM completo, pensado do zero para o mercado brasileiro.</p>
-    </div>
-    <div class="features-grid reveal">
-      <div class="feat-item">
-        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg></div>
-        <div class="feat-title">Funil de Vendas Visual</div>
-        <p class="feat-desc">Kanban drag-and-drop. Veja cada lead em qual etapa está e mova com um clique.</p>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div class="feat-title">WhatsApp Integrado</div>
-        <p class="feat-desc">Disparo de mensagens diretamente pelo CRM. Histórico completo de cada cliente.</p>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <div class="feat-title">Gestão de Contatos e Leads</div>
-        <p class="feat-desc">Cadastro completo, histórico de interações, tags e segmentações.</p>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <div class="feat-title">Relatórios e Métricas</div>
-        <p class="feat-desc">Taxa de conversão, tempo médio de fechamento, desempenho por vendedor.</p>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="feat-title">Múltiplos Usuários</div>
-        <p class="feat-desc">Toda a equipe no mesmo sistema. O gestor vê tudo em tempo real.</p>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="feat-title">Histórico Centralizado</div>
-        <p class="feat-desc">Toda conversa e proposta registrada. Qualquer membro retoma de onde parou.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INTEGRATIONS -->
-<section class="integrations">
-  <div class="container">
-    <div class="integrations-head reveal">
-      <div class="pain-tag">Integrações</div>
-      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-.02em">CONECTA COM O QUE VOCÊ JÁ USA</h2>
-    </div>
-    <div class="int-chips reveal">
-      <div class="int-chip active"><span class="int-dot on"></span>WhatsApp Business</div>
-      <div class="int-chip active"><span class="int-dot on"></span>Meta Ads (Facebook)</div>
-      <div class="int-chip active"><span class="int-dot on"></span>Instagram</div>
-      <div class="int-chip active"><span class="int-dot on"></span>Messenger</div>
-      <div class="int-chip active"><span class="int-dot on"></span>IA Integrada</div>
-      <div class="int-chip active"><span class="int-dot on"></span>Follow-up Automático</div>
-      <div class="int-chip active"><span class="int-dot on"></span>Webchat</div>
-      <div class="int-chip active"><span class="int-dot on"></span>Forms</div>
-      <div class="int-chip inactive"><span class="int-dot off"></span>IA Personalizada <span class="int-badge">add-on</span></div>
-      <div class="int-chip inactive"><span class="int-dot off"></span>Follow-up Personalizado <span class="int-badge">add-on</span></div>
-      <div class="int-chip inactive"><span class="int-dot off"></span>WhatsApp Business API <span class="int-badge">add-on</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL PROOF -->
-<section class="proof">
-  <div class="container">
-    <div class="proof-head reveal">
-      <div class="pain-tag">Resultado real</div>
-      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em">QUEM USA, VENDE MAIS</h2>
-    </div>
-    <div class="testimonial reveal">
-      <p>"Depois de implementar o MilionCRM integrado com IA, a Troca Game aumentou <strong>29% nas conversões</strong>. Os leads pararam de cair no esquecimento e o time de vendas finalmente tem visibilidade do funil."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">TG</div>
-        <div>
-          <div class="author-name">Troca Game</div>
-          <div class="author-role">Varejo de Games — cliente Agentes Milionários</div>
+<!-- ══════════════ HERO ══════════════ -->
+<section class="crm-hero">
+  <div class="wrap">
+    <div class="crm-hero-top">
+      <h1 data-split>Pare de <em>perder</em> venda.</h1>
+      <div class="crm-hero-side" data-reveal style="--d:4">
+        <p class="hero-sub">O MilionCRM é o CRM com IA e WhatsApp integrado, feito para empresas brasileiras que precisam organizar leads, automatizar o WhatsApp e fechar mais negócios. Sem complicação.</p>
+        <div class="hero-actions">
+          <a class="btn btn-cyan" href="#planos">Quero o MilionCRM</a>
+          <a class="link-arrow" href="#funcionalidades">Ver funcionalidades<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
-    <div class="proof-stats reveal">
-      <div class="proof-stat"><div class="proof-stat-val">+29%</div><div class="proof-stat-lbl">aumento em conversões</div></div>
-      <div class="proof-stat"><div class="proof-stat-val">100%</div><div class="proof-stat-lbl">leads rastreados no funil</div></div>
-      <div class="proof-stat"><div class="proof-stat-val">Setup</div><div class="proof-stat-lbl">feito pela nossa equipe</div></div>
+    <dl class="crm-facts">
+      <div data-reveal style="--d:6"><dt class="num">+29%</dt><dd>em conversões no caso Troca Game</dd></div>
+      <div data-reveal style="--d:7"><dt class="num">R$89</dt><dd>por usuário/mês no plano anual</dd></div>
+      <div data-reveal style="--d:8"><dt class="num">100%</dt><dd>integrado ao WhatsApp</dd></div>
+    </dl>
+  </div>
+  <div class="wrap crm-shot" data-reveal style="--d:5">
+    <div class="crm-shot-inner">
+      <img src="/tela_milioncrm.webp" alt="Tela do MilionCRM: caixa de entrada com as conversas do WhatsApp, a conversa aberta e o painel do contato" width="1600" height="1291" fetchpriority="high" />
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="planos">
-  <div class="container">
-    <div class="pricing-head reveal">
-      <div class="pain-tag">Planos</div>
-      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em">INVISTA UMA VEZ, FECHE O ANO INTEIRO</h2>
+<!-- ══════════════ O PROBLEMA ══════════════ -->
+<section class="section crm-pain lift" id="problema">
+  <div class="wrap split">
+    <div class="section-head">
+      <h2 data-split>Você está perdendo dinheiro agora.</h2>
+      <p class="section-lead" data-reveal style="--d:3">Sem um CRM, a venda escapa por estes quatro caminhos.</p>
     </div>
-    <p class="pricing-sub reveal">Licença por usuário, sem taxa de setup. Planos de 9 e 12 meses ganham 30 dias de bônus.</p>
-    <div class="plans-grid reveal">
+    <ol class="steps">
+      <li class="step"><span class="step-n num">01</span><h3>Lead caindo no esquecimento</h3><p>Anotou no papel, no WhatsApp, numa planilha... e sumiu. O cliente foi comprar na concorrência.</p></li>
+      <li class="step"><span class="step-n num">02</span><h3>Follow-up manual e irregular</h3><p>Depende da memória do vendedor. Sem processo, sem cadência, sem previsibilidade.</p></li>
+      <li class="step"><span class="step-n num">03</span><h3>Zero visibilidade do funil</h3><p>Quantos leads ativos você tem agora? Em qual etapa? Você não sabe, e isso custa caro.</p></li>
+      <li class="step"><span class="step-n num">04</span><h3>Pagando caro por ferramentas gringas</h3><p>HubSpot, Pipedrive, Salesforce... dólares, interface em inglês e uma configuração que nunca termina.</p></li>
+    </ol>
+  </div>
+</section>
 
-      <div class="plan-card">
-        <div class="plan-name">Plano Semestral</div>
-        <div class="plan-duration">6 MESES</div>
-        <div class="plan-price-from">A partir de</div>
-        <div><span class="plan-price">R$169</span><span class="plan-price-period">,90/usuário/mês</span></div>
-        <div class="plan-total">Total: <strong>R$ 1.019,40/usuário</strong></div>
-        <hr class="plan-divider" />
+<!-- ══════════════ FUNCIONALIDADES ══════════════ -->
+<section class="section crm-features lift" id="funcionalidades">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>Tudo que sua equipe precisa para vender mais.</h2>
+      <p class="section-lead" data-reveal style="--d:3">Um CRM completo, pensado do zero para o mercado brasileiro.</p>
+    </div>
+    <ul class="feature-list">
+      <li data-reveal><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg>Funil de vendas visual</h3><p>Kanban de arrastar e soltar. Veja em qual etapa está cada lead e mova com um clique.</p></li>
+      <li data-reveal style="--d:1"><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WhatsApp integrado</h3><p>Disparo de mensagens direto pelo CRM, com o histórico completo de cada cliente.</p></li>
+      <li data-reveal><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Gestão de contatos e leads</h3><p>Cadastro completo, histórico de interações, etiquetas e segmentações.</p></li>
+      <li data-reveal style="--d:1"><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Relatórios e métricas</h3><p>Taxa de conversão, tempo médio de fechamento e desempenho por vendedor.</p></li>
+      <li data-reveal><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Múltiplos usuários</h3><p>Toda a equipe no mesmo sistema. O gestor vê tudo em tempo real.</p></li>
+      <li data-reveal style="--d:1"><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Histórico centralizado</h3><p>Toda conversa e proposta fica registrada. Qualquer pessoa da equipe retoma de onde parou.</p></li>
+    </ul>
+  </div>
+
+  <!-- Integrações -->
+  <div class="crm-int">
+    <div class="wrap head-row">
+      <div class="section-head"><h2 data-split>Conecta com o que você já usa.</h2></div>
+    </div>
+    <div class="marquee" role="region" aria-label="Integrações do MilionCRM">
+      <ul class="marquee-track">
+        <li>WhatsApp Business</li><li>Meta Ads (Facebook)</li><li>Instagram</li><li>Messenger</li><li>IA integrada</li><li>Follow-up automático</li><li>Webchat</li><li>Forms</li>
+      </ul>
+      <ul class="marquee-track" aria-hidden="true">
+        <li>WhatsApp Business</li><li>Meta Ads (Facebook)</li><li>Instagram</li><li>Messenger</li><li>IA integrada</li><li>Follow-up automático</li><li>Webchat</li><li>Forms</li>
+      </ul>
+    </div>
+    <div class="wrap addons" data-reveal>
+      <p>Disponíveis como add-on</p>
+      <ul><li>IA personalizada</li><li>Follow-up personalizado</li><li>WhatsApp Business API</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESULTADO REAL ══════════════ -->
+<section class="section results lift" id="resultado">
+  <div class="wrap split">
+    <div class="section-head">
+      <h2>Quem usa, vende mais.</h2>
+      <blockquote class="crm-quote">
+        <p>“Depois de implementar o MilionCRM integrado com IA, a Troca Game aumentou 29% nas conversões. Os leads pararam de cair no esquecimento e o time de vendas finalmente tem visibilidade do funil.”</p>
+        <footer><strong>Troca Game</strong> · varejo de games, cliente Agentes Milionários</footer>
+      </blockquote>
+    </div>
+    <ul class="metrics">
+      <li><span class="metric-n num">+29%</span><div><strong>Aumento em conversões</strong><p>Resultado da Troca Game com o MilionCRM integrado à IA.</p></div></li>
+      <li><span class="metric-n num">100%</span><div><strong>Leads rastreados no funil</strong><p>Nenhum contato fica perdido em papel, planilha ou conversa esquecida.</p></div></li>
+      <li><span class="metric-n">Setup</span><div><strong>Feito pela nossa equipe</strong><p>Você não precisa configurar nada sozinho.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════ PLANOS ══════════════ -->
+<section class="section crm-pricing lift" id="planos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>Invista uma vez, feche o ano inteiro.</h2>
+      <p class="section-lead" data-reveal style="--d:3">Licença por usuário, sem taxa de setup. Planos de 9 e 12 meses ganham 30 dias de bônus.</p>
+    </div>
+    <div class="plans">
+      <article class="plan" data-reveal>
+        <h3>Plano Semestral</h3>
+        <p class="plan-term">6 meses</p>
+        <p class="plan-price"><small>A partir de</small><span class="num">R$ 169,90</span><small>/usuário/mês</small></p>
+        <p class="plan-total">Total: <strong class="num">R$ 1.019,40</strong> por usuário</p>
         <ul class="plan-perks">
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Funil de vendas Kanban</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>WhatsApp integrado</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Gestão de leads e contatos</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Relatórios e métricas</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Múltiplos usuários</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Suporte Agentes Milionários</li>
+          <li>Funil de vendas Kanban</li>
+          <li>WhatsApp integrado</li>
+          <li>Gestão de leads e contatos</li>
+          <li>Relatórios e métricas</li>
+          <li>Múltiplos usuários</li>
+          <li>Suporte Agentes Milionários</li>
         </ul>
-        <button class="btn-plan outline" onclick="openModal('6 MESES')">Contratar agora</button>
-      </div>
-
-      <div class="plan-card featured">
-        <div class="plan-badge">Mais escolhido</div>
-        <div class="plan-name">Plano Trimestral +</div>
-        <div class="plan-duration">9 MESES + 30 DIAS</div>
-        <div class="plan-price-from">A partir de</div>
-        <div><span class="plan-price">R$149</span><span class="plan-price-period">,90/usuário/mês</span></div>
-        <div class="plan-total">Total: <strong>R$ 1.349,10/usuário</strong> <span class="highlight">— +30 dias grátis</span></div>
-        <hr class="plan-divider" />
+        <button class="btn btn-line" type="button" onclick="openModal('6 MESES')">Contratar agora</button>
+      </article>
+      <article class="plan plan-featured" data-reveal style="--d:2">
+        <p class="plan-badge">Mais escolhido</p>
+        <h3>Plano Trimestral +</h3>
+        <p class="plan-term">9 meses + 30 dias</p>
+        <p class="plan-price"><small>A partir de</small><span class="num">R$ 149,90</span><small>/usuário/mês</small></p>
+        <p class="plan-total">Total: <strong class="num">R$ 1.349,10</strong> por usuário, com 30 dias grátis</p>
         <ul class="plan-perks">
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Tudo do plano semestral</li>
-          <li class="highlight-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>30 dias de licença bônus</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Integrações Meta Ads + Instagram</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Histórico centralizado de conversas</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Configuração personalizada pela nossa equipe</li>
+          <li>Tudo do plano semestral</li>
+          <li class="hl">30 dias de licença bônus</li>
+          <li>Integrações Meta Ads + Instagram</li>
+          <li>Histórico centralizado de conversas</li>
+          <li>Configuração personalizada pela nossa equipe</li>
         </ul>
-        <button class="btn-plan filled" onclick="openModal('9 MESES + 30 DIAS')">Contratar agora</button>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-name">Plano Anual</div>
-        <div class="plan-duration">12 MESES + 30 DIAS</div>
-        <div class="plan-price-from">A partir de</div>
-        <div><span class="plan-price">R$129</span><span class="plan-price-period">,90/usuário/mês</span></div>
-        <div class="plan-total">Total: <strong>R$ 1.558,80/usuário</strong> <span class="highlight">— +30 dias grátis</span></div>
-        <hr class="plan-divider" />
+        <button class="btn btn-cyan" type="button" onclick="openModal('9 MESES + 30 DIAS')">Contratar agora</button>
+      </article>
+      <article class="plan" data-reveal style="--d:4">
+        <h3>Plano Anual</h3>
+        <p class="plan-term">12 meses + 30 dias</p>
+        <p class="plan-price"><small>A partir de</small><span class="num">R$ 129,90</span><small>/usuário/mês</small></p>
+        <p class="plan-total">Total: <strong class="num">R$ 1.558,80</strong> por usuário, com 30 dias grátis</p>
         <ul class="plan-perks">
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Tudo do plano 9 meses</li>
-          <li class="highlight-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Menor custo mensal por usuário</li>
-          <li class="highlight-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>30 dias de licença bônus</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Prioridade no suporte</li>
-          <li><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Ideal para equipes e agências</li>
+          <li>Tudo do plano 9 meses</li>
+          <li class="hl">Menor custo mensal por usuário</li>
+          <li class="hl">30 dias de licença bônus</li>
+          <li>Prioridade no suporte</li>
+          <li>Ideal para equipes e agências</li>
         </ul>
-        <button class="btn-plan outline" onclick="openModal('12 MESES + 30 DIAS')">Contratar agora</button>
-      </div>
-
+        <button class="btn btn-line" type="button" onclick="openModal('12 MESES + 30 DIAS')">Contratar agora</button>
+      </article>
     </div>
   </div>
 </section>
 
-
-<!-- ══ COMPARATIVO + CALCULADORA ══ -->
-<section style="padding: 80px 0; background: var(--bg);" id="comparativo">
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 0 24px;">
-
-    <div style="text-align:center; margin-bottom: 48px;">
-      <div class="pain-tag">Comparativo</div>
-      <h2 class="pain-title" style="font-family:var(--font-head);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-.02em;">MILIONCRM vs PIPEDRIVE LITE</h2>
-      <p style="color:var(--ink-2);font-size:.975rem;margin-top:10px;">Compare funcionalidade a funcionalidade — e calcule quanto você economiza</p>
+<!-- ══════════════ COMPARATIVO + CALCULADORA ══════════════ -->
+<section class="section crm-compare" id="comparativo">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>MilionCRM × Pipedrive Lite.</h2>
+      <p class="section-lead" data-reveal style="--d:3">Compare funcionalidade por funcionalidade e calcule quanto você economiza.</p>
     </div>
+    <div class="compare-grid">
+      <table class="vs" data-reveal>
+        <thead><tr><th scope="col">Funcionalidade</th><th scope="col" class="vs-us">MilionCRM</th><th scope="col">Pipedrive Lite</th></tr></thead>
+        <tbody id="checkRows"></tbody>
+      </table>
 
-    <!-- CHECKLIST -->
-    <div style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:40px;">
-      <div style="display:grid;grid-template-columns:1fr 140px 140px;">
-        <div style="padding:12px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg-2);border-bottom:1px solid var(--border);">Funcionalidade</div>
-        <div style="padding:12px 0;text-align:center;font-size:12px;font-weight:700;color:var(--brand);background:var(--bg-2);border-bottom:1px solid var(--border);border-left:1px solid var(--border);">MilionCRM</div>
-        <div style="padding:12px 0;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);background:var(--bg-2);border-bottom:1px solid var(--border);border-left:1px solid var(--border);">Pipedrive Lite</div>
-      </div>
-      <div id="checkRows" style="display:grid;grid-template-columns:1fr 140px 140px;"></div>
-    </div>
-
-    <!-- CALCULADORA -->
-    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:32px;">
-
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
-        <span style="font-size:14px;color:var(--ink-2);">Número de usuários</span>
-        <span style="font-size:32px;font-weight:800;color:var(--brand);" id="cUcount">3</span>
-      </div>
-      <input type="range" min="3" max="30" value="3" step="1" id="cSlider"
-        style="width:100%;accent-color:var(--brand);margin-bottom:4px;"
-        oninput="cCalc(+this.value)" />
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3);margin-bottom:28px;">
-        <span>3 usuários</span><span>30 usuários</span>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-        <div style="background:rgba(1,201,240,.08);border:1px solid rgba(1,201,240,.25);border-radius:12px;padding:20px;">
-          <div style="font-size:12px;font-weight:700;color:var(--brand);margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase;">MilionCRM</div>
-          <div id="cMilionBreak" style="font-size:12px;color:rgba(1,201,240,.8);line-height:1.9;margin-bottom:12px;"></div>
-          <div style="border-top:1px solid rgba(1,201,240,.2);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;">
-            <span style="font-size:12px;color:var(--brand);">Total / mês</span>
-            <span style="font-size:22px;font-weight:800;color:var(--brand);" id="cMilionTotal"></span>
-          </div>
+      <div class="calc" data-reveal style="--d:2">
+        <div class="calc-top">
+          <label for="cSlider">Número de usuários</label>
+          <output id="cUcount" class="num" for="cSlider">3</output>
         </div>
-        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;">
-          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase;">Pipedrive Lite</div>
-          <div id="cPipeBreak" style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.9;margin-bottom:12px;"></div>
-          <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;">
-            <span style="font-size:12px;color:rgba(255,255,255,.4);">Total / mês</span>
-            <span style="font-size:22px;font-weight:800;color:#fff;" id="cPipeTotal"></span>
-          </div>
-        </div>
-      </div>
+        <input type="range" min="3" max="30" value="3" step="1" id="cSlider" oninput="cCalc(+this.value)" />
+        <div class="calc-scale"><span>3 usuários</span><span>30 usuários</span></div>
 
-      <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-        <div>
-          <div style="font-size:13px;font-weight:700;color:#4ade80;">Você economiza por mês</div>
-          <div style="font-size:12px;color:#4ade80;margin-top:3px;" id="cSavePct"></div>
+        <div class="calc-row calc-us">
+          <div class="calc-name">MilionCRM <span class="num" id="cMilionTotal"></span></div>
+          <div class="bar"><i id="cMilionBar"></i></div>
+          <p id="cMilionBreak"></p>
         </div>
-        <div style="font-size:24px;font-weight:800;color:#4ade80;" id="cSaveVal"></div>
-      </div>
+        <div class="calc-row">
+          <div class="calc-name">Pipedrive Lite <span class="num" id="cPipeTotal"></span></div>
+          <div class="bar"><i id="cPipeBar"></i></div>
+          <p id="cPipeBreak"></p>
+        </div>
 
-      <div style="font-size:11px;color:rgba(255,255,255,.25);line-height:1.6;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);">
-        * Cotação do Pipedrive baseada no plano Lite (cobrança mensal: US$24/usuário). Conversão estimada com câmbio de R$5,20/US$, consultado em agosto de 2026. Valores sujeitos a alteração — consulte o site oficial do Pipedrive para confirmar o preço atual.
+        <div class="calc-save">
+          <div><strong>Você economiza por mês</strong><span id="cSavePct"></span></div>
+          <span class="num" id="cSaveVal"></span>
+        </div>
+        <p class="calc-note">* Cotação do Pipedrive baseada no plano Lite (cobrança mensal: US$24/usuário). Conversão estimada com câmbio de R$5,20/US$, consultado em agosto de 2026. Valores sujeitos a alteração; consulte o site oficial do Pipedrive para confirmar o preço atual.</p>
       </div>
     </div>
-
-    <!-- BOTÃO TESTE GRÁTIS -->
-    <div style="text-align:center;margin-top:48px;">
-      <p style="color:var(--ink-2);font-size:.975rem;margin-bottom:20px;">Ficou convencido? Teste sem compromisso por 7 dias.</p>
-      <button onclick="openModal('Teste Grátis 7 dias')"
-        style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--brand);color:var(--brand);font-weight:700;font-size:1.05rem;padding:16px 40px;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit;"
-        onmouseover="this.style.background='var(--brand)';this.style.color='var(--bg)'"
-        onmouseout="this.style.background='transparent';this.style.color='var(--brand)'">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Testar grátis por 7 dias
-      </button>
-      <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:12px;">Sem cartão de crédito. Nossa equipe ativa seu acesso em até 1 dia útil.</p>
-    </div>
-
   </div>
 </section>
+
+<!-- ══════════════ CHAMADA FINAL ══════════════ -->
+<section class="final lift" id="teste">
+  <img class="final-mark" src="/blog/capas/simbolo.svg" alt="" width="760" height="473" loading="lazy" />
+  <div class="wrap">
+    <h2 data-split>Teste sem compromisso por 7 dias.</h2>
+    <p data-reveal style="--d:3">Sem cartão de crédito. Nossa equipe ativa seu acesso em até 1 dia útil.</p>
+    <button class="btn btn-cyan" type="button" data-reveal style="--d:4" onclick="openModal('Teste Grátis 7 dias')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Testar grátis por 7 dias</button>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="/logo-white.svg" alt="Agentes Milionários" width="132" height="30" loading="lazy" />
+        <p>MilionCRM é um produto da Agentes Milionários — Itajaí, Santa Catarina.</p>
+      </div>
+      <div class="footer-nav">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="/">Início</a></li>
+          <li><a href="/empresas">Para empresas</a></li>
+          <li><a href="#funcionalidades">Funcionalidades</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/clube.html">Clube</a></li>
+          <li><a href="/terms-milioncrm.html">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <ul>
+          <li><a href="https://instagram.com/agmilionariobr" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a data-email="suporte" href="#">suporte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Agentes Milionários LTDA &mdash; CNPJ 63.615.745/0001-85 &mdash; Itajaí, SC</p></div>
+  </div>
+</footer>
+
+<!-- ══════════════ FORMULÁRIO ══════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" onclick="closeModal()" aria-label="Fechar"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <div id="modalForm">
+      <p class="modal-plan" id="modalPlanLabel">MilionCRM</p>
+      <h2 id="modalTitle">Falta pouco!</h2>
+      <p class="modal-sub">Deixe seu contato e nossa equipe ativa seu acesso em até 1 dia útil.</p>
+      <form onsubmit="submitModal(event)">
+        <label class="field"><span>Seu nome *</span><input type="text" id="mNome" required autocomplete="name" placeholder="João Silva" /></label>
+        <label class="field"><span>WhatsApp *</span><input type="tel" id="mTel" required autocomplete="tel" inputmode="tel" placeholder="(47) 99999-9999" /></label>
+        <label class="field"><span>E-mail *</span><input type="email" id="mEmail" required autocomplete="email" placeholder="seu@email.com.br" /></label>
+        <div class="modal-check">
+          <input type="checkbox" id="mTermos" required />
+          <label for="mTermos">Li e aceito os <a href="/terms-milioncrm.html" target="_blank">Termos de Uso do MilionCRM</a>.</label>
+        </div>
+        <button type="submit" class="btn btn-cyan modal-submit" id="modalBtn">Quero o MilionCRM</button>
+        <p class="modal-note">Sem spam. Apenas nossa equipe vai entrar em contato.</p>
+      </form>
+    </div>
+    <div id="modalSuccess" class="modal-success" style="display:none">
+      <span class="modal-ok" aria-hidden="true"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h2>Recebemos!</h2>
+      <p>Nossa equipe vai entrar em contato pelo WhatsApp em breve. Prepare-se para vender mais.</p>
+    </div>
+  </div>
+</div>
 
 <script>
-  var C_MILION = 129.90;
-  var C_PER    = +(129.90 / 3).toFixed(2);
-  var C_PIPE   = 125;
-
-  function cFmt(n) {
-    return "R$ " + n.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+(function () {
+  /* Menu do celular */
+  var btn = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
+  if (btn && menu) {
+    btn.addEventListener('click', function () {
+      var open = menu.hidden;
+      menu.hidden = !open;
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    });
   }
 
-  function cCalc(u) {
-    document.getElementById("cUcount").textContent = u;
-    var extra  = u - 3;
-    var milion = extra <= 0 ? C_MILION : +(C_MILION + extra * C_PER).toFixed(2);
-    var mBreak = "1 licença (3 usuários) × " + cFmt(C_MILION);
-    if (extra > 0) mBreak += "<br>+ " + extra + " usuário" + (extra > 1 ? "s" : "") + " × " + cFmt(C_PER);
-    var pipe   = u * C_PIPE;
-    var pBreak = u + " licença" + (u > 1 ? "s" : "") + " (" + u + " usuário" + (u > 1 ? "s" : "") + ") × " + cFmt(C_PIPE);
-    var save   = +(pipe - milion).toFixed(2);
-    var pct    = Math.round((save / pipe) * 100);
-    document.getElementById("cMilionBreak").innerHTML   = mBreak;
-    document.getElementById("cMilionTotal").textContent = cFmt(milion);
-    document.getElementById("cPipeBreak").innerHTML     = pBreak;
-    document.getElementById("cPipeTotal").textContent   = cFmt(pipe);
-    document.getElementById("cSaveVal").textContent     = cFmt(save);
-    document.getElementById("cSavePct").textContent     = pct + "% mais barato que o Pipedrive Lite";
+  /* E-mails montados via JS (o Cloudflare ofusca mailto: escritos no HTML) */
+  document.querySelectorAll('[data-email]').forEach(function (el) {
+    var addr = el.getAttribute('data-email') + '@' + 'agmilionario.com.br';
+    el.href = 'mailto:' + addr;
+    el.textContent = addr;
+  });
+
+  /* Movimento só para quem não pediu "menos movimento"; sem JS, tudo fica visível e parado */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  if (reduce) return;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  /* Como funciona: cada folha sobe e cobre a anterior, que encolhe e escurece de leve */
+  var sheets = [].slice.call(document.querySelectorAll('.step'));
+  if (sheets.length > 1) {
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      for (var i = 0; i < sheets.length - 1; i++) {
+        var a = sheets[i].getBoundingClientRect(), b = sheets[i + 1].getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, (a.bottom - b.top) / a.height));
+        sheets[i].style.transform = p ? 'scale(' + (1 - p * 0.05).toFixed(4) + ')' : '';
+        sheets[i].style.setProperty('--shade', (p * 0.1).toFixed(3));
+      }
+    };
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   }
 
-  var checkRows = [
+  /* Resultados: textos entram em sequência e os números contam a partir do zero */
+  var results = document.querySelector('.results');
+  if (results) {
+    var nums = [].slice.call(results.querySelectorAll('.metric-n')).map(function (n) {
+      var m = n.textContent.match(/^(\D*)(\d+)(\D*)$/);
+      if (!m) return null;
+      n.setAttribute('aria-label', n.textContent);
+      return { el: n, pre: m[1], val: +m[2], suf: m[3] }; /* o HTML mantém o valor final (Google e sem-JS veem o número certo) */
+    });
+    results.classList.add('will-reveal');
+    var revealed = false;
+    var reveal = function () {
+      results.classList.add('is-in');
+      nums.forEach(function (n) { if (n) n.el.textContent = n.pre + '0' + n.suf; });
+      nums.forEach(function (n, i) {
+        if (!n) return;
+        var final = n.pre + n.val + n.suf;
+        setTimeout(function () { n.el.textContent = final; }, 250 + i * 200 + 1700); /* trava de segurança */
+        setTimeout(function () {
+          var start = null, dur = 1500;
+          requestAnimationFrame(function tick(t) {
+            if (start === null) start = t;
+            var k = Math.min(1, (t - start) / dur);
+            var eased = k === 1 ? 1 : 1 - Math.pow(2, -10 * k);
+            n.el.textContent = n.pre + Math.round(n.val * eased) + n.suf;
+            if (k < 1) requestAnimationFrame(tick);
+          });
+        }, 250 + i * 200);
+      });
+    };
+    var checkResults = function () {
+      if (revealed) return;
+      var r = results.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.75 && r.bottom > 0) {
+        revealed = true;
+        window.removeEventListener('scroll', onResultsScroll);
+        reveal();
+      }
+    };
+    var onResultsScroll = function () { checkResults(); }; /* sem esperar quadro: a entrada começa na hora da rolagem */
+    window.addEventListener('scroll', onResultsScroll, { passive: true });
+    checkResults();
+  }
+
+  /* A conversa das 02:47, como no WhatsApp: janela de altura fixa, cada mensagem entra por baixo
+     e as antigas sobem. "Digitando…" antes de cada resposta do agente; respostas longas ficam mais tempo.
+     Recomeça quando a conversa sai da tela e volta. */
+  var chat = document.querySelector('.chat');
+  var body = chat && chat.querySelector('.chat-body');
+  if (!body || !hasIO) return;
+
+  var steps = [].slice.call(chat.querySelectorAll('[data-step]'));
+  steps.forEach(function (s) {
+    if (s.classList.contains('msg-out')) {
+      var t = document.createElement('div');
+      t.className = 'msg-typing';
+      t.setAttribute('aria-hidden', 'true');
+      t.innerHTML = '<i></i><i></i><i></i>';
+      s.parentNode.insertBefore(t, s);
+      s._typing = t;
+    }
+  });
+
+  var run = 0;
+  function toBottom() { body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' }); }
+  function readTime(s) {
+    if (s.classList.contains('msg-out')) return Math.min(3400, 800 + s.textContent.length * 14);
+    return s.classList.contains('msg-in') ? 1000 : 600;
+  }
+
+  async function play() {
+    var id = ++run;
+    chat.classList.add('is-playing');
+    steps.forEach(function (s) { s.classList.remove('is-in'); if (s._typing) s._typing.classList.remove('is-on'); });
+    body.scrollTop = 0;
+    await wait(400);
+    for (var i = 0; i < steps.length; i++) {
+      if (id !== run) return;
+      var s = steps[i];
+      if (s._typing) {
+        s._typing.classList.add('is-on');
+        toBottom();
+        await wait(1100);
+        if (id !== run) return;
+        s._typing.classList.remove('is-on');
+      }
+      s.classList.add('is-in');
+      toBottom();
+      await wait(readTime(s));
+    }
+  }
+
+  var seen = false, away = false;
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && (!seen || away)) { seen = true; away = false; play(); }
+      else if (!e.isIntersecting && seen) { away = true; run++; }
+    });
+  }, { threshold: 0.3 }).observe(chat);
+})();
+
+/* ══════════ MilionCRM: calculadora, comparativo e formulário ══════════ */
+var C_MILION = 129.90;                  /* 1 licença = 3 usuários */
+var C_PER    = +(129.90 / 3).toFixed(2); /* cada usuário extra */
+var C_PIPE   = 125;                      /* Pipedrive Lite por usuário */
+
+function cFmt(n) {
+  return "R$ " + n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+/* Os valores deslizam até o número novo quando o controle muda */
+var cShown = {};
+function cTween(id, to) {
+  var el = document.getElementById(id), from = cShown[id];
+  cShown[id] = to;
+  if (from === undefined || from === to || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = cFmt(to); return; }
+  var t0 = null;
+  el._run = (el._run || 0) + 1;
+  var run = el._run;
+  requestAnimationFrame(function step(t) {
+    if (run !== el._run) return;
+    if (t0 === null) t0 = t;
+    var k = Math.min(1, (t - t0) / 450), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = cFmt(from + (to - from) * e);
+    if (k < 1) requestAnimationFrame(step);
+  });
+  setTimeout(function () { if (run === el._run) el.textContent = cFmt(to); }, 700);
+}
+
+function cCalc(u) {
+  document.getElementById("cUcount").textContent = u;
+  var extra  = u - 3;
+  var milion = extra <= 0 ? C_MILION : +(C_MILION + extra * C_PER).toFixed(2);
+  var mBreak = "1 licença (3 usuários) × " + cFmt(C_MILION);
+  if (extra > 0) mBreak += "<br>+ " + extra + " usuário" + (extra > 1 ? "s" : "") + " × " + cFmt(C_PER);
+  var pipe   = u * C_PIPE;
+  var pBreak = u + " licença" + (u > 1 ? "s" : "") + " (" + u + " usuário" + (u > 1 ? "s" : "") + ") × " + cFmt(C_PIPE);
+  var save   = +(pipe - milion).toFixed(2);
+  var pct    = Math.round((save / pipe) * 100);
+  document.getElementById("cMilionBreak").innerHTML = mBreak;
+  document.getElementById("cPipeBreak").innerHTML   = pBreak;
+  cTween("cMilionTotal", milion);
+  cTween("cPipeTotal", pipe);
+  cTween("cSaveVal", save);
+  document.getElementById("cSavePct").textContent = pct + "% mais barato que o Pipedrive Lite";
+  document.getElementById("cMilionBar").style.width = (milion / pipe * 100).toFixed(1) + "%";
+  document.getElementById("cPipeBar").style.width   = "100%";
+}
+
+(function () {
+  var rows = [
     ["WhatsApp integrado nativo", true, false],
     ["IA integrada", true, false],
     ["Follow-up automático", true, false],
@@ -692,124 +1021,128 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     ["Funil Kanban visual", true, true],
     ["Relatórios e métricas", true, true],
     ["3 usuários por licença", true, false],
-    ["Cobrado em reais", true, false],
+    ["Cobrado em reais", true, false]
   ];
-
-  var tbody = document.getElementById("checkRows");
-  checkRows.forEach(function(r, i) {
-    var bg = i % 2 === 0 ? "rgba(255,255,255,.03)" : "transparent";
-    var b  = "border-bottom:1px solid rgba(255,255,255,.06);";
-    tbody.innerHTML +=
-      '<div style="padding:11px 20px;font-size:13px;color:rgba(255,255,255,.8);background:' + bg + ';' + b + '">' + r[0] + '</div>' +
-      '<div style="padding:11px 0;text-align:center;background:' + bg + ';' + b + 'border-left:1px solid rgba(255,255,255,.06);font-size:18px;">' + (r[1] ? '<span style="color:#4ade80;">&#10003;</span>' : '<span style="color:#f87171;">&#10007;</span>') + '</div>' +
-      '<div style="padding:11px 0;text-align:center;background:' + bg + ';' + b + 'border-left:1px solid rgba(255,255,255,.06);font-size:18px;">' + (r[2] ? '<span style="color:#4ade80;">&#10003;</span>' : '<span style="color:#f87171;">&#10007;</span>') + '</div>';
-  });
-
+  var yes = '<svg class="yes" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="sr-only">Sim</span>';
+  var no  = '<svg class="no" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span class="sr-only">Não</span>';
+  document.getElementById("checkRows").innerHTML = rows.map(function (r) {
+    return '<tr><td>' + r[0] + '</td><td>' + (r[1] ? yes : no) + '</td><td>' + (r[2] ? yes : no) + '</td></tr>';
+  }).join("");
   cCalc(3);
-</script>
+})();
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Agentes Milionários LTDA — CNPJ 63.615.745/0001-85 — Itajaí, SC</p>
-    <p style="margin-top:8px">
-      <a href="index.html">Início</a> &nbsp;·&nbsp;
-      <a href="clube.html">Clube</a> &nbsp;·&nbsp;
-      <a href="terms-milioncrm.html">Termos de Uso</a>
-    </p>
-  </div>
-</footer>
+var currentPlan = '';
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+function openModal(plan) {
+  currentPlan = plan;
+  var label = document.getElementById('modalPlanLabel');
+  label.textContent = /grátis/i.test(plan) ? 'Teste grátis por 7 dias' : (plan ? 'Plano ' + plan.toLowerCase() : 'MilionCRM');
+  document.getElementById('modalForm').style.display = '';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function () { document.getElementById('mNome').focus(); }, 60);
+}
 
-    <div id="modalForm">
-      <div class="modal-eyebrow" id="modalPlanLabel">MilionCRM</div>
-      <h2>FALTA POUCO!</h2>
-      <p class="modal-sub">Deixa seu contato e nossa equipe ativa seu acesso em até 1 dia útil.</p>
-      <form onsubmit="submitModal(event)">
-        <div class="modal-form-group">
-          <label class="modal-label">Seu nome *</label>
-          <input type="text" class="modal-input" id="mNome" required placeholder="João Silva" />
-        </div>
-        <div class="modal-form-group">
-          <label class="modal-label">WhatsApp *</label>
-          <input type="tel" class="modal-input" id="mTel" required placeholder="(47) 99999-9999" />
-        </div>
-        <div class="modal-form-group">
-          <label class="modal-label">E-mail *</label>
-          <input type="email" class="modal-input" id="mEmail" required placeholder="seu@email.com.br" />
-        </div>
-        <div class="modal-check">
-          <input type="checkbox" id="mTermos" required />
-          <label for="mTermos">Li e aceito os <a href="terms-milioncrm.html" target="_blank">Termos de Uso do MilionCRM</a>.</label>
-        </div>
-        <button type="submit" class="btn-modal-submit" id="modalBtn">QUERO O MILIONCRM →</button>
-        <p class="modal-note">Sem spam. Apenas nossa equipe vai te contactar.</p>
-      </form>
-    </div>
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-    <div id="modalSuccess" class="modal-success" style="display:none">
-      <div class="modal-success-icon">✓</div>
-      <h3>RECEBEMOS!</h3>
-      <p>Nossa equipe vai entrar em contato pelo WhatsApp em breve.<br>Prepare-se para vender mais.</p>
-    </div>
-  </div>
-</div>
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && document.getElementById('modalOverlay').classList.contains('open')) closeModal();
+});
 
-<script>
-  var currentPlan = '';
+async function submitModal(e) {
+  e.preventDefault();
+  var btn = document.getElementById('modalBtn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
 
-  function openModal(plan) {
-    currentPlan = plan;
-    var label = document.getElementById('modalPlanLabel');
-    label.textContent = (plan && plan !== 'Hero' && plan !== 'Nav') ? 'PLANO ' + plan : 'MilionCRM';
-    document.getElementById('modalForm').style.display = '';
-    document.getElementById('modalSuccess').style.display = 'none';
-    document.getElementById('modalOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  var payload = {
+    nome: document.getElementById('mNome').value,
+    telefone: document.getElementById('mTel').value,
+    email: document.getElementById('mEmail').value,
+    plano: currentPlan || 'Não informado',
+    data: new Date().toISOString()
+  };
 
-  function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  try {
+    await fetch('https://webhooks.agmilionario.com.br/webhook/3fd26429-bc21-4b4d-b0e1-5c527ae84da6', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) { console.warn('webhook:', err); }
 
-  async function submitModal(e) {
-    e.preventDefault();
-    var btn = document.getElementById('modalBtn');
-    btn.disabled = true; btn.textContent = 'Enviando...';
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('modalSuccess').style.display = '';
+  btn.disabled = false; btn.textContent = 'Quero o MilionCRM';
+}
 
-    var payload = {
-      nome: document.getElementById('mNome').value,
-      telefone: document.getElementById('mTel').value,
-      email: document.getElementById('mEmail').value,
-      plano: currentPlan || 'Não informado',
-      data: new Date().toISOString()
-    };
+/* ══════════ Movimento (só para quem não pediu "menos movimento"; sem JS, tudo fica visível) ══════════ */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var root = document.documentElement;
 
-    try {
-      await fetch('https://webhooks.agmilionario.com.br/webhook/3fd26429-bc21-4b4d-b0e1-5c527ae84da6', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+  /* Títulos: cada palavra ganha uma máscara para subir de trás dela */
+  document.querySelectorAll('[data-split]').forEach(function (el) {
+    var i = 0;
+    (function walk(node) {
+      [].slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 1) return walk(n);
+        if (n.nodeType !== 3) return;
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+          var w = document.createElement('span'), s = document.createElement('span');
+          w.className = 'w'; s.textContent = t; s.style.setProperty('--wi', i++);
+          w.appendChild(s); frag.appendChild(w);
+        });
+        n.parentNode.replaceChild(frag, n);
       });
-    } catch(err) { console.warn('webhook:', err); }
+    })(el);
+  });
+  root.classList.add('anim');
 
-    document.getElementById('modalForm').style.display = 'none';
-    document.getElementById('modalSuccess').style.display = '';
-    btn.disabled = false; btn.textContent = 'QUERO O MILIONCRM →';
+  /* Entradas: aparecem quando chegam a 88% da altura da tela */
+  var pending = [].slice.call(document.querySelectorAll('[data-reveal], [data-split]'));
+  /* o topo entra inteiro assim que a página abre */
+  setTimeout(function () { document.querySelectorAll('.crm-hero [data-reveal], .crm-hero [data-split]').forEach(function (el) { el.classList.add('is-in'); }); }, 60);
+  function reveal() {
+    var vh = window.innerHeight;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < vh * 0.88) { el.classList.add('is-in'); return false; }
+      return true;
+    });
   }
 
-  /* Scroll reveal */
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-</script>
+  /* Tela do sistema: começa inclinada e se endireita conforme a página desce */
+  var shot = document.querySelector('.crm-shot-inner');
+  function tilt() {
+    if (!shot) return;
+    var r = shot.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.85)));
+    shot.style.transform = 'rotateX(' + (18 * (1 - p)).toFixed(2) + 'deg) scale(' + (0.92 + 0.08 * p).toFixed(4) + ')';
+  }
 
+  var ticking = false;
+  function frame() { ticking = false; reveal(); tilt(); }
+  window.addEventListener('scroll', function () { reveal(); if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  window.addEventListener('resize', frame);
+  requestAnimationFrame(function () { requestAnimationFrame(frame); });
+  tilt();
+
+  /* Planos: brilho que acompanha o mouse */
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.plan').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+})();
+</script>
 </body>
 </html>
