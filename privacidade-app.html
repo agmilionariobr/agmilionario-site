@@ -52,7 +52,7 @@
   <thead><tr><th>Origem</th><th>Dados</th><th>Como obtemos</th></tr></thead>
   <tbody>
     <tr><td>Login do Facebook</td><td>Nome, ID de usuário no app, e-mail e foto de perfil</td><td>Permissões <code>public_profile</code> e <code>email</code>, com seu consentimento</td></tr>
-    <tr><td>APIs da Meta (anúncios)</td><td>Contas de anúncios, campanhas, conjuntos, anúncios, criativos, orçamentos, lances, segmentação e métricas (alcance, impressões, cliques, custo, conversões)</td><td>Permissões como <code>ads_read</code> (leitura), <code>ads_management</code> (leitura e gravação) e <code>business_management</code></td></tr>
+    <tr><td>APIs da Meta (anúncios)</td><td>Contas de anúncios, campanhas, conjuntos, anúncios, criativos, públicos, orçamentos, lances, segmentação e métricas (alcance, impressões, cliques, custo, conversões)</td><td>Permissões como <code>ads_read</code> (leitura), <code>ads_management</code> (leitura e gravação) e <code>business_management</code></td></tr>
     <tr><td>APIs da Meta (Páginas e Instagram)</td><td>Nome e ID de Páginas e perfis comerciais, publicações e métricas agregadas</td><td>Permissões como <code>pages_show_list</code>, <code>pages_read_engagement</code> e <code>instagram_basic</code></td></tr>
     <tr><td>Formulários de cadastro de leads (se ativado)</td><td>Dados que o lead preencheu no anúncio (ex.: nome, telefone, e-mail)</td><td>Permissão <code>leads_retrieval</code>, para contas do próprio cliente</td></tr>
     <tr><td>Você, diretamente</td><td>Nome, e-mail, telefone/WhatsApp, empresa e dados de faturamento</td><td>Cadastro e suporte</td></tr>
@@ -69,7 +69,7 @@
   <tbody>
     <tr><td>Autenticar você e manter sua conta no App</td><td>Execução de contrato</td></tr>
     <tr><td>Exibir painéis e relatórios de desempenho das suas campanhas</td><td>Execução de contrato</td></tr>
-    <tr><td><strong>Gerenciar suas campanhas de ponta a ponta:</strong> criar, editar, pausar, reativar e encerrar campanhas, conjuntos e anúncios, e ajustar orçamentos, lances, segmentação, programação e criativos</td><td>Execução de contrato e consentimento</td></tr>
+    <tr><td><strong>Gerenciar suas campanhas de ponta a ponta:</strong> criar, editar, pausar, reativar e encerrar campanhas, conjuntos e anúncios; ajustar orçamentos, lances, segmentação e programação; enviar criativos; criar e alterar públicos</td><td>Execução de contrato e consentimento</td></tr>
     <tr><td>Encaminhar leads dos seus anúncios ao seu CRM ou WhatsApp</td><td>Execução de contrato (você é o controlador desses leads; atuamos como operador)</td></tr>
     <tr><td>Gerar análises e recomendações, inclusive com apoio de inteligência artificial</td><td>Execução de contrato</td></tr>
     <tr><td>Suporte, segurança, prevenção a fraudes e melhoria do App</td><td>Legítimo interesse</td></tr>
@@ -81,10 +81,13 @@
 <p>O Cockpit AGM não é apenas um painel de leitura. Com a permissão <code>ads_management</code>, ele também <strong>grava alterações</strong> nas contas de anúncios que você conectou. Na prática, o App pode:</p>
 <ul>
   <li>Criar campanhas, conjuntos de anúncios e anúncios;</li>
+  <li>Enviar criativos (imagens, vídeos e textos) para a biblioteca da sua conta de anúncios;</li>
   <li>Editar orçamentos, lances, segmentação, programação, criativos e textos;</li>
+  <li>Criar e alterar públicos, inclusive públicos personalizados e semelhantes;</li>
   <li>Pausar, reativar, duplicar e encerrar campanhas, conjuntos e anúncios;</li>
   <li>Ler o desempenho de tudo isso para gerar relatórios e recomendações.</li>
 </ul>
+<p><strong>Criativos e públicos.</strong> Os criativos enviados pelo App são os que você mesmo subiu ou aprovou, e ficam na sua conta de anúncios. Quando um público personalizado é criado a partir de uma lista de contatos sua, você continua sendo o controlador desses contatos e declara ter base legal para usá-los; nós apenas transmitimos a lista à Meta para a criação do público, sem usá-la para qualquer outra finalidade e sem compartilhá-la com outros clientes.</p>
 <p>Essas alterações são feitas <strong>na conta de anúncios que você autorizou e partem do seu comando dentro do App</strong>, inclusive quando você aprova uma recomendação sugerida por inteligência artificial. Toda alteração fica registrada, com autor, data e hora, e você pode desconectar o App a qualquer momento, o que encerra imediatamente esse acesso. Como o investimento em mídia é seu, recomendamos revisar as alterações no Gerenciador de Anúncios da Meta.</p>
 <p>O que <strong>não</strong> fazemos com dados da Meta:</p>
 <ul>
