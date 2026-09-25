@@ -21,6 +21,7 @@
   main { max-width:820px; margin:0 auto; padding:40px 16px 64px; }
   h1 { font-size:2rem; line-height:1.2; margin:0 0 8px; }
   h2 { font-size:1.3rem; margin:40px 0 12px; padding-top:8px; border-top:1px solid var(--line); }
+  h3 { font-size:1.05rem; margin:28px 0 10px; }
   p, li { margin:0 0 12px; }
   ul, ol { padding-left:22px; }
   a { color:var(--accent); }
@@ -43,7 +44,7 @@
 <p><strong>Controlador:</strong> Agentes Milionários LTDA — CNPJ 63.615.745/0001-85 — R. Abel Adriano da Silva, 480, Sala 05 BN, Fazendinha, Itajaí/SC, CEP 88.306-020, Brasil.</p>
 <p><strong>Encarregado de dados (DPO):</strong> Wagner Corrêa — <a data-mail="suporte" href="#">suporte</a>.</p>
 <p>Esta política é específica do App. A navegação no site institucional segue a <a href="https://agentesmilionarios.com.br/privacidade">política do site</a>.</p>
-<p>O App é uma ferramenta de gestão e análise de anúncios para empresas e agências. Ele só acessa contas de anúncios, Páginas e perfis do Instagram que o próprio usuário autorizar pelo Login do Facebook. O App não é destinado a menores de 18 anos.</p>
+<p>O App é uma ferramenta de gestão e análise de anúncios para empresas e agências: ele lê o desempenho das campanhas e também cria e altera campanhas nas contas que você conectar. Ele só acessa contas de anúncios, Páginas e perfis do Instagram que o próprio usuário autorizar pelo Login do Facebook. O App não é destinado a menores de 18 anos.</p>
 
 <h2 id="dados-coletados">2. Quais dados coletamos</h2>
 <div class="table-wrap">
@@ -51,7 +52,7 @@
   <thead><tr><th>Origem</th><th>Dados</th><th>Como obtemos</th></tr></thead>
   <tbody>
     <tr><td>Login do Facebook</td><td>Nome, ID de usuário no app, e-mail e foto de perfil</td><td>Permissões <code>public_profile</code> e <code>email</code>, com seu consentimento</td></tr>
-    <tr><td>APIs da Meta (anúncios)</td><td>Contas de anúncios, campanhas, conjuntos, anúncios, criativos, orçamentos e métricas (alcance, impressões, cliques, custo, conversões)</td><td>Permissões como <code>ads_read</code>, <code>ads_management</code> e <code>business_management</code></td></tr>
+    <tr><td>APIs da Meta (anúncios)</td><td>Contas de anúncios, campanhas, conjuntos, anúncios, criativos, orçamentos, lances, segmentação e métricas (alcance, impressões, cliques, custo, conversões)</td><td>Permissões como <code>ads_read</code> (leitura), <code>ads_management</code> (leitura e gravação) e <code>business_management</code></td></tr>
     <tr><td>APIs da Meta (Páginas e Instagram)</td><td>Nome e ID de Páginas e perfis comerciais, publicações e métricas agregadas</td><td>Permissões como <code>pages_show_list</code>, <code>pages_read_engagement</code> e <code>instagram_basic</code></td></tr>
     <tr><td>Formulários de cadastro de leads (se ativado)</td><td>Dados que o lead preencheu no anúncio (ex.: nome, telefone, e-mail)</td><td>Permissão <code>leads_retrieval</code>, para contas do próprio cliente</td></tr>
     <tr><td>Você, diretamente</td><td>Nome, e-mail, telefone/WhatsApp, empresa e dados de faturamento</td><td>Cadastro e suporte</td></tr>
@@ -68,7 +69,7 @@
   <tbody>
     <tr><td>Autenticar você e manter sua conta no App</td><td>Execução de contrato</td></tr>
     <tr><td>Exibir painéis e relatórios de desempenho das suas campanhas</td><td>Execução de contrato</td></tr>
-    <tr><td>Criar, pausar ou editar campanhas <strong>somente quando você solicitar</strong></td><td>Execução de contrato e consentimento</td></tr>
+    <tr><td><strong>Gerenciar suas campanhas de ponta a ponta:</strong> criar, editar, pausar, reativar e encerrar campanhas, conjuntos e anúncios, e ajustar orçamentos, lances, segmentação, programação e criativos</td><td>Execução de contrato e consentimento</td></tr>
     <tr><td>Encaminhar leads dos seus anúncios ao seu CRM ou WhatsApp</td><td>Execução de contrato (você é o controlador desses leads; atuamos como operador)</td></tr>
     <tr><td>Gerar análises e recomendações, inclusive com apoio de inteligência artificial</td><td>Execução de contrato</td></tr>
     <tr><td>Suporte, segurança, prevenção a fraudes e melhoria do App</td><td>Legítimo interesse</td></tr>
@@ -76,6 +77,15 @@
   </tbody>
 </table>
 </div>
+<h3 id="gestao">O que o App faz nas suas contas de anúncios</h3>
+<p>O Cockpit AGM não é apenas um painel de leitura. Com a permissão <code>ads_management</code>, ele também <strong>grava alterações</strong> nas contas de anúncios que você conectou. Na prática, o App pode:</p>
+<ul>
+  <li>Criar campanhas, conjuntos de anúncios e anúncios;</li>
+  <li>Editar orçamentos, lances, segmentação, programação, criativos e textos;</li>
+  <li>Pausar, reativar, duplicar e encerrar campanhas, conjuntos e anúncios;</li>
+  <li>Ler o desempenho de tudo isso para gerar relatórios e recomendações.</li>
+</ul>
+<p>Essas alterações são feitas <strong>na conta de anúncios que você autorizou e partem do seu comando dentro do App</strong>, inclusive quando você aprova uma recomendação sugerida por inteligência artificial. Toda alteração fica registrada, com autor, data e hora, e você pode desconectar o App a qualquer momento, o que encerra imediatamente esse acesso. Como o investimento em mídia é seu, recomendamos revisar as alterações no Gerenciador de Anúncios da Meta.</p>
 <p>O que <strong>não</strong> fazemos com dados da Meta:</p>
 <ul>
   <li>Não vendemos, alugamos ou licenciamos esses dados</li>
